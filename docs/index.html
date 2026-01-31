@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ThreadCord - Discord Support Bot</title>
+    <meta name="description" content="Professional Discord support ticket bot for seamless server management.">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Whitney', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #36393F;
+            color: #DCDDDE;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Discord-style background */
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(ellipse at top left, rgba(88, 101, 242, 0.15) 0%, transparent 50%),
+                radial-gradient(ellipse at bottom right, rgba(88, 101, 242, 0.1) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .container {
+            text-align: center;
+            z-index: 1;
+            padding: 60px 40px;
+            max-width: 500px;
+        }
+
+        h1 {
+            font-size: 64px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            color: #FFFFFF;
+            letter-spacing: -2px;
+            text-shadow: 0 0 30px rgba(88, 101, 242, 0.5);
+            animation: glow 2s ease-in-out infinite alternate, titleReveal 1.5s ease-out;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+
+        .letter {
+            display: inline-block;
+            animation: none;
+        }
+
+        @keyframes titleReveal {
+            from { 
+                opacity: 0;
+                transform: translateY(50px) rotateX(90deg);
+            }
+            to { 
+                opacity: 1;
+                transform: translateY(0) rotateX(0);
+            }
+        }
+
+        @keyframes glow {
+            from { text-shadow: 0 0 30px rgba(88, 101, 242, 0.5); }
+            to { text-shadow: 0 0 40px rgba(88, 101, 242, 0.8), 0 0 50px rgba(88, 101, 242, 0.4); }
+        }
+
+        .subtitle {
+            font-size: 18px;
+            color: #B9BBBE;
+            margin-bottom: 50px;
+            line-height: 1.5;
+            font-weight: 400;
+            animation: fadeInUp 0.8s ease-out 0.2s both;
+            white-space: normal;
+            overflow: visible;
+        }
+
+        .discord-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #5865F2 0%, #7289DA 100%);
+            color: #FFFFFF;
+            padding: 18px 40px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(88, 101, 242, 0.4);
+            animation: fadeInUp 0.8s ease-out 0.4s both;
+            transform-style: preserve-3d;
+        }
+
+        .discord-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.5s;
+        }
+
+        .discord-button::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .liquid-fill {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, rgba(88, 101, 242, 0.3), rgba(114, 137, 218, 0.3));
+            transform: translateY(100%);
+            transition: transform 0.6s ease;
+            border-radius: 12px;
+        }
+
+        .pulse-ring {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 100%;
+            height: 100%;
+            border: 2px solid rgba(88, 101, 242, 0.6);
+            border-radius: 12px;
+            transform: translate(-50%, -50%) scale(0);
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .discord-button:hover {
+            background: linear-gradient(135deg, #4752C4 0%, #5865F2 100%);
+            transform: translateY(-4px) rotateX(5deg) scale(1.05);
+            box-shadow: 0 15px 35px rgba(88, 101, 242, 0.6);
+        }
+
+        .discord-button:hover::before {
+            left: 100%;
+        }
+
+        .discord-button:hover::after {
+            opacity: 1;
+        }
+
+        .discord-button:hover .liquid-fill {
+            transform: translateY(0);
+        }
+
+        .discord-button:hover .pulse-ring {
+            animation: pulseRing 1.5s ease-out;
+        }
+
+        .discord-button:active {
+            transform: translateY(-2px) rotateX(2deg) scale(1.02);
+        }
+
+        @keyframes pulseRing {
+            0% {
+                transform: translate(-50%, -50%) scale(0.8);
+                opacity: 1;
+            }
+            100% {
+                transform: translate(-50%, -50%) scale(1.5);
+                opacity: 0;
+            }
+        }
+
+        /* Floating particles */
+        .particles {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            pointer-events: none;
+        }
+
+        .particle {
+            position: absolute;
+            background: rgba(88, 101, 242, 0.6);
+            border-radius: 50%;
+            pointer-events: none;
+            filter: blur(1px);
+        }
+
+        @keyframes float {
+            0%, 100% { 
+                transform: translateY(0px) rotate(0deg) scale(1); 
+                opacity: 0.3;
+            }
+            25% { 
+                transform: translateY(-30px) rotate(90deg) scale(1.2); 
+                opacity: 0.6;
+            }
+            50% { 
+                transform: translateY(-15px) rotate(180deg) scale(0.8); 
+                opacity: 0.4;
+            }
+            75% { 
+                transform: translateY(-25px) rotate(270deg) scale(1.1); 
+                opacity: 0.7;
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.3; }
+            50% { transform: scale(1.5); opacity: 0.1; }
+        }
+
+        /* Enhanced background animation */
+        body::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 30% 20%, rgba(88, 101, 242, 0.1) 0%, transparent 40%),
+                radial-gradient(circle at 70% 80%, rgba(114, 137, 218, 0.08) 0%, transparent 40%);
+            animation: backgroundShift 8s ease-in-out infinite alternate;
+            pointer-events: none;
+        }
+
+        .geometric-patterns {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            pointer-events: none;
+            opacity: 0.1;
+        }
+
+        .geo-shape {
+            position: absolute;
+            border: 1px solid rgba(88, 101, 242, 0.3);
+            animation: geoFloat 20s linear infinite;
+        }
+
+        .geo-shape:nth-child(1) {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            top: 10%;
+            left: 10%;
+            animation-duration: 25s;
+        }
+
+        .geo-shape:nth-child(2) {
+            width: 80px;
+            height: 80px;
+            border-radius: 20%;
+            top: 60%;
+            right: 15%;
+            animation-duration: 30s;
+            animation-direction: reverse;
+        }
+
+        .geo-shape:nth-child(3) {
+            width: 120px;
+            height: 120px;
+            border-radius: 30%;
+            bottom: 20%;
+            left: 20%;
+            animation-duration: 35s;
+        }
+
+        @keyframes geoFloat {
+            0% { transform: rotate(0deg) translateX(0px); }
+            25% { transform: rotate(90deg) translateX(30px); }
+            50% { transform: rotate(180deg) translateX(0px); }
+            75% { transform: rotate(270deg) translateX(-30px); }
+            100% { transform: rotate(360deg) translateX(0px); }
+        }
+
+        .mouse-trail {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: radial-gradient(circle, rgba(88, 101, 242, 0.6), transparent);
+            border-radius: 50%;
+            pointer-events: none;
+            animation: trailFade 1s ease-out forwards;
+        }
+
+        @keyframes trailFade {
+            0% { 
+                transform: scale(0);
+                opacity: 1;
+            }
+            100% { 
+                transform: scale(3);
+                opacity: 0;
+            }
+        }
+
+        @keyframes backgroundShift {
+            0% { opacity: 0.5; }
+            100% { opacity: 1; }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                padding: 40px 20px;
+            }
+            
+            h1 {
+                font-size: 36px;
+            }
+            
+            .subtitle {
+                font-size: 16px;
+            }
+            
+            .logo {
+                width: 120px;
+                height: 120px;
+            }
+            
+            .logo img {
+                width: 80px;
+                height: 80px;
+            }
+            
+            .discord-button {
+                padding: 14px 28px;
+                font-size: 15px;
+            }
+        }
+
+        /* Page load animation */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .container {
+            animation: fadeInUp 0.8s ease-out;
+        }
+    </style>
+</head>
+<body>
+    <div class="particles" id="particles"></div>
+    <div class="geometric-patterns">
+        <div class="geo-shape"></div>
+        <div class="geo-shape"></div>
+        <div class="geo-shape"></div>
+    </div>
+    
+    <div class="container">
+        <h1 id="title">ThreadCord</h1>
+        <p class="subtitle">
+            Professional Discord support ticket bot that creates private threads and manages your server's support system seamlessly.
+        </p>
+        
+        <a href="https://discord.com/oauth2/authorize?client_id=1466937933981548676&permissions=3389352016&scope=bot%20applications.commands" class="discord-button" target="_blank">
+            <div class="liquid-fill"></div>
+            <div class="pulse-ring"></div>
+            🚀 Add to Discord
+        </a>
+    </div>
+
+    <script>
+        // Split title into individual letters for animation
+        function animateTitle() {
+            const title = document.getElementById('title');
+            const text = title.textContent;
+            title.innerHTML = '';
+            
+            text.split('').forEach((letter, index) => {
+                const span = document.createElement('span');
+                span.textContent = letter;
+                span.className = 'letter';
+                span.style.setProperty('--i', index);
+                title.appendChild(span);
+            });
+        }
+
+        // Create enhanced floating particles
+        function createParticles() {
+            const particlesContainer = document.getElementById('particles');
+            const particleCount = 30;
+            
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                
+                const size = Math.random() * 10 + 2;
+                particle.style.width = size + 'px';
+                particle.style.height = size + 'px';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.top = Math.random() * 100 + '%';
+                particle.style.animation = `float ${Math.random() * 10 + 5}s ease-in-out infinite`;
+                particle.style.animationDelay = Math.random() * 5 + 's';
+                particle.style.opacity = Math.random() * 0.7 + 0.2;
+                
+                // Random colors for some particles
+                if (Math.random() > 0.6) {
+                    particle.style.background = `rgba(${Math.random() * 50 + 100}, ${Math.random() * 50 + 150}, 255, 0.6)`;
+                }
+                
+                particlesContainer.appendChild(particle);
+            }
+        }
+
+        // Mouse trail effect
+        let mouseTrailTimer;
+        document.addEventListener('mousemove', (e) => {
+            clearTimeout(mouseTrailTimer);
+            
+            const x = e.clientX / window.innerWidth;
+            const y = e.clientY / window.innerHeight;
+            
+            // Update background gradient
+            document.body.style.background = `
+                radial-gradient(circle at ${x * 100}% ${y * 100}%, rgba(88, 101, 242, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at ${(1-x) * 100}% ${(1-y) * 100}%, rgba(114, 137, 218, 0.08) 0%, transparent 50%),
+                #36393F
+            `;
+            
+            // Create mouse trail
+            const trail = document.createElement('div');
+            trail.className = 'mouse-trail';
+            trail.style.left = e.clientX + 'px';
+            trail.style.top = e.clientY + 'px';
+            document.body.appendChild(trail);
+            
+            setTimeout(() => trail.remove(), 1000);
+            
+            // Magnetic button effect
+            const button = document.querySelector('.discord-button');
+            const buttonRect = button.getBoundingClientRect();
+            const buttonCenterX = buttonRect.left + buttonRect.width / 2;
+            const buttonCenterY = buttonRect.top + buttonRect.height / 2;
+            
+            const distance = Math.sqrt(
+                Math.pow(e.clientX - buttonCenterX, 2) + 
+                Math.pow(e.clientY - buttonCenterY, 2)
+            );
+            
+            if (distance < 150) {
+                const angle = Math.atan2(e.clientY - buttonCenterY, e.clientX - buttonCenterX);
+                const pullStrength = (150 - distance) / 150;
+                const pullX = Math.cos(angle) * pullStrength * 10;
+                const pullY = Math.sin(angle) * pullStrength * 10;
+                
+                button.style.transform = `translate(${pullX}px, ${pullY}px) scale(${1 + pullStrength * 0.05})`;
+            } else {
+                button.style.transform = '';
+            }
+        });
+
+        // Enhanced button interactions
+        document.querySelector('.discord-button').addEventListener('mouseenter', function() {
+            this.style.transform = 'translateY(-4px) rotateX(5deg) scale(1.05)';
+        });
+
+        document.querySelector('.discord-button').addEventListener('mouseleave', function() {
+            this.style.transform = '';
+        });
+
+        // Button click explosion effect
+        document.querySelector('.discord-button').addEventListener('click', function(e) {
+            for (let i = 0; i < 20; i++) {
+                const particle = document.createElement('div');
+                particle.style.position = 'absolute';
+                particle.style.width = '6px';
+                particle.style.height = '6px';
+                particle.style.background = '#5865F2';
+                particle.style.borderRadius = '50%';
+                particle.style.left = e.clientX + 'px';
+                particle.style.top = e.clientY + 'px';
+                particle.style.pointerEvents = 'none';
+                particle.style.zIndex = '1000';
+                
+                const angle = (Math.PI * 2 * i) / 20;
+                const velocity = 5 + Math.random() * 5;
+                const vx = Math.cos(angle) * velocity;
+                const vy = Math.sin(angle) * velocity;
+                
+                let x = e.clientX;
+                let y = e.clientY;
+                let opacity = 1;
+                
+                const animate = () => {
+                    x += vx;
+                    y += vy;
+                    opacity -= 0.02;
+                    
+                    particle.style.left = x + 'px';
+                    particle.style.top = y + 'px';
+                    particle.style.opacity = opacity;
+                    
+                    if (opacity > 0) {
+                        requestAnimationFrame(animate);
+                    } else {
+                        particle.remove();
+                    }
+                };
+                
+                document.body.appendChild(particle);
+                animate();
+            }
+        });
+
+        // Enhanced random sparkles
+        setInterval(() => {
+            const sparkle = document.createElement('div');
+            sparkle.style.position = 'absolute';
+            sparkle.style.width = '6px';
+            sparkle.style.height = '6px';
+            sparkle.style.background = `hsl(${Math.random() * 60 + 200}, 100%, 70%)`;
+            sparkle.style.borderRadius = '50%';
+            sparkle.style.left = Math.random() * 100 + '%';
+            sparkle.style.top = Math.random() * 100 + '%';
+            sparkle.style.pointerEvents = 'none';
+            sparkle.style.animation = 'pulse 1.5s ease-out forwards';
+            sparkle.style.boxShadow = '0 0 10px currentColor';
+            sparkle.style.zIndex = '5';
+            
+            document.body.appendChild(sparkle);
+            
+            setTimeout(() => sparkle.remove(), 1500);
+        }, 1500);
+
+        // Initialize everything on load
+        window.addEventListener('load', () => {
+            animateTitle();
+            createParticles();
+        });
+
+        // Add some floating orbs occasionally
+        setInterval(() => {
+            const orb = document.createElement('div');
+            orb.style.position = 'absolute';
+            orb.style.width = '20px';
+            orb.style.height = '20px';
+            orb.style.background = 'radial-gradient(circle, rgba(88, 101, 242, 0.3), transparent)';
+            orb.style.borderRadius = '50%';
+            orb.style.left = Math.random() * 100 + '%';
+            orb.style.top = '110%';
+            orb.style.pointerEvents = 'none';
+            orb.style.transition = 'all 8s linear';
+            orb.style.zIndex = '1';
+            
+            document.body.appendChild(orb);
+            
+            setTimeout(() => {
+                orb.style.top = '-10%';
+                orb.style.transform = `translateX(${Math.random() * 200 - 100}px)`;
+            }, 100);
+            
+            setTimeout(() => orb.remove(), 8000);
+        }, 3000);
+    </script>
+</body>
+</html>
