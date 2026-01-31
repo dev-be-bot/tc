@@ -3,7 +3,7 @@
 ThreadCord is a professional Discord support ticket bot that helps you create private threads, manage support requests, and streamline server support. It's perfect for server owners who want organized and fast support for their community.
 
 [![🌐 Website](https://img.shields.io/badge/Visit-Website-blue?style=for-the-badge)](https://dev-be-bot.github.io/tc/)
-[![💬 Support Server](https://img.shields.io/badge/Join-Support%20Server-purple?style=for-the-badge)](https://discord.gg/84mwD4bgJV)
+[![💬 Support Server](https://img.shields.io/badge/Join-Support%20Server-purple?style=for-the-badge)](https://discord.gg/8fCTQFAYuC)
 [![🤖 Invite Bot](https://img.shields.io/badge/Invite-Bot-green?style=for-the-badge)](https://discord.com/oauth2/authorize?client_id=1466937933981548676&permissions=3389352016&scope=bot%20applications.commands)
 
 ---
@@ -31,4 +31,4 @@ ThreadCord is a professional Discord support ticket bot that helps you create pr
 Need help or have an idea? Join our support server to report bugs, request features, or get assistance from the team.
 
 
-Need help? Join our support server: [💬 Support Server](https://discord.gg/84mwD4bgJV)
+Need help? Join our support server: [💬 Support Server](https://discord.gg/8fCTQFAYuC)
