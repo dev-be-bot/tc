@@ -90,8 +90,22 @@
             overflow: visible;
         }
 
+        /* Button Group Styling - FORCE SIDE BY SIDE */
+        .button-group {
+            display: flex !important;
+            flex-direction: row !important;
+            gap: 20px !important;
+            justify-content: center !important;
+            align-items: center !important;
+            flex-wrap: wrap !important;
+            margin-top: 20px !important;
+            width: 100% !important;
+        }
+
         .discord-button {
-            display: inline-block;
+            display: inline-flex !important;
+            align-items: center !important;
+            justify-content: center !important;
             background: linear-gradient(135deg, #5865F2 0%, #7289DA 100%);
             color: #FFFFFF;
             padding: 18px 40px;
@@ -106,7 +120,9 @@
             overflow: hidden;
             box-shadow: 0 8px 25px rgba(88, 101, 242, 0.4);
             animation: fadeInUp 0.8s ease-out 0.4s both;
-            transform-style: preserve-3d;
+            min-width: 200px !important;
+            max-width: 300px !important;
+            flex: 0 0 auto !important;
         }
 
         .discord-button::before {
@@ -116,8 +132,8 @@
             left: -100%;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
-            transition: left 0.5s;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.6s;
         }
 
         .discord-button::after {
@@ -138,9 +154,9 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(45deg, rgba(88, 101, 242, 0.3), rgba(114, 137, 218, 0.3));
+            background: linear-gradient(45deg, rgba(88, 101, 242, 0.2), rgba(114, 137, 218, 0.2));
             transform: translateY(100%);
-            transition: transform 0.6s ease;
+            transition: transform 0.4s ease;
             border-radius: 12px;
         }
 
@@ -150,7 +166,7 @@
             left: 50%;
             width: 100%;
             height: 100%;
-            border: 2px solid rgba(88, 101, 242, 0.6);
+            border: 2px solid rgba(88, 101, 242, 0.4);
             border-radius: 12px;
             transform: translate(-50%, -50%) scale(0);
             opacity: 0;
@@ -158,9 +174,8 @@
         }
 
         .discord-button:hover {
-            background: linear-gradient(135deg, #4752C4 0%, #5865F2 100%);
-            transform: translateY(-4px) rotateX(5deg) scale(1.05);
-            box-shadow: 0 15px 35px rgba(88, 101, 242, 0.6);
+            transform: translateY(-3px);
+            box-shadow: 0 12px 30px rgba(88, 101, 242, 0.5);
         }
 
         .discord-button:hover::before {
@@ -176,11 +191,11 @@
         }
 
         .discord-button:hover .pulse-ring {
-            animation: pulseRing 1.5s ease-out;
+            animation: pulseRing 1.2s ease-out;
         }
 
         .discord-button:active {
-            transform: translateY(-2px) rotateX(2deg) scale(1.02);
+            transform: translateY(-1px);
         }
 
         @keyframes pulseRing {
@@ -192,6 +207,36 @@
                 transform: translate(-50%, -50%) scale(1.5);
                 opacity: 0;
             }
+        }
+
+        /* Button Group Styling */
+        .button-group {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+
+        .support-button {
+            background: linear-gradient(135deg, #57F287 0%, #3BA55D 100%) !important;
+            box-shadow: 0 8px 25px rgba(87, 242, 135, 0.3) !important;
+            animation: fadeInUp 0.8s ease-out 0.6s both !important;
+        }
+
+        .support-button:hover {
+            background: linear-gradient(135deg, #3BA55D 0%, #2D7D46 100%) !important;
+            transform: translateY(-3px) !important;
+            box-shadow: 0 12px 30px rgba(87, 242, 135, 0.4) !important;
+        }
+
+        .support-button .liquid-fill {
+            background: linear-gradient(45deg, rgba(87, 242, 135, 0.2), rgba(59, 165, 93, 0.2)) !important;
+        }
+
+        .support-button .pulse-ring {
+            border-color: rgba(87, 242, 135, 0.4) !important;
         }
 
         /* Floating particles */
@@ -347,13 +392,20 @@
             }
             
             .logo img {
-                width: 80px;
-                height: 80px;
+                width: 100px;
+                height: 100px;
             }
             
             .discord-button {
-                padding: 14px 28px;
-                font-size: 15px;
+                padding: 16px 32px;
+                font-size: 16px;
+                width: 100%;
+                max-width: 280px;
+            }
+            
+            .button-group {
+                flex-direction: column;
+                gap: 15px;
             }
         }
 
@@ -382,19 +434,29 @@
         <div class="geo-shape"></div>
     </div>
     
-    <div class="container">
-        <h1 id="title">ThreadCord</h1>
-        <p class="subtitle">
-            Professional Discord support ticket bot that creates private threads and manages your server's support system seamlessly.
-        </p>
-        
-        <a href="https://discord.com/oauth2/authorize?client_id=1466937933981548676&permissions=3389352016&scope=bot%20applications.commands" class="discord-button" target="_blank">
+<div class="container">
+    <h1 id="title">ThreadCord</h1>
+    <p class="subtitle">
+        Professional Discord support ticket bot that creates private threads and manages your server's support system seamlessly.
+    </p>
+    
+    <!-- Buttons wrapper -->
+    <div class="button-group">
+        <!-- Add to Discord Button -->
+        <a href="https://discord.com/oauth2/authorize?client_id=1466937933981548676&permissions=3389352016&scope=bot%20applications.commands" class="discord-button primary-button" target="_blank">
             <div class="liquid-fill"></div>
             <div class="pulse-ring"></div>
             🚀 Add to Discord
         </a>
-    </div>
 
+        <!-- Support Server Button -->
+        <a href="https://discord.gg/84mwD4bgJV" class="discord-button support-button" target="_blank">
+            <div class="liquid-fill"></div>
+            <div class="pulse-ring"></div>
+            💬 Join Support Server
+        </a>
+    </div>
+</div>
     <script>
         // Split title into individual letters for animation
         function animateTitle() {
