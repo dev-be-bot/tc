@@ -460,9 +460,89 @@
             }
         }
         
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        @keyframes scaleIn {
+            from {
+                opacity: 0;
+                transform: scale(0.95);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+        
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+        
         .animate-in {
             animation: fadeIn 0.6s ease-out forwards;
         }
+        
+        .animate-fade-up {
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+        
+        .animate-slide-left {
+            animation: slideInLeft 0.8s ease-out forwards;
+        }
+        
+        .animate-slide-right {
+            animation: slideInRight 0.8s ease-out forwards;
+        }
+        
+        .animate-scale {
+            animation: scaleIn 0.6s ease-out forwards;
+        }
+        
+        .animate-float {
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        .stagger-1 { animation-delay: 0.1s; opacity: 0; }
+        .stagger-2 { animation-delay: 0.2s; opacity: 0; }
+        .stagger-3 { animation-delay: 0.3s; opacity: 0; }
+        .stagger-4 { animation-delay: 0.4s; opacity: 0; }
+        .stagger-5 { animation-delay: 0.5s; opacity: 0; }
+        .stagger-6 { animation-delay: 0.6s; opacity: 0; }
         
         /* Dashboard Preview */
         .dashboard-preview {
@@ -546,15 +626,15 @@
     <!-- Hero Section -->
     <section class="hero">
         <div class="hero-grid">
-            <div class="hero-content animate-in">
-                <h1>
+            <div class="hero-content animate-slide-left">
+                <h1 class="animate-fade-up stagger-1">
                     Professional Support
                     <span class="gradient-text">Made Simple</span>
                 </h1>
-                <p class="hero-description">
+                <p class="hero-description animate-fade-up stagger-2">
                     Transform your Discord server into a professional support platform with automated ticket management, comprehensive analytics, and intuitive controls.
                 </p>
-                <div class="hero-buttons">
+                <div class="hero-buttons animate-fade-up stagger-3">
                     <a href="https://discord.com/oauth2/authorize?client_id=1466937933981548676&permissions=362924820480&scope=bot%20applications.commands" 
                        target="_blank" 
                        class="btn-primary">
@@ -566,7 +646,7 @@
                 </div>
             </div>
             
-            <div class="hero-image animate-in">
+            <div class="hero-image animate-slide-right animate-float">
                 <div class="dashboard-preview">
                     <div class="dashboard-header">
                         <div class="window-dot dot-red"></div>
@@ -735,11 +815,6 @@
                     </div>
                 </div>
                 
-                <div style="margin-top: 2.5rem; padding-top: 2rem; border-top: 1px solid var(--border); text-align: center;">
-                    <a href="https://dashboard.threadcord.xyz" class="btn-primary" style="display: inline-block;">
-                        View Dashboard Demo
-                    </a>
-                </div>
             </div>
         </div>
     </section>
@@ -778,26 +853,73 @@
             });
         });
 
-        // Intersection Observer for animations
+        // Enhanced Intersection Observer for scroll animations
         const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
+            threshold: 0.15,
+            rootMargin: '0px 0px -80px 0px'
         };
 
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
+                    entry.target.classList.add('animate-fade-up');
                 }
             });
         }, observerOptions);
 
-        document.querySelectorAll('.feature-card, .stat-card').forEach(el => {
+        // Observe all feature cards with staggered animation
+        document.querySelectorAll('.feature-card').forEach((el, index) => {
             el.style.opacity = '0';
-            el.style.transform = 'translateY(20px)';
-            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            el.classList.add(`stagger-${(index % 6) + 1}`);
             observer.observe(el);
+        });
+
+        // Observe section headers
+        document.querySelectorAll('.section-header').forEach(el => {
+            el.style.opacity = '0';
+            el.classList.add('animate-scale');
+            observer.observe(el);
+        });
+
+        // Add hover glow effect to buttons
+        document.querySelectorAll('.btn-primary, .btn-secondary').forEach(btn => {
+            btn.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-2px) scale(1.02)';
+            });
+            btn.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+
+        // Add smooth transitions to all buttons
+        document.querySelectorAll('.btn-primary, .btn-secondary').forEach(btn => {
+            btn.style.transition = 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)';
+        });
+
+        // Parallax effect on scroll for hero section
+        let lastScroll = 0;
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const heroImage = document.querySelector('.hero-image');
+            
+            if (heroImage && scrolled < 600) {
+                heroImage.style.transform = `translateY(${scrolled * 0.3}px)`;
+            }
+            
+            lastScroll = scrolled;
+        });
+
+        // Add entrance animation to dashboard preview stats
+        const previewStats = document.querySelectorAll('.preview-stat');
+        previewStats.forEach((stat, index) => {
+            stat.style.opacity = '0';
+            stat.style.transform = 'translateX(-10px)';
+            stat.style.transition = `all 0.4s ease ${index * 0.1}s`;
+            
+            setTimeout(() => {
+                stat.style.opacity = '1';
+                stat.style.transform = 'translateX(0)';
+            }, 800 + (index * 100));
         });
     </script>
 </body>
