@@ -667,32 +667,59 @@
         </div>
     </section>
 
-    <!-- Stats Section -->
-    <section id="stats" class="stats">
+    <!-- Setup Guide Section -->
+    <section id="setup" class="stats">
         <div class="section-header">
-            <h2>Trusted by Communities</h2>
-            <p>Join thousands of Discord servers using ThreadCord</p>
+            <h2>Simple Setup</h2>
+            <p>Get ThreadCord running on your server in minutes</p>
         </div>
         
-        <div class="stats-grid">
-            <div class="stat-card glass-card">
-                <div class="stat-value">50K+</div>
-                <div class="stat-label">Tickets Managed</div>
+        <div class="feature-grid">
+            <div class="feature-card glass-card">
+                <div class="feature-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+                    </svg>
+                </div>
+                <h3>1. Create Channels</h3>
+                <p>Set up two channels: one for ticket creation (e.g., #support-tickets) and one for logs (e.g., #ticket-logs).</p>
             </div>
             
-            <div class="stat-card glass-card">
-                <div class="stat-value">500+</div>
-                <div class="stat-label">Active Servers</div>
+            <div class="feature-card glass-card">
+                <div class="feature-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                    </svg>
+                </div>
+                <h3>2. Define Staff Role</h3>
+                <p>Select or create a role that will have permission to answer tickets (e.g., @Support, @Moderator).</p>
             </div>
             
-            <div class="stat-card glass-card">
-                <div class="stat-value">4.9★</div>
-                <div class="stat-label">Average Rating</div>
+            <div class="feature-card glass-card">
+                <div class="feature-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                    </svg>
+                </div>
+                <h3>3. Run /setup</h3>
+                <p>Use <code style="background: rgba(88,101,242,0.1); padding: 2px 6px; border-radius: 4px; color: var(--primary);">/setup channel:#support-tickets staff_role:@Support logs_channel:#ticket-logs</code></p>
             </div>
-            
-            <div class="stat-card glass-card">
-                <div class="stat-value">99.9%</div>
-                <div class="stat-label">Uptime</div>
+        </div>
+        
+        <div style="margin-top: 3rem; text-align: center;">
+            <div class="glass-card" style="padding: 2rem; max-width: 700px; margin: 0 auto;">
+                <h3 style="margin-bottom: 1rem; font-size: 1.25rem;">How Tickets Work</h3>
+                <div style="text-align: left; color: var(--muted); line-height: 1.8;">
+                    <p style="margin-bottom: 1rem;">
+                        <strong style="color: var(--foreground);">1. User Creates Ticket:</strong> A member sends any message in the ticket channel. ThreadCord automatically creates a private thread with ticket controls.
+                    </p>
+                    <p style="margin-bottom: 1rem;">
+                        <strong style="color: var(--foreground);">2. Staff Manages Ticket:</strong> Staff members can use intuitive buttons to mark tickets as done, assign them, or close them.
+                    </p>
+                    <p>
+                        <strong style="color: var(--foreground);">3. Everything is Logged:</strong> All ticket creation, management, and closure activities are automatically logged to your designated channel.
+                    </p>
+                </div>
             </div>
         </div>
     </section>
