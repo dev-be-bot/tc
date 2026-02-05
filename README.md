@@ -4,7 +4,7 @@ ThreadCord is a professional Discord support ticket bot that helps you create pr
 
 [![🌐 Website](https://img.shields.io/badge/Visit-Website-blue?style=for-the-badge)](https://dev-be-bot.github.io/tc/)
 [![💬 Support Server](https://img.shields.io/badge/Join-Support%20Server-purple?style=for-the-badge)](https://discord.gg/8fCTQFAYuC)
-[![🤖 Invite Bot](https://img.shields.io/badge/Invite-Bot-green?style=for-the-badge)](https://discord.com/oauth2/authorize?client_id=1466937933981548676&permissions=362924820480&scope=bot%20applications.commands)
+[![🤖 Invite Bot](https://img.shields.io/badge/Invite-Bot-green?style=for-the-badge)](https://discord.com/oauth2/authorize?client_id=1466937933981548676&permissions=362924828672&scope=bot%20applications.commands)
 
 ---
 
