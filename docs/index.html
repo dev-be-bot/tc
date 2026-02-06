@@ -408,19 +408,35 @@
             background: hsl(232, 12%, 14% / 0.6);
             border: 1px solid hsl(228, 6%, 25% / 0.4);
             border-radius: 12px;
-            padding: 16px;
+            padding: 18px;
             position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
         }
+        .dstat:hover { transform: translateY(-2px); box-shadow: var(--shadow-glow); }
+        .dstat-corner {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 60px;
+            height: 60px;
+            border-bottom-left-radius: 100%;
+            opacity: 0.12;
+        }
+        .dstat-corner.blue { background: linear-gradient(135deg, hsl(235,86%,65%), transparent); }
+        .dstat-corner.green { background: linear-gradient(135deg, hsl(145,63%,49%), transparent); }
+        .dstat-corner.orange { background: linear-gradient(135deg, hsl(38,92%,54%), transparent); }
+        .dstat-corner.purple { background: linear-gradient(135deg, hsl(270,70%,55%), transparent); }
         .dstat-icon {
             width: 32px;
             height: 32px;
-            border-radius: 8px;
+            border-radius: 10px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 0.85rem;
-            margin-bottom: 10px;
+            margin-bottom: 12px;
         }
+        .dstat-icon svg { width: 16px; height: 16px; }
         .dstat-icon.blue { background: rgba(88, 101, 242, 0.2); }
         .dstat-icon.green { background: rgba(46, 204, 113, 0.2); }
         .dstat-icon.orange { background: rgba(240, 160, 48, 0.2); }
@@ -982,37 +998,51 @@
                 <div class="dash-url">dashboard.threadcord.xyz</div>
             </div>
             <div class="dash-body">
-                <div class="flex-between mb-16">
-                    <div>
-                        <h3 style="font-size:1.15rem;font-weight:700;">Daily Dashboard</h3>
-                        <p style="font-size:0.78rem;color:var(--muted);">Today's operations for <span style="font-style:italic;color:hsl(235,86%,75%);">threadcord - bot support</span></p>
-                    </div>
+                <div class="mb-24">
+                    <h3 style="font-size:1.2rem;font-weight:700;">Daily Dashboard</h3>
+                    <p style="font-size:0.8rem;color:var(--muted);">Today's operations for <span style="font-style:italic;color:hsl(235,86%,75%);">your-server</span></p>
                 </div>
 
-                <!-- 4 stat cards with icons -->
+                <!-- 4 stat cards with Lucide SVG icons + gradient corners -->
                 <div class="grid-4 mb-16">
+                    <!-- Total Tickets: FileText icon, blue -->
                     <div class="dstat">
-                        <div class="dstat-icon blue">📋</div>
-                        <div class="dstat-val">23</div>
+                        <div class="dstat-corner blue"></div>
+                        <div class="dstat-icon blue">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="hsl(235,86%,65%)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M10 9H8"/><path d="M16 13H8"/><path d="M16 17H8"/></svg>
+                        </div>
+                        <div class="dstat-val">156</div>
                         <div class="dstat-label">Total Tickets</div>
                     </div>
+                    <!-- Open Tickets: AlertTriangle icon, orange -->
                     <div class="dstat">
-                        <div class="dstat-icon orange">⚠️</div>
-                        <div class="dstat-val">0</div>
+                        <div class="dstat-corner orange"></div>
+                        <div class="dstat-icon orange">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="hsl(38,92%,54%)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg>
+                        </div>
+                        <div class="dstat-val">3</div>
                         <div class="dstat-label">Open Tickets</div>
                         <div class="dstat-sub"><span class="status-dot" style="background:var(--warning);width:6px;height:6px;"></span> Needs attention</div>
                         <span class="dstat-badge time-badge-active">Active</span>
                     </div>
+                    <!-- Avg Response: Clock icon, green -->
                     <div class="dstat">
-                        <div class="dstat-icon green">⏱️</div>
-                        <div class="dstat-val">3m</div>
+                        <div class="dstat-corner green"></div>
+                        <div class="dstat-icon green">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="hsl(145,63%,49%)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                        </div>
+                        <div class="dstat-val">8m</div>
                         <div class="dstat-label">Avg Response</div>
                     </div>
+                    <!-- Avg Rating: Star/ClipboardList icon, orange -->
                     <div class="dstat">
-                        <div class="dstat-icon orange">⭐</div>
-                        <div class="dstat-val">5.0</div>
+                        <div class="dstat-corner purple"></div>
+                        <div class="dstat-icon orange">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="hsl(38,92%,54%)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        </div>
+                        <div class="dstat-val">4.8</div>
                         <div class="dstat-label">Avg Rating</div>
-                        <div style="margin-top:4px;color:var(--warning);font-size:0.75rem;letter-spacing:1px;">★★★★★</div>
+                        <div style="margin-top:4px;color:var(--warning);font-size:0.75rem;letter-spacing:2px;">★★★★★</div>
                     </div>
                 </div>
 
@@ -1020,16 +1050,18 @@
                 <div class="grid-2 mb-16">
                     <div class="dsection">
                         <div class="dsection-head">
-                            <div class="dsection-icon" style="background:rgba(46,204,113,0.15);">✅</div>
+                            <div class="dsection-icon" style="background:rgba(46,204,113,0.15);">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="hsl(145,63%,49%)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                            </div>
                             <div>
                                 <div class="dsection-title">Resolution Rate</div>
                                 <div class="dsection-subtitle">This month</div>
                             </div>
                         </div>
-                        <div class="dstat-val text-success" style="font-size:1.8rem;">87.0%</div>
-                        <div style="font-size:0.78rem;color:var(--muted);margin-top:2px;">20 of 23 resolved</div>
+                        <div class="dstat-val text-success" style="font-size:1.8rem;">92.3%</div>
+                        <div style="font-size:0.78rem;color:var(--muted);margin-top:2px;">144 of 156 resolved</div>
                         <div class="progress-track">
-                            <div class="progress-fill" style="width:87%;"></div>
+                            <div class="progress-fill" style="width:92%;"></div>
                         </div>
                         <div class="progress-labels">
                             <span>0%</span>
@@ -1039,19 +1071,21 @@
                     </div>
                     <div class="dsection">
                         <div class="dsection-head">
-                            <div class="dsection-icon" style="background:rgba(88,101,242,0.15);">⚡</div>
+                            <div class="dsection-icon" style="background:rgba(88,101,242,0.15);">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="hsl(235,86%,65%)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+                            </div>
                             <div>
                                 <div class="dsection-title">Today's Performance</div>
                                 <div class="dsection-subtitle">Live metrics</div>
                             </div>
                         </div>
-                        <div style="display:flex;gap:48px;margin-top:12px;">
+                        <div style="display:flex;gap:48px;margin-top:16px;">
                             <div style="text-align:center;">
-                                <div class="dstat-val" style="font-size:1.6rem;">0</div>
+                                <div class="dstat-val" style="font-size:1.6rem;">7</div>
                                 <div style="font-size:0.78rem;color:var(--muted);">Closed Today</div>
                             </div>
                             <div style="text-align:center;">
-                                <div class="dstat-val" style="font-size:1.6rem;">5.0</div>
+                                <div class="dstat-val" style="font-size:1.6rem;">4.8</div>
                                 <div style="font-size:0.78rem;color:var(--muted);">Today's Rating</div>
                                 <div style="font-size:0.7rem;color:var(--warning);margin-top:2px;">★ Excellent</div>
                             </div>
@@ -1063,65 +1097,82 @@
                 <div class="grid-2">
                     <div class="dsection">
                         <div class="dsection-head">
-                            <div class="dsection-icon" style="background:rgba(88,101,242,0.15);">👥</div>
+                            <div class="dsection-icon" style="background:rgba(88,101,242,0.15);">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="hsl(235,86%,65%)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                            </div>
                             <div class="dsection-title">Staff Activity</div>
                         </div>
                         <div class="flex-col gap-8">
                             <div class="flex-between" style="font-size:0.85rem;">
-                                <span class="text-muted">👤 Total Staff</span><span>2</span>
+                                <div style="display:flex;align-items:center;gap:6px;">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="hsl(235,86%,65%)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                                    <span class="text-muted">Total Staff</span>
+                                </div>
+                                <span>5</span>
                             </div>
                             <div class="flex-between" style="font-size:0.85rem;">
-                                <span class="text-muted">💬 Active Chats</span><span>0</span>
+                                <div style="display:flex;align-items:center;gap:6px;">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--muted)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg>
+                                    <span class="text-muted">Active Chats</span>
+                                </div>
+                                <span>3</span>
                             </div>
                             <div class="flex-between" style="font-size:0.85rem;">
-                                <span class="text-muted">⏱️ Avg Response</span><span class="text-success">3m</span>
+                                <div style="display:flex;align-items:center;gap:6px;">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--muted)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                                    <span class="text-muted">Avg Response</span>
+                                </div>
+                                <span class="text-success">8m</span>
                             </div>
                         </div>
-                        <div style="margin-top:14px;padding-top:10px;border-top:1px solid hsl(228,6%,25%/0.3);">
+                        <div style="margin-top:14px;padding-top:12px;border-top:1px solid hsl(228,6%,25%/0.3);">
                             <div style="font-size:0.72rem;color:var(--muted);margin-bottom:8px;">Staff Members</div>
-                            <div class="flex-col gap-4">
-                                <div class="staff-row"><span class="staff-dot" style="background:var(--success);"></span> gotikj.</div>
-                                <div class="staff-row"><span class="staff-dot" style="background:var(--primary);"></span> threadcord_99094</div>
+                            <div class="flex-col gap-6">
+                                <div class="staff-row"><span class="staff-dot" style="background:var(--success);"></span> alex_support</div>
+                                <div class="staff-row"><span class="staff-dot" style="background:var(--primary);"></span> jordan_mod</div>
+                                <div class="staff-row"><span class="staff-dot" style="background:hsl(270,70%,55%);"></span> sam_admin</div>
                             </div>
                         </div>
                     </div>
                     <div class="dsection">
                         <div class="dsection-head">
-                            <div class="dsection-icon" style="background:rgba(240,160,48,0.15);">⚠️</div>
+                            <div class="dsection-icon" style="background:rgba(240,160,48,0.15);">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="hsl(38,92%,54%)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg>
+                            </div>
                             <div class="dsection-title">Status Breakdown</div>
                         </div>
                         <div class="flex-col gap-8">
                             <div class="status-row">
                                 <div class="status-left">
-                                    <span class="status-dot" style="background:var(--success);"></span>
+                                    <span class="status-dot" style="background:hsl(145,63%,49%);"></span>
                                     <span>New</span>
                                     <span class="status-time">(5m)</span>
                                 </div>
-                                <div class="status-right"><span>0</span><span>(0%)</span></div>
+                                <div class="status-right"><span style="font-weight:600;">1</span><span>(33%)</span></div>
                             </div>
                             <div class="status-row">
                                 <div class="status-left">
-                                    <span class="status-dot" style="background:var(--warning);"></span>
+                                    <span class="status-dot" style="background:hsl(38,92%,54%);"></span>
                                     <span>Medium</span>
-                                    <span class="status-time">(10m)</span>
+                                    <span class="status-time">(15m)</span>
                                 </div>
-                                <div class="status-right"><span>0</span><span>(0%)</span></div>
+                                <div class="status-right"><span style="font-weight:600;">1</span><span>(33%)</span></div>
                             </div>
                             <div class="status-row">
                                 <div class="status-left">
-                                    <span class="status-dot" style="background:var(--destructive);"></span>
+                                    <span class="status-dot" style="background:hsl(15,80%,55%);"></span>
                                     <span>Escalating</span>
-                                    <span class="status-time">(25m)</span>
+                                    <span class="status-time">(45m)</span>
                                 </div>
-                                <div class="status-right"><span>0</span><span>(0%)</span></div>
+                                <div class="status-right"><span style="font-weight:600;">1</span><span>(33%)</span></div>
                             </div>
                             <div class="status-row">
                                 <div class="status-left">
-                                    <span class="status-dot" style="background:var(--destructive);"></span>
+                                    <span class="status-dot" style="background:hsl(0,84%,60%);"></span>
                                     <span>Urgent</span>
                                     <span class="status-time">(120m)</span>
                                 </div>
-                                <div class="status-right"><span>0</span><span>(0%)</span></div>
+                                <div class="status-right"><span style="font-weight:600;">0</span><span>(0%)</span></div>
                             </div>
                         </div>
                     </div>
@@ -1138,47 +1189,57 @@
                 <div class="dash-url">dashboard.threadcord.xyz/analytics</div>
             </div>
             <div class="dash-body">
-                <div class="flex-between mb-16">
+                <div class="flex-between mb-24">
                     <div>
-                        <h3 style="font-size:1.15rem;font-weight:700;">Analytics</h3>
-                        <p style="font-size:0.78rem;color:var(--muted);">Insights for <span style="font-style:italic;color:hsl(235,86%,75%);">threadcord - bot support</span></p>
+                        <h3 style="font-size:1.2rem;font-weight:700;">Analytics</h3>
+                        <p style="font-size:0.8rem;color:var(--muted);">Insights for <span style="font-style:italic;color:hsl(235,86%,75%);">your-server</span></p>
                     </div>
                     <div style="display:flex;gap:0;border-radius:8px;overflow:hidden;border:1px solid var(--border);">
-                        <span style="padding:4px 12px;font-size:0.72rem;font-weight:600;background:var(--success);color:#fff;">7 Days</span>
-                        <span style="padding:4px 12px;font-size:0.72rem;font-weight:600;background:var(--secondary);color:var(--muted);">30 Days</span>
-                        <span style="padding:4px 12px;font-size:0.72rem;font-weight:600;background:var(--secondary);color:var(--muted);">All Time</span>
+                        <span style="padding:5px 14px;font-size:0.72rem;font-weight:600;background:var(--success);color:#fff;">7 Days</span>
+                        <span style="padding:5px 14px;font-size:0.72rem;font-weight:600;background:var(--secondary);color:var(--muted);">30 Days</span>
+                        <span style="padding:5px 14px;font-size:0.72rem;font-weight:600;background:var(--secondary);color:var(--muted);">All Time</span>
                     </div>
                 </div>
 
-                <!-- 5 stat cards -->
+                <!-- 5 stat cards with SVG icons -->
                 <div class="grid-5 mb-16">
                     <div class="dstat">
-                        <div class="dstat-icon blue">📋</div>
-                        <div class="dstat-val">23</div>
+                        <div class="dstat-icon blue">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="hsl(235,86%,65%)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M10 9H8"/><path d="M16 13H8"/><path d="M16 17H8"/></svg>
+                        </div>
+                        <div class="dstat-val">156</div>
                         <div class="dstat-label">Total Tickets</div>
                         <div class="dstat-sub">All time</div>
                     </div>
                     <div class="dstat">
-                        <div class="dstat-icon green">✅</div>
-                        <div class="dstat-val">0</div>
+                        <div class="dstat-icon green">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="hsl(145,63%,49%)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                        </div>
+                        <div class="dstat-val">3</div>
                         <div class="dstat-label">Open Tickets</div>
                         <div class="dstat-sub">Needs attention</div>
                     </div>
                     <div class="dstat">
-                        <div class="dstat-icon blue">📊</div>
-                        <div class="dstat-val">0</div>
+                        <div class="dstat-icon blue">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="hsl(235,86%,65%)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/></svg>
+                        </div>
+                        <div class="dstat-val">7</div>
                         <div class="dstat-label">Closed Today</div>
                         <div class="dstat-sub">Last 24 hours</div>
                     </div>
                     <div class="dstat">
-                        <div class="dstat-icon green">⏱️</div>
-                        <div class="dstat-val">3m</div>
+                        <div class="dstat-icon green">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="hsl(145,63%,49%)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                        </div>
+                        <div class="dstat-val">8m</div>
                         <div class="dstat-label">Avg. Resolution</div>
                         <div class="dstat-sub">Time to close</div>
                     </div>
                     <div class="dstat">
-                        <div class="dstat-icon orange">⭐</div>
-                        <div class="dstat-val">5.0</div>
+                        <div class="dstat-icon orange">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="hsl(38,92%,54%)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        </div>
+                        <div class="dstat-val">4.8</div>
                         <div class="dstat-label">Avg. Rating</div>
                         <div class="dstat-sub">User satisfaction</div>
                         <div style="margin-top:6px;height:4px;background:var(--warning);border-radius:2px;"></div>
@@ -1187,44 +1248,56 @@
 
                 <!-- Charts: Ticket Trends + Staff Ratings -->
                 <div class="grid-2 mb-16">
-                    <div class="dsection" style="padding:18px;">
-                        <div style="font-family:'Poppins',sans-serif;font-size:0.9rem;font-weight:700;margin-bottom:16px;">Ticket Trends</div>
+                    <div class="dsection" style="padding:20px;">
+                        <div style="font-family:'Poppins',sans-serif;font-size:0.95rem;font-weight:700;margin-bottom:18px;">Ticket Trends</div>
                         <div style="display:flex;">
                             <div class="chart-yaxis">
-                                <span>24</span><span>18</span><span>12</span><span>6</span><span>0</span>
+                                <span>30</span><span>20</span><span>10</span><span>0</span>
                             </div>
                             <div class="chart-area">
-                                <div class="chart-gridline" style="bottom:25%;"></div>
-                                <div class="chart-gridline" style="bottom:50%;"></div>
-                                <div class="chart-gridline" style="bottom:75%;"></div>
-                                <div class="chart-col" style="justify-content:center;">
-                                    <div class="chart-dot" style="margin-bottom:80px;"></div>
-                                </div>
+                                <div class="chart-gridline" style="bottom:33%;"></div>
+                                <div class="chart-gridline" style="bottom:66%;"></div>
+                                <div class="chart-col"><div class="chart-bar purple" style="height:25px;width:80%;max-width:32px;border-radius:3px 3px 1px 1px;"></div></div>
+                                <div class="chart-col"><div class="chart-bar purple" style="height:40px;width:80%;max-width:32px;border-radius:3px 3px 1px 1px;"></div></div>
+                                <div class="chart-col"><div class="chart-bar purple" style="height:18px;width:80%;max-width:32px;border-radius:3px 3px 1px 1px;"></div></div>
+                                <div class="chart-col"><div class="chart-bar purple" style="height:55px;width:80%;max-width:32px;border-radius:3px 3px 1px 1px;"></div></div>
+                                <div class="chart-col"><div class="chart-bar purple" style="height:30px;width:80%;max-width:32px;border-radius:3px 3px 1px 1px;"></div></div>
+                                <div class="chart-col"><div class="chart-bar purple" style="height:12px;width:80%;max-width:32px;border-radius:3px 3px 1px 1px;"></div></div>
+                                <div class="chart-col"><div class="chart-bar purple" style="height:8px;width:80%;max-width:32px;border-radius:3px 3px 1px 1px;"></div></div>
                             </div>
                         </div>
-                        <div style="text-align:center;margin-top:4px;margin-left:28px;">
-                            <span class="chart-xlabel">Feb 5</span>
+                        <div style="display:flex;justify-content:space-around;margin-left:28px;margin-top:6px;">
+                            <span class="chart-xlabel">Mon</span>
+                            <span class="chart-xlabel">Tue</span>
+                            <span class="chart-xlabel">Wed</span>
+                            <span class="chart-xlabel">Thu</span>
+                            <span class="chart-xlabel">Fri</span>
+                            <span class="chart-xlabel">Sat</span>
+                            <span class="chart-xlabel">Sun</span>
                         </div>
                     </div>
-                    <div class="dsection" style="padding:18px;">
-                        <div style="font-family:'Poppins',sans-serif;font-size:0.9rem;font-weight:700;margin-bottom:16px;">Staff Ratings Breakdown</div>
+                    <div class="dsection" style="padding:20px;">
+                        <div style="font-family:'Poppins',sans-serif;font-size:0.95rem;font-weight:700;margin-bottom:18px;">Staff Ratings Breakdown</div>
                         <div style="display:flex;">
                             <div class="chart-yaxis">
-                                <span>4</span><span>3</span><span>2</span><span>1</span><span>0</span>
+                                <span>5</span><span>4</span><span>3</span><span>2</span><span>0</span>
                             </div>
-                            <div class="chart-area" style="justify-content:space-around;">
-                                <div class="chart-gridline" style="bottom:25%;"></div>
-                                <div class="chart-gridline" style="bottom:50%;"></div>
-                                <div class="chart-gridline" style="bottom:75%;"></div>
-                                <div class="chart-col"></div>
-                                <div class="chart-col"></div>
+                            <div class="chart-area" style="justify-content:space-evenly;">
+                                <div class="chart-gridline" style="bottom:20%;"></div>
+                                <div class="chart-gridline" style="bottom:40%;"></div>
+                                <div class="chart-gridline" style="bottom:60%;"></div>
+                                <div class="chart-gridline" style="bottom:80%;"></div>
+                                <div class="chart-col"><div class="chart-bar green" style="height:75px;width:70%;max-width:32px;border-radius:3px 3px 1px 1px;"></div></div>
+                                <div class="chart-col"><div class="chart-bar green" style="height:55px;width:70%;max-width:32px;border-radius:3px 3px 1px 1px;"></div></div>
+                                <div class="chart-col"><div class="chart-bar green" style="height:40px;width:70%;max-width:32px;border-radius:3px 3px 1px 1px;"></div></div>
                             </div>
                         </div>
-                        <div style="display:flex;justify-content:space-around;margin-left:28px;margin-top:4px;">
-                            <span class="chart-xlabel">gotikj.</span>
-                            <span class="chart-xlabel">threadcord</span>
+                        <div style="display:flex;justify-content:space-evenly;margin-left:28px;margin-top:6px;">
+                            <span class="chart-xlabel">alex</span>
+                            <span class="chart-xlabel">jordan</span>
+                            <span class="chart-xlabel">sam</span>
                         </div>
-                        <div style="display:flex;justify-content:center;gap:16px;margin-top:10px;font-size:0.7rem;color:var(--muted);">
+                        <div style="display:flex;justify-content:center;gap:16px;margin-top:12px;font-size:0.7rem;color:var(--muted);">
                             <span><span style="display:inline-block;width:10px;height:10px;border-radius:2px;background:var(--success);vertical-align:middle;margin-right:4px;"></span> Positive (4-5★)</span>
                             <span><span style="display:inline-block;width:10px;height:10px;border-radius:2px;background:var(--destructive);vertical-align:middle;margin-right:4px;"></span> Negative (1-2★)</span>
                         </div>
@@ -1234,25 +1307,25 @@
                 <!-- Response Time + Ticket Status Distribution -->
                 <div class="grid-2 mb-16">
                     <div class="dsection">
-                        <div style="font-family:'Poppins',sans-serif;font-size:0.9rem;font-weight:700;margin-bottom:12px;">Response Time Analytics</div>
-                        <div class="dstat-val text-success" style="font-size:1.6rem;">3 min</div>
+                        <div style="font-family:'Poppins',sans-serif;font-size:0.95rem;font-weight:700;margin-bottom:12px;">Response Time Analytics</div>
+                        <div class="dstat-val text-success" style="font-size:1.6rem;">8 min</div>
                         <div style="font-size:0.78rem;color:var(--muted);margin-top:2px;">Average response time</div>
-                        <div class="progress-track" style="margin-top:12px;">
-                            <div class="progress-fill" style="width:5%;background:var(--primary);"></div>
+                        <div class="progress-track" style="margin-top:14px;">
+                            <div class="progress-fill" style="width:13%;background:var(--primary);"></div>
                         </div>
                         <div style="font-size:0.68rem;color:var(--muted);margin-top:6px;">Target: &lt;60 minutes</div>
                     </div>
                     <div class="dsection">
-                        <div style="font-family:'Poppins',sans-serif;font-size:0.9rem;font-weight:700;margin-bottom:12px;">Ticket Status Distribution</div>
+                        <div style="font-family:'Poppins',sans-serif;font-size:0.95rem;font-weight:700;margin-bottom:12px;">Ticket Status Distribution</div>
                         <div class="flex-col gap-8">
-                            <div class="flex-between" style="font-size:0.85rem;">
-                                <span>Open</span><span>0</span>
+                            <div class="flex-between" style="font-size:0.88rem;">
+                                <span>Open</span><span style="font-weight:600;">3</span>
                             </div>
-                            <div class="flex-between" style="font-size:0.85rem;">
-                                <span>Closed</span><span>20</span>
+                            <div class="flex-between" style="font-size:0.88rem;">
+                                <span>Closed</span><span style="font-weight:600;">144</span>
                             </div>
-                            <div class="flex-between" style="font-size:0.85rem;">
-                                <span>Closed Today</span><span>0</span>
+                            <div class="flex-between" style="font-size:0.88rem;">
+                                <span>Closed Today</span><span style="font-weight:600;">7</span>
                             </div>
                         </div>
                     </div>
@@ -1261,34 +1334,37 @@
                 <!-- Resolution Rate + Daily Average + Top Staff -->
                 <div class="grid-3 mb-16">
                     <div class="dsection">
-                        <div style="font-family:'Poppins',sans-serif;font-size:0.85rem;font-weight:700;margin-bottom:8px;">Resolution Rate</div>
-                        <div class="dstat-val text-success" style="font-size:1.6rem;">87.0%</div>
-                        <div style="font-size:0.78rem;color:var(--muted);margin-top:2px;">20 of 23 tickets resolved</div>
+                        <div style="font-family:'Poppins',sans-serif;font-size:0.88rem;font-weight:700;margin-bottom:8px;">Resolution Rate</div>
+                        <div class="dstat-val text-success" style="font-size:1.6rem;">92.3%</div>
+                        <div style="font-size:0.78rem;color:var(--muted);margin-top:2px;">144 of 156 tickets resolved</div>
                     </div>
                     <div class="dsection">
-                        <div style="font-family:'Poppins',sans-serif;font-size:0.85rem;font-weight:700;margin-bottom:8px;">Daily Average</div>
-                        <div class="dstat-val text-primary" style="font-size:1.6rem;">23</div>
+                        <div style="font-family:'Poppins',sans-serif;font-size:0.88rem;font-weight:700;margin-bottom:8px;">Daily Average</div>
+                        <div class="dstat-val text-primary" style="font-size:1.6rem;">22</div>
                         <div style="font-size:0.78rem;color:var(--muted);margin-top:2px;">Tickets per day</div>
                     </div>
                     <div class="dsection">
-                        <div style="font-family:'Poppins',sans-serif;font-size:0.85rem;font-weight:700;margin-bottom:8px;">Top Staff Member</div>
-                        <div class="dstat-val text-warning" style="font-size:1.6rem;">gotikj.</div>
-                        <div style="font-size:0.78rem;color:var(--muted);margin-top:2px;">0.0★ avg · 9 tickets</div>
+                        <div style="font-family:'Poppins',sans-serif;font-size:0.88rem;font-weight:700;margin-bottom:8px;">Top Staff Member</div>
+                        <div class="dstat-val text-warning" style="font-size:1.6rem;">alex</div>
+                        <div style="font-size:0.78rem;color:var(--muted);margin-top:2px;">4.9★ avg · 52 tickets</div>
                     </div>
                 </div>
 
                 <!-- Staff Performance Table -->
-                <div class="dsection" style="padding:18px;">
-                    <div style="font-family:'Poppins',sans-serif;font-size:0.9rem;font-weight:700;margin-bottom:12px;">Staff Performance</div>
+                <div class="dsection" style="padding:20px;">
+                    <div style="font-family:'Poppins',sans-serif;font-size:0.95rem;font-weight:700;margin-bottom:14px;">Staff Performance</div>
                     <div class="perf-table">
                         <div class="perf-table-head">
                             <span>Staff ID</span><span>Total Tickets</span><span>Rated Tickets</span><span>Avg Rating</span><span>Positive (4-5★)</span><span>Negative (1-2★)</span>
                         </div>
                         <div class="perf-table-row">
-                            <span>gotikj.</span><span class="text-muted">9</span><span class="text-muted">0</span><span class="text-warning">0.0★</span><span class="text-success">0</span><span class="text-destructive">0</span>
+                            <span>alex_support</span><span class="text-muted">52</span><span class="text-muted">38</span><span class="text-warning">4.9★</span><span class="text-success">36</span><span class="text-destructive">0</span>
+                        </div>
+                        <div class="perf-table-row">
+                            <span>jordan_mod</span><span class="text-muted">41</span><span class="text-muted">29</span><span class="text-warning">4.7★</span><span class="text-success">27</span><span class="text-destructive">1</span>
                         </div>
                         <div class="perf-table-row" style="border:none;">
-                            <span>threadcord</span><span class="text-muted">2</span><span class="text-muted">0</span><span class="text-warning">0.0★</span><span class="text-success">0</span><span class="text-destructive">0</span>
+                            <span>sam_admin</span><span class="text-muted">35</span><span class="text-muted">22</span><span class="text-warning">4.6★</span><span class="text-success">20</span><span class="text-destructive">0</span>
                         </div>
                     </div>
                 </div>
