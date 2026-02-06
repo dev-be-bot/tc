@@ -9,171 +9,300 @@
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%235865F2' rx='6'/%3E%3Ctext x='16' y='22' font-family='Arial, sans-serif' font-size='20' font-weight='bold' text-anchor='middle' fill='white'%3ET%3C/text%3E%3C/svg%3E">
     
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        'discord': '#5865F2',
-                        'discord-dark': '#4752C4',
-                        'discord-gray': '#2F3136',
-                        'discord-darkest': '#202225',
-                        'discord-light': '#F6F6F7',
-                    },
-                    fontFamily: {
-                        'sans': ['Inter', 'system-ui', 'sans-serif'],
-                        'display': ['Poppins', 'Inter', 'sans-serif'],
-                    },
-                    animation: {
-                        'slide-up': 'slideUp 0.5s ease-out',
-                        'fade-in': 'fadeIn 0.8s ease-out',
-                    }
-                }
-            }
-        };
-    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --background: hsl(232, 12%, 14%);
+            --foreground: hsl(0, 0%, 100%);
+            --card: hsl(228, 6%, 18%);
+            --card-hover: hsl(228, 6%, 20%);
+            --border: hsl(228, 6%, 25%);
+            --primary: hsl(235, 86%, 65%);
+            --primary-dark: hsl(250, 80%, 55%);
+            --secondary: hsl(228, 6%, 22%);
+            --success: hsl(145, 63%, 49%);
+            --warning: hsl(38, 92%, 54%);
+            --destructive: hsl(0, 84%, 60%);
+            --muted: hsl(227, 6%, 73%);
+            --gradient-primary: linear-gradient(135deg, hsl(235, 86%, 65%) 0%, hsl(250, 80%, 55%) 100%);
+            --shadow-card: 0 4px 24px -4px rgba(0, 0, 0, 0.4);
+            --shadow-glow: 0 0 40px -10px rgba(88, 101, 242, 0.3);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Inter', system-ui, sans-serif;
+            background: var(--background);
+            color: var(--foreground);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        h1, h2, h3, h4, h5, h6 { font-family: 'Poppins', sans-serif; }
+
+        a { text-decoration: none; color: inherit; }
+
+        /* Scrollbar */
+        ::-webkit-scrollbar { width: 8px; height: 8px; }
+        ::-webkit-scrollbar-track { background: hsl(228, 6%, 16%); }
+        ::-webkit-scrollbar-thumb { background: hsl(228, 6%, 30%); border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--primary); }
+
+        /* Nav */
+        .nav {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: hsl(232, 12%, 14% / 0.85);
+            backdrop-filter: blur(16px);
+            border-bottom: 1px solid var(--border);
+        }
+        .nav-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 16px 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .nav-logo {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: var(--foreground);
+        }
+        .nav-back {
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: var(--muted);
+            transition: all 0.2s ease;
+        }
+        .nav-back:hover { color: var(--foreground); background: var(--secondary); }
+
+        /* Content */
+        .content-wrapper {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 60px 24px 80px;
+        }
+        .content-card {
+            background: var(--card);
+            border: 1px solid hsl(228, 6%, 25% / 0.5);
+            border-radius: 14px;
+            padding: 40px;
+            box-shadow: var(--shadow-card);
+        }
+        @media (max-width: 600px) {
+            .content-card { padding: 24px; }
+        }
+        .content-card h1 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+        .content-date {
+            font-size: 0.85rem;
+            color: var(--muted);
+            margin-bottom: 36px;
+        }
+        .content-card h2 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-top: 32px;
+            margin-bottom: 12px;
+            color: var(--foreground);
+        }
+        .content-card p {
+            font-size: 0.925rem;
+            color: var(--muted);
+            line-height: 1.7;
+            margin-bottom: 12px;
+        }
+        .content-card ul {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 12px 0;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        .content-card ul li {
+            font-size: 0.9rem;
+            color: var(--muted);
+            line-height: 1.6;
+            padding-left: 20px;
+            position: relative;
+        }
+        .content-card ul li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 10px;
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--primary);
+        }
+        .content-card ul li strong {
+            color: var(--foreground);
+            font-weight: 600;
+        }
+        .content-card .divider {
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--border), transparent);
+            margin: 32px 0;
+        }
+
+        /* Footer */
+        .footer {
+            border-top: 1px solid var(--border);
+            padding: 40px 24px;
+        }
+        .footer-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+        .footer-brand { font-family: 'Poppins', sans-serif; font-weight: 700; font-size: 1.1rem; }
+        .footer-links { display: flex; gap: 24px; }
+        .footer-links a {
+            font-size: 0.85rem;
+            color: var(--muted);
+            transition: color 0.2s ease;
+        }
+        .footer-links a:hover { color: var(--foreground); }
+        .footer-copy { font-size: 0.8rem; color: var(--muted); }
+
+        /* Animations */
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .fade-up { animation: fadeUp 0.6s ease-out forwards; }
+    </style>
 </head>
-<body class="bg-gray-900 text-gray-100">
+<body>
+
     <!-- Navigation -->
-    <nav class="sticky top-0 z-50 border-b border-gray-800 bg-discord-darkest">
-        <div class="max-w-7xl mx-auto px-6 py-4">
-            <div class="flex justify-between items-center">
-                <div class="flex items-center space-x-2">
-                    <h1 class="text-2xl font-display font-bold text-white">threadcord</h1>
-                </div>
-                <a href="index.html" class="text-gray-300 hover:text-white transition-colors">
-                    ← Back to Home
-                </a>
-            </div>
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="index.html" class="nav-logo">threadcord</a>
+            <a href="index.html" class="nav-back">← Back to Home</a>
         </div>
     </nav>
 
     <!-- Content -->
-    <div class="min-h-screen py-12 px-6">
-        <div class="max-w-4xl mx-auto">
-            <div class="bg-discord-gray rounded-lg p-8 border border-gray-700 animate-slide-up">
-                <h1 class="text-4xl font-display font-bold text-white mb-4">Privacy Policy</h1>
-                <p class="text-gray-400 mb-8">Last updated: February 1, 2026</p>
-                
-                <div class="space-y-6 text-gray-300">
-                    <section>
-                        <h2 class="text-2xl font-display font-semibold text-white mb-3">1. Information We Collect</h2>
-                        <p>threadcord collects the following information to provide our Discord bot services:</p>
-                        <ul class="list-disc list-inside space-y-2 ml-4">
-                            <li><strong>Discord User Data:</strong> User ID, username, discriminator, avatar URL</li>
-                            <li><strong>Ticket Data:</strong> Ticket content, messages, thread information</li>
-                            <li><strong>Server Data:</strong> Server ID, server name, channel IDs, role IDs</li>
-                            <li><strong>Usage Data:</strong> Bot commands used, interaction timestamps, performance metrics</li>
-                            <li><strong>Rating Data:</strong> Ticket ratings and feedback (if implemented)</li>
-                        </ul>
-                    </section>
-                    
-                    <section>
-                        <h2 class="text-2xl font-display font-semibold text-white mb-3">2. How We Use Your Information</h2>
-                        <p>We use your information to:</p>
-                        <ul class="list-disc list-inside space-y-2 ml-4">
-                            <li>Provide and operate the threadcord Discord bot</li>
-                            <li>Create and manage support tickets</li>
-                            <li>Respond to user inquiries and support requests</li>
-                            <li>Improve our services and user experience</li>
-                            <li>Analyze usage patterns and performance</li>
-                            <li>Comply with legal obligations</li>
-                        </ul>
-                    </section>
-                    
-                    <section>
-                        <h2 class="text-2xl font-display font-semibold text-white mb-3">3. Data Storage and Security</h2>
-                        <p>Your data is stored securely using:</p>
-                        <ul class="list-disc list-inside space-y-2 ml-4">
-                            <li>Databases with appropriate access controls</li>
-                            <li>Encrypted connections where applicable</li>
-                            <li>Regular security updates and monitoring</li>
-                            <li>Limited access to data by authorized personnel only</li>
-                        </ul>
-                    </section>
-                    
-                    <section>
-                        <h2 class="text-2xl font-display font-semibold text-white mb-3">4. Data Retention</h2>
-                        <p>We retain your data for the following periods:</p>
-                        <ul class="list-disc list-inside space-y-2 ml-4">
-                            <li><strong>Active Tickets:</strong> Retained until manually deleted by server administrators</li>
-                            <li><strong>Closed Tickets:</strong> Retained for 90 days, then automatically deleted</li>
-                            <li><strong>User Data:</strong> Retained while you use the service</li>
-                            <li><strong>Analytics Data:</strong> Retained for 12 months for performance analysis</li>
-                        </ul>
-                    </section>
-                    
-                    <section>
-                        <h2 class="text-2xl font-display font-semibold text-white mb-3">5. Data Sharing</h2>
-                        <p>We do not sell, rent, or share your personal information with third parties, except:</p>
-                        <ul class="list-disc list-inside space-y-2 ml-4">
-                            <li>With your explicit consent</li>
-                            <li>To comply with legal requirements</li>
-                            <li>To protect our rights, property, or safety</li>
-                            <li>With trusted service providers who assist in operating our service</li>
-                        </ul>
-                    </section>
-                    
-                    <section>
-                        <h2 class="text-2xl font-display font-semibold text-white mb-3">6. Your Rights</h2>
-                        <p>You have the right to:</p>
-                        <ul class="list-disc list-inside space-y-2 ml-4">
-                            <li>Access your personal data</li>
-                            <li>Request deletion of your data</li>
-                            <li>Request correction of inaccurate data</li>
-                            <li>Opt-out of non-essential data collection</li>
-                            <li>Export your data in a portable format</li>
-                        </ul>
-                    </section>
-                    
-                    <section>
-                        <h2 class="text-2xl font-display font-semibold text-white mb-3">7. Discord's Privacy Policy</h2>
-                        <p>threadcord operates within Discord's platform and is subject to Discord's Privacy Policy. We encourage you to review Discord's privacy practices.</p>
-                    </section>
-                    
-                    <section>
-                        <h2 class="text-2xl font-display font-semibold text-white mb-3">8. Children's Privacy</h2>
-                        <p>Our service is not intended for children under 13. We do not knowingly collect personal information from children under 13.</p>
-                    </section>
-                    
-                    <section>
-                        <h2 class="text-2xl font-display font-semibold text-white mb-3">9. International Data Transfers</h2>
-                        <p>Your data may be transferred to and processed in countries other than your own. We take appropriate safeguards to protect your data.</p>
-                    </section>
-                    
-                    <section>
-                        <h2 class="text-2xl font-display font-semibold text-white mb-3">10. Changes to This Policy</h2>
-                        <p>We may update this Privacy Policy from time to time. We will notify you of any changes by posting the new policy on this page.</p>
-                    </section>
-                    
-                    <section>
-                        <h2 class="text-2xl font-display font-semibold text-white mb-3">11. Contact Us</h2>
-                        <p>If you have any questions about this Privacy Policy or want to exercise your rights, please contact us:</p>
-                        <ul class="list-disc list-inside space-y-2 ml-4">
-                            <li>Through our Discord server</li>
-                            <li>Via our GitHub repository issues</li>
-                            <li>By creating a support ticket with the bot</li>
-                        </ul>
-                    </section>
-                </div>
-                
-                <div class="mt-8 pt-6 border-t border-gray-700">
-                    <p class="text-gray-400 text-sm">
-                        This Privacy Policy is effective as of February 1, 2026 and will remain in effect except with respect to any changes in its provisions in the future.
-                    </p>
-                </div>
-            </div>
+    <div class="content-wrapper">
+        <div class="content-card fade-up">
+            <h1>Privacy Policy</h1>
+            <p class="content-date">Last updated: February 1, 2026</p>
+
+            <h2>1. Information We Collect</h2>
+            <p>threadcord collects the following information to provide our Discord bot services:</p>
+            <ul>
+                <li><strong>Discord User Data:</strong> User ID, username, discriminator, avatar URL</li>
+                <li><strong>Ticket Data:</strong> Ticket content, messages, thread information</li>
+                <li><strong>Server Data:</strong> Server ID, server name, channel IDs, role IDs</li>
+                <li><strong>Usage Data:</strong> Bot commands used, interaction timestamps, performance metrics</li>
+                <li><strong>Rating Data:</strong> Ticket ratings and feedback provided by users</li>
+            </ul>
+
+            <h2>2. How We Use Your Information</h2>
+            <p>We use your information to:</p>
+            <ul>
+                <li>Provide and operate the threadcord Discord bot</li>
+                <li>Create and manage support tickets</li>
+                <li>Respond to user inquiries and support requests</li>
+                <li>Improve our services and user experience</li>
+                <li>Analyze usage patterns and performance</li>
+                <li>Comply with legal obligations</li>
+            </ul>
+
+            <h2>3. Data Storage and Security</h2>
+            <p>Your data is stored securely with appropriate measures in place:</p>
+            <ul>
+                <li>Access controls to limit who can view your data</li>
+                <li>Encrypted connections for data in transit</li>
+                <li>Regular security reviews and updates</li>
+                <li>Data access limited to authorized personnel only</li>
+            </ul>
+
+            <h2>4. Data Retention</h2>
+            <p>We retain your data for the following periods:</p>
+            <ul>
+                <li><strong>Active Tickets:</strong> Retained until manually deleted by server administrators</li>
+                <li><strong>Closed Tickets:</strong> Retained for 90 days, then automatically deleted</li>
+                <li><strong>User Data:</strong> Retained while you use the service</li>
+                <li><strong>Analytics Data:</strong> Retained for 12 months for performance analysis</li>
+            </ul>
+
+            <h2>5. Data Sharing</h2>
+            <p>We do not sell, rent, or share your personal information with third parties, except:</p>
+            <ul>
+                <li>With your explicit consent</li>
+                <li>To comply with legal requirements</li>
+                <li>To protect our rights, property, or safety</li>
+                <li>With trusted service providers who assist in operating our service</li>
+            </ul>
+
+            <h2>6. Your Rights</h2>
+            <p>You have the right to:</p>
+            <ul>
+                <li>Access your personal data</li>
+                <li>Request deletion of your data</li>
+                <li>Request correction of inaccurate data</li>
+                <li>Opt-out of non-essential data collection</li>
+                <li>Export your data in a portable format</li>
+            </ul>
+
+            <h2>7. Discord's Privacy Policy</h2>
+            <p>threadcord operates within Discord's platform and is subject to Discord's Privacy Policy. We encourage you to review Discord's privacy practices.</p>
+
+            <h2>8. Children's Privacy</h2>
+            <p>Our service is not intended for children under 13. We do not knowingly collect personal information from children under 13.</p>
+
+            <h2>9. International Data Transfers</h2>
+            <p>Your data may be transferred to and processed in countries other than your own. We take appropriate safeguards to protect your data during any such transfers.</p>
+
+            <h2>10. Changes to This Policy</h2>
+            <p>We may update this Privacy Policy from time to time. We will notify you of any changes by posting the new policy on this page.</p>
+
+            <h2>11. Contact Us</h2>
+            <p>If you have any questions about this Privacy Policy or want to exercise your rights, please contact us:</p>
+            <ul>
+                <li>Through our <a href="https://discord.gg/YZExCVBhUt" style="color:var(--primary);font-weight:500;">Discord server</a></li>
+                <li>By creating a support ticket with the bot</li>
+            </ul>
+
+            <div class="divider"></div>
+
+            <p style="font-size:0.82rem;">This Privacy Policy is effective as of February 1, 2026 and will remain in effect except with respect to any changes in its provisions in the future.</p>
         </div>
     </div>
 
     <!-- Footer -->
-    <footer class="py-12 px-6 bg-discord-darkest border-t border-gray-800">
-        <div class="max-w-7xl mx-auto text-center">
-            <p class="text-gray-500 text-sm">
-                © 2026 threadcord. Not affiliated with Discord Inc.
-            </p>
+    <footer class="footer">
+        <div class="footer-inner">
+            <span class="footer-brand">threadcord</span>
+            <div class="footer-links">
+                <a href="terms.html">Terms of Service</a>
+                <a href="privacy.html">Privacy Policy</a>
+                <a href="https://discord.gg/YZExCVBhUt">Support</a>
+                <a href="https://dashboard.threadcord.xyz">Dashboard</a>
+            </div>
+            <span class="footer-copy">&copy; 2026 threadcord. Not affiliated with Discord Inc.</span>
         </div>
     </footer>
+
 </body>
 </html>
