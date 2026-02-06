@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>threadcord - Professional Discord Support System</title>
-    <meta name="description" content="Transform your Discord server into a professional support platform with automated ticket management, comprehensive analytics, and intuitive controls.">
+    <title>Terms of Service - threadcord</title>
+    <meta name="description" content="Terms of Service for threadcord Discord support ticket bot">
     
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%235865F2' rx='6'/%3E%3Ctext x='16' y='22' font-family='Arial, sans-serif' font-size='20' font-weight='bold' text-anchor='middle' fill='white'%3ET%3C/text%3E%3C/svg%3E">
@@ -75,8 +75,7 @@
             font-weight: 700;
             color: var(--foreground);
         }
-        .nav-links { display: flex; align-items: center; gap: 8px; }
-        .nav-link {
+        .nav-back {
             padding: 8px 16px;
             border-radius: 8px;
             font-size: 0.875rem;
@@ -84,453 +83,80 @@
             color: var(--muted);
             transition: all 0.2s ease;
         }
-        .nav-link:hover { color: var(--foreground); background: var(--secondary); }
-        .nav-btn {
-            padding: 8px 20px;
-            border-radius: 8px;
-            font-size: 0.875rem;
-            font-weight: 600;
-            background: var(--primary);
-            color: #fff;
-            border: none;
-            cursor: pointer;
-            transition: all 0.2s ease;
-        }
-        .nav-btn:hover { opacity: 0.9; box-shadow: var(--shadow-glow); }
+        .nav-back:hover { color: var(--foreground); background: var(--secondary); }
 
-        /* Hero */
-        .hero {
-            position: relative;
-            text-align: center;
-            padding: 100px 24px 80px;
-            overflow: hidden;
-        }
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 800px;
-            height: 800px;
-            background: radial-gradient(ellipse, rgba(88, 101, 242, 0.12) 0%, transparent 70%);
-            pointer-events: none;
-        }
-        .hero-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            padding: 6px 16px;
-            border-radius: 20px;
-            background: rgba(88, 101, 242, 0.12);
-            border: 1px solid rgba(88, 101, 242, 0.25);
-            font-size: 0.8rem;
-            font-weight: 600;
-            color: hsl(235, 86%, 75%);
-            margin-bottom: 24px;
-        }
-        .hero h1 {
-            font-size: clamp(2.5rem, 5vw, 3.5rem);
-            font-weight: 800;
-            line-height: 1.15;
-            margin-bottom: 20px;
-            letter-spacing: -0.5px;
-        }
-        .hero h1 span {
-            background: var(--gradient-primary);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        .hero-sub {
-            font-size: 1.15rem;
-            color: var(--muted);
-            max-width: 600px;
-            margin: 0 auto 36px;
-            line-height: 1.7;
-        }
-        .hero-btns {
-            display: flex;
-            justify-content: center;
-            gap: 12px;
-            flex-wrap: wrap;
-            margin-bottom: 48px;
-        }
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            padding: 12px 28px;
-            border-radius: 10px;
-            font-family: 'Inter', sans-serif;
-            font-size: 0.95rem;
-            font-weight: 600;
-            border: none;
-            cursor: pointer;
-            transition: all 0.2s ease;
-        }
-        .btn-primary {
-            background: var(--primary);
-            color: #fff;
-        }
-        .btn-primary:hover { opacity: 0.9; box-shadow: var(--shadow-glow); }
-        .btn-secondary {
-            background: var(--secondary);
-            color: #fff;
-            border: 1px solid var(--border);
-        }
-        .btn-secondary:hover { background: var(--card-hover); }
-        .btn-ghost {
-            background: transparent;
-            color: var(--primary);
-            border: 1px solid var(--border);
-        }
-        .btn-ghost:hover { background: rgba(88, 101, 242, 0.08); }
-
-        /* Stats bar */
-        .stats-bar {
-            display: flex;
-            justify-content: center;
-            gap: 48px;
-            flex-wrap: wrap;
-            position: relative;
-            z-index: 1;
-        }
-        .stat-item { text-align: center; }
-        .stat-val {
-            font-family: 'Poppins', sans-serif;
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--foreground);
-        }
-        .stat-val.primary { color: var(--primary); }
-        .stat-val.success { color: var(--success); }
-        .stat-val.warning { color: var(--warning); }
-        .stat-label {
-            font-size: 0.8rem;
-            color: var(--muted);
-            margin-top: 2px;
-        }
-
-        /* Sections */
-        .section {
-            max-width: 1200px;
+        /* Content */
+        .content-wrapper {
+            max-width: 800px;
             margin: 0 auto;
-            padding: 80px 24px;
+            padding: 60px 24px 80px;
         }
-        .section-header {
-            text-align: center;
-            margin-bottom: 48px;
-        }
-        .section-label {
-            display: inline-block;
-            font-size: 0.75rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            color: hsl(235, 86%, 75%);
-            margin-bottom: 12px;
-        }
-        .section-title {
-            font-size: clamp(1.75rem, 3vw, 2.25rem);
-            font-weight: 700;
-            margin-bottom: 12px;
-        }
-        .section-desc {
-            font-size: 1rem;
-            color: var(--muted);
-            max-width: 600px;
-            margin: 0 auto;
-            line-height: 1.65;
-        }
-
-        /* Divider */
-        .divider {
-            max-width: 1200px;
-            margin: 0 auto;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, var(--border), transparent);
-        }
-
-        /* Cards */
-        .card {
-            background: var(--card);
-            border: 1px solid hsl(228, 6%, 25% / 0.5);
-            border-radius: 12px;
-            padding: 24px;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            box-shadow: var(--shadow-card);
-        }
-        .card:hover {
-            border-color: rgba(88, 101, 242, 0.3);
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-glow);
-        }
-        .card-icon {
-            width: 44px;
-            height: 44px;
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.25rem;
-            margin-bottom: 16px;
-        }
-        .card-icon.purple { background: rgba(88, 101, 242, 0.15); }
-        .card-icon.green { background: rgba(46, 204, 113, 0.15); }
-        .card-icon.orange { background: rgba(240, 160, 48, 0.15); }
-        .card-icon.red { background: rgba(231, 76, 60, 0.15); }
-        .card h3 {
-            font-size: 1.05rem;
-            font-weight: 700;
-            margin-bottom: 8px;
-        }
-        .card p {
-            font-size: 0.875rem;
-            color: var(--muted);
-            line-height: 1.6;
-        }
-
-        /* Grids */
-        .grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
-        .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
-        .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
-        .grid-5 { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; }
-        @media (max-width: 900px) {
-            .grid-3 { grid-template-columns: repeat(2, 1fr); }
-            .grid-4, .grid-5 { grid-template-columns: repeat(2, 1fr); }
-        }
-        @media (max-width: 600px) {
-            .grid-2, .grid-3 { grid-template-columns: 1fr; }
-            .grid-4, .grid-5 { grid-template-columns: repeat(2, 1fr); }
-            .stats-bar { gap: 24px; }
-            .hero { padding: 60px 24px 50px; }
-        }
-
-        /* Dashboard Preview */
-        .dash-preview {
+        .content-card {
             background: var(--card);
             border: 1px solid hsl(228, 6%, 25% / 0.5);
             border-radius: 14px;
-            overflow: hidden;
+            padding: 40px;
             box-shadow: var(--shadow-card);
         }
-        .dash-titlebar {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            padding: 12px 16px;
-            background: hsl(230, 8%, 12%);
-            border-bottom: 1px solid var(--border);
+        @media (max-width: 600px) {
+            .content-card { padding: 24px; }
         }
-        .dash-dot {
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
+        .content-card h1 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 8px;
         }
-        .dash-dot.red { background: #e74c3c; }
-        .dash-dot.yellow { background: #f0a030; }
-        .dash-dot.green { background: #2ecc71; }
-        .dash-url {
-            flex: 1;
-            text-align: center;
-            font-size: 0.72rem;
+        .content-date {
+            font-size: 0.85rem;
             color: var(--muted);
-            background: hsl(228, 6%, 16%);
-            padding: 4px 12px;
-            border-radius: 6px;
-            margin: 0 40px;
+            margin-bottom: 36px;
         }
-        .dash-body { padding: 20px; }
-
-        /* Metric cards inside dashboard */
-        .metric {
-            background: hsl(232, 12%, 14% / 0.6);
-            border: 1px solid hsl(228, 6%, 25% / 0.4);
-            border-radius: 10px;
-            padding: 14px;
-        }
-        .metric-label {
-            font-size: 0.7rem;
-            color: var(--muted);
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            margin-bottom: 4px;
-        }
-        .metric-val {
-            font-family: 'Poppins', sans-serif;
+        .content-card h2 {
             font-size: 1.25rem;
             font-weight: 700;
+            margin-top: 32px;
+            margin-bottom: 12px;
+            color: var(--foreground);
         }
-        .metric-sub {
-            font-size: 0.72rem;
+        .content-card p {
+            font-size: 0.925rem;
             color: var(--muted);
-            margin-top: 2px;
-        }
-
-        /* Bar chart */
-        .chart { display: flex; align-items: flex-end; gap: 6px; height: 70px; }
-        .chart-col { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 4px; }
-        .chart-bar { width: 100%; max-width: 36px; border-radius: 4px 4px 2px 2px; }
-        .chart-bar.purple { background: var(--gradient-primary); }
-        .chart-bar.green { background: linear-gradient(180deg, var(--success), hsl(145, 63%, 40%)); }
-        .chart-lbl { font-size: 0.6rem; color: var(--muted); }
-
-        /* Live badge */
-        .live-badge {
-            font-size: 0.68rem;
-            background: rgba(46, 204, 113, 0.15);
-            color: var(--success);
-            padding: 3px 10px;
-            border-radius: 20px;
-            font-weight: 700;
-        }
-        .time-badge {
-            font-size: 0.68rem;
-            background: rgba(88, 101, 242, 0.15);
-            color: hsl(235, 86%, 75%);
-            padding: 3px 10px;
-            border-radius: 20px;
-            font-weight: 700;
-        }
-
-        /* Table */
-        .perf-table { font-size: 0.8rem; width: 100%; }
-        .perf-table-head {
-            display: grid;
-            grid-template-columns: 1.5fr 1fr 1fr 1fr 1fr;
-            gap: 4px;
-            padding: 8px 0;
-            border-bottom: 1px solid hsl(228, 6%, 25% / 0.5);
-            color: var(--muted);
-            font-weight: 600;
-            text-transform: uppercase;
-            font-size: 0.7rem;
-            letter-spacing: 0.5px;
-        }
-        .perf-table-row {
-            display: grid;
-            grid-template-columns: 1.5fr 1fr 1fr 1fr 1fr;
-            gap: 4px;
-            padding: 8px 0;
-            border-bottom: 1px solid hsl(228, 6%, 25% / 0.2);
-        }
-
-        /* Comparison */
-        .cmp-card { border-radius: 12px; padding: 24px; }
-        .cmp-old { background: rgba(231, 76, 60, 0.04); border: 1px solid rgba(231, 76, 60, 0.15); }
-        .cmp-new { background: rgba(46, 204, 113, 0.04); border: 1px solid rgba(46, 204, 113, 0.15); }
-        .cmp-card h4 { font-size: 0.95rem; font-weight: 700; margin-bottom: 12px; }
-        .cmp-old h4 { color: var(--destructive); }
-        .cmp-new h4 { color: var(--success); }
-        .cmp-list { list-style: none; display: flex; flex-direction: column; gap: 8px; }
-        .cmp-list li {
-            font-size: 0.875rem;
-            color: var(--muted);
-            display: flex;
-            align-items: flex-start;
-            gap: 8px;
-            line-height: 1.5;
-        }
-        .cmp-list li::before { flex-shrink: 0; }
-
-        /* Steps */
-        .step {
-            display: flex;
-            gap: 16px;
-            align-items: flex-start;
-            background: var(--card);
-            border: 1px solid hsl(228, 6%, 25% / 0.5);
-            border-radius: 12px;
-            padding: 20px;
-            box-shadow: var(--shadow-card);
-            transition: all 0.3s ease;
-        }
-        .step:hover { border-color: rgba(88, 101, 242, 0.3); }
-        .step-num {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            min-width: 36px;
-            height: 36px;
-            border-radius: 10px;
-            background: var(--primary);
-            color: #fff;
-            font-family: 'Poppins', sans-serif;
-            font-weight: 700;
-            font-size: 0.9rem;
-            flex-shrink: 0;
-        }
-        .step h3 { font-size: 1rem; font-weight: 700; margin-bottom: 4px; }
-        .step p { font-size: 0.875rem; color: var(--muted); line-height: 1.5; }
-
-        /* Code */
-        .code {
-            background: rgba(88, 101, 242, 0.12);
-            color: hsl(235, 86%, 75%);
-            padding: 2px 8px;
-            border-radius: 4px;
-            font-size: 0.875rem;
-            font-weight: 600;
-            font-family: 'Consolas', 'Monaco', monospace;
-        }
-
-        /* Feature list */
-        .feat-list { list-style: none; display: flex; flex-direction: column; gap: 6px; margin-top: 8px; }
-        .feat-list li {
-            display: flex;
-            align-items: flex-start;
-            gap: 8px;
-            font-size: 0.875rem;
-            color: hsl(0, 0%, 88%);
-        }
-        .feat-check { color: var(--success); font-weight: 700; flex-shrink: 0; line-height: 1.4; }
-
-        /* Button controls */
-        .btn-ctrl {
-            background: var(--card);
-            border: 1px solid hsl(228, 6%, 25% / 0.5);
-            border-radius: 10px;
-            padding: 16px;
-            text-align: center;
-            transition: all 0.3s ease;
-            box-shadow: var(--shadow-card);
-        }
-        .btn-ctrl:hover { border-color: rgba(88, 101, 242, 0.3); transform: translateY(-2px); }
-        .btn-ctrl-icon { font-size: 1.3rem; margin-bottom: 8px; display: block; }
-        .btn-ctrl h4 { font-size: 0.85rem; font-weight: 700; margin-bottom: 4px; }
-        .btn-ctrl p { font-size: 0.78rem; color: var(--muted); }
-
-        /* CTA */
-        .cta {
-            text-align: center;
-            padding: 80px 24px;
-            position: relative;
-        }
-        .cta::before {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 600px;
-            height: 400px;
-            background: radial-gradient(ellipse, rgba(88, 101, 242, 0.08) 0%, transparent 70%);
-            pointer-events: none;
-        }
-        .cta h2 {
-            font-size: clamp(1.75rem, 3vw, 2.25rem);
-            font-weight: 700;
+            line-height: 1.7;
             margin-bottom: 12px;
         }
-        .cta p {
+        .content-card ul {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 12px 0;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        .content-card ul li {
+            font-size: 0.9rem;
             color: var(--muted);
-            font-size: 1rem;
-            margin-bottom: 32px;
-            max-width: 500px;
-            margin-left: auto;
-            margin-right: auto;
+            line-height: 1.6;
+            padding-left: 20px;
+            position: relative;
+        }
+        .content-card ul li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 10px;
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--primary);
+        }
+        .content-card ul li strong {
+            color: var(--foreground);
+            font-weight: 600;
+        }
+        .content-card .divider {
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--border), transparent);
+            margin: 32px 0;
         }
 
         /* Footer */
@@ -563,42 +189,6 @@
             to { opacity: 1; transform: translateY(0); }
         }
         .fade-up { animation: fadeUp 0.6s ease-out forwards; }
-        .fade-up-d1 { animation-delay: 0.1s; opacity: 0; }
-        .fade-up-d2 { animation-delay: 0.2s; opacity: 0; }
-        .fade-up-d3 { animation-delay: 0.3s; opacity: 0; }
-
-        /* Highlight section */
-        .highlight {
-            background: var(--card);
-            border: 1px solid hsl(228, 6%, 25% / 0.5);
-            border-radius: 14px;
-            padding: 32px;
-            box-shadow: var(--shadow-card);
-        }
-        .highlight-split {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 32px;
-            align-items: center;
-        }
-        @media (max-width: 768px) { .highlight-split { grid-template-columns: 1fr; } }
-
-        /* Flex helpers */
-        .flex-between { display: flex; justify-content: space-between; align-items: center; }
-        .flex-col { display: flex; flex-direction: column; }
-        .gap-4 { gap: 4px; }
-        .gap-8 { gap: 8px; }
-        .gap-12 { gap: 12px; }
-        .gap-16 { gap: 16px; }
-        .mb-8 { margin-bottom: 8px; }
-        .mb-12 { margin-bottom: 12px; }
-        .mb-16 { margin-bottom: 16px; }
-        .mb-24 { margin-bottom: 24px; }
-        .text-primary { color: var(--primary); }
-        .text-success { color: var(--success); }
-        .text-warning { color: var(--warning); }
-        .text-destructive { color: var(--destructive); }
-        .text-muted { color: var(--muted); }
     </style>
 </head>
 <body>
@@ -606,493 +196,83 @@
     <!-- Navigation -->
     <nav class="nav">
         <div class="nav-inner">
-            <a href="/" class="nav-logo">threadcord</a>
-            <div class="nav-links">
-                <a href="#features" class="nav-link">Features</a>
-                <a href="#analytics" class="nav-link">Analytics</a>
-                <a href="https://dashboard.threadcord.xyz" class="nav-link">Dashboard</a>
-                <a href="https://discord.gg/YZExCVBhUt" class="nav-link">Support</a>
-                <a href="https://discord.com/oauth2/authorize?client_id=1466937933981548676&permissions=362924828672&scope=bot%20applications.commands" class="nav-btn">Add to Discord</a>
-            </div>
+            <a href="index.html" class="nav-logo">threadcord</a>
+            <a href="index.html" class="nav-back">← Back to Home</a>
         </div>
     </nav>
 
-    <!-- Hero -->
-    <section class="hero">
-        <div class="fade-up">
-            <span class="hero-badge">Support Tickets, Reimagined</span>
+    <!-- Content -->
+    <div class="content-wrapper">
+        <div class="content-card fade-up">
+            <h1>Terms of Service</h1>
+            <p class="content-date">Last updated: February 1, 2026</p>
+
+            <h2>1. Acceptance of Terms</h2>
+            <p>By using threadcord ("the Bot", "the Service"), you agree to be bound by these Terms of Service. If you do not agree to these terms, please do not use the Service.</p>
+
+            <h2>2. Description of Service</h2>
+            <p>threadcord is a Discord bot that provides:</p>
+            <ul>
+                <li>Private thread-based support ticket management</li>
+                <li>Automated ticket routing and priority escalation</li>
+                <li>A web dashboard for analytics and configuration</li>
+                <li>Staff performance tracking and satisfaction ratings</li>
+                <li>Automation rules for keyword-based actions</li>
+            </ul>
+
+            <h2>3. User Responsibilities</h2>
+            <p>When using threadcord, you agree to:</p>
+            <ul>
+                <li>Use the Service in compliance with Discord's Terms of Service and Community Guidelines</li>
+                <li>Not use the Service for any illegal or unauthorized purpose</li>
+                <li>Not attempt to abuse, exploit, or disrupt the Service</li>
+                <li>Not use the Service to harass, spam, or harm other users</li>
+                <li>Maintain the security of your Discord account</li>
+            </ul>
+
+            <h2>4. Service Availability</h2>
+            <p>We strive to maintain high availability but do not guarantee uninterrupted service. The Service may be temporarily unavailable due to maintenance, updates, or circumstances beyond our control. We reserve the right to modify, suspend, or discontinue the Service at any time.</p>
+
+            <h2>5. Data and Content</h2>
+            <p>You retain ownership of all content you submit through the Service. By using threadcord, you grant us a limited license to process your data as necessary to provide the Service. For details on how we handle your data, please refer to our <a href="privacy.html" style="color:var(--primary);font-weight:500;">Privacy Policy</a>.</p>
+
+            <h2>6. Intellectual Property</h2>
+            <p>threadcord and its original content, features, and functionality are owned by the threadcord team. The Service is protected by copyright and other intellectual property laws.</p>
+
+            <h2>7. Limitation of Liability</h2>
+            <p>threadcord is provided "as is" without warranties of any kind. We shall not be liable for:</p>
+            <ul>
+                <li>Any indirect, incidental, or consequential damages</li>
+                <li>Loss of data, profits, or business opportunities</li>
+                <li>Service interruptions or downtime</li>
+                <li>Actions taken by third parties using the Service</li>
+                <li>Any damages resulting from unauthorized access to your data</li>
+            </ul>
+
+            <h2>8. Termination</h2>
+            <p>We reserve the right to terminate or suspend access to the Service at our discretion, without notice, for conduct that we believe violates these Terms or is harmful to other users, us, or third parties.</p>
+
+            <h2>9. Free Service</h2>
+            <p>threadcord is currently provided free of charge. We reserve the right to introduce paid features in the future, but existing free functionality will remain available.</p>
+
+            <h2>10. Discord Platform</h2>
+            <p>threadcord operates within the Discord platform and is subject to Discord's Terms of Service. We are not affiliated with, endorsed by, or sponsored by Discord Inc.</p>
+
+            <h2>11. Changes to Terms</h2>
+            <p>We may update these Terms from time to time. Continued use of the Service after changes constitutes acceptance of the new Terms. We will make reasonable efforts to notify users of significant changes.</p>
+
+            <h2>12. Contact</h2>
+            <p>If you have questions about these Terms, please contact us:</p>
+            <ul>
+                <li>Through our <a href="https://discord.gg/YZExCVBhUt" style="color:var(--primary);font-weight:500;">Discord server</a></li>
+                <li>By creating a support ticket with the bot</li>
+            </ul>
+
+            <div class="divider"></div>
+
+            <p style="font-size:0.82rem;">These Terms of Service are effective as of February 1, 2026 and will remain in effect except with respect to any changes in its provisions in the future.</p>
         </div>
-        <h1 class="fade-up fade-up-d1">
-            Faster Resolutions.<br><span>Smarter Support.</span>
-        </h1>
-        <p class="hero-sub fade-up fade-up-d2">
-            The only Discord ticket bot that uses private threads, automated rules, and a full analytics dashboard — so your support actually scales.
-        </p>
-        <div class="hero-btns fade-up fade-up-d3">
-            <a href="https://discord.com/oauth2/authorize?client_id=1466937933981548676&permissions=362924828672&scope=bot%20applications.commands" class="btn btn-primary">Add to Discord</a>
-            <a href="https://dashboard.threadcord.xyz" class="btn btn-secondary">Open Dashboard</a>
-            <a href="https://discord.gg/YZExCVBhUt" class="btn btn-ghost">Support Server</a>
-        </div>
-        <div class="stats-bar fade-up fade-up-d3">
-            <div class="stat-item">
-                <div class="stat-val primary">Free</div>
-                <div class="stat-label">No paywalls</div>
-            </div>
-            <div class="stat-item">
-                <div class="stat-val success">30s</div>
-                <div class="stat-label">Setup time</div>
-            </div>
-            <div class="stat-item">
-                <div class="stat-val warning">1</div>
-                <div class="stat-label">Command needed</div>
-            </div>
-            <div class="stat-item">
-                <div class="stat-val">∞</div>
-                <div class="stat-label">Tickets supported</div>
-            </div>
-        </div>
-    </section>
-
-    <div class="divider"></div>
-
-    <!-- Analytics Section -->
-    <section class="section" id="analytics">
-        <div class="section-header">
-            <span class="section-label">Real-Time Analytics</span>
-            <h2 class="section-title">Two Dashboards. Complete Visibility.</h2>
-            <p class="section-desc">A Daily Dashboard for at-a-glance operations, and a full Analytics page for deep insights — all updating in real time.</p>
-        </div>
-
-        <!-- Daily Dashboard Preview -->
-        <div class="dash-preview mb-24">
-            <div class="dash-titlebar">
-                <div class="dash-dot red"></div>
-                <div class="dash-dot yellow"></div>
-                <div class="dash-dot green"></div>
-                <div class="dash-url">dashboard.threadcord.xyz</div>
-            </div>
-            <div class="dash-body">
-                <div class="flex-between mb-16">
-                    <div>
-                        <h3 style="font-size:1.1rem;font-weight:700;">Daily Dashboard</h3>
-                        <p style="font-size:0.8rem;color:var(--muted);">Today's operations</p>
-                    </div>
-                    <span class="live-badge">LIVE</span>
-                </div>
-
-                <!-- Top stats -->
-                <div class="grid-4 mb-16">
-                    <div class="metric">
-                        <div class="metric-label">Total Tickets</div>
-                        <div class="metric-val text-primary">23</div>
-                    </div>
-                    <div class="metric">
-                        <div class="metric-label">Open Tickets</div>
-                        <div class="metric-val text-warning">0</div>
-                    </div>
-                    <div class="metric">
-                        <div class="metric-label">Avg Response</div>
-                        <div class="metric-val text-success">3m</div>
-                    </div>
-                    <div class="metric">
-                        <div class="metric-label">Avg Rating</div>
-                        <div class="metric-val text-warning">5.0 ★</div>
-                    </div>
-                </div>
-
-                <!-- Resolution + Today's Performance -->
-                <div class="grid-2 mb-16">
-                    <div class="metric">
-                        <div class="metric-label">Resolution Rate</div>
-                        <div class="metric-val text-success">87.0%</div>
-                        <div class="metric-sub">20 of 23 resolved</div>
-                        <div style="margin-top:8px;height:6px;background:var(--secondary);border-radius:3px;overflow:hidden;">
-                            <div style="width:87%;height:100%;background:var(--primary);border-radius:3px;"></div>
-                        </div>
-                    </div>
-                    <div class="metric">
-                        <div class="metric-label">Today's Performance</div>
-                        <div style="display:flex;gap:24px;margin-top:8px;">
-                            <div>
-                                <div class="metric-val">0</div>
-                                <div class="metric-sub">Closed Today</div>
-                            </div>
-                            <div>
-                                <div class="metric-val text-warning">5.0</div>
-                                <div class="metric-sub">Today's Rating</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Staff Activity + Status Breakdown -->
-                <div class="grid-2">
-                    <div class="metric">
-                        <div class="metric-label">Staff Activity</div>
-                        <div class="flex-col gap-4" style="margin-top:8px;font-size:0.85rem;">
-                            <div class="flex-between"><span class="text-muted">Total Staff</span><span>2</span></div>
-                            <div class="flex-between"><span class="text-muted">Active Chats</span><span>0</span></div>
-                            <div class="flex-between"><span class="text-muted">Avg Response</span><span class="text-success">3m</span></div>
-                        </div>
-                    </div>
-                    <div class="metric">
-                        <div class="metric-label">Status Breakdown</div>
-                        <div class="flex-col gap-4" style="margin-top:8px;font-size:0.85rem;">
-                            <div class="flex-between"><span class="text-success">● New</span><span class="text-muted">(5m)</span></div>
-                            <div class="flex-between"><span class="text-warning">● Medium</span><span class="text-muted">(10m)</span></div>
-                            <div class="flex-between"><span class="text-destructive">● Escalating</span><span class="text-muted">(25m)</span></div>
-                            <div class="flex-between"><span class="text-destructive">● Urgent</span><span class="text-muted">(120m)</span></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Analytics Page Preview -->
-        <div class="dash-preview">
-            <div class="dash-titlebar">
-                <div class="dash-dot red"></div>
-                <div class="dash-dot yellow"></div>
-                <div class="dash-dot green"></div>
-                <div class="dash-url">dashboard.threadcord.xyz/analytics</div>
-            </div>
-            <div class="dash-body">
-                <div class="flex-between mb-16">
-                    <div>
-                        <h3 style="font-size:1.1rem;font-weight:700;">Analytics</h3>
-                        <p style="font-size:0.8rem;color:var(--muted);">Deep insights into your support</p>
-                    </div>
-                    <span class="time-badge">7d · 30d · All</span>
-                </div>
-
-                <!-- 5-stat row -->
-                <div class="grid-5 mb-16">
-                    <div class="metric">
-                        <div class="metric-label">Total Tickets</div>
-                        <div class="metric-val">23</div>
-                    </div>
-                    <div class="metric">
-                        <div class="metric-label">Open</div>
-                        <div class="metric-val text-success">0</div>
-                    </div>
-                    <div class="metric">
-                        <div class="metric-label">Closed Today</div>
-                        <div class="metric-val">0</div>
-                    </div>
-                    <div class="metric">
-                        <div class="metric-label">Avg Resolution</div>
-                        <div class="metric-val text-primary">3m</div>
-                    </div>
-                    <div class="metric">
-                        <div class="metric-label">Avg Rating</div>
-                        <div class="metric-val text-warning">5.0 ★</div>
-                    </div>
-                </div>
-
-                <!-- Charts -->
-                <div class="grid-2 mb-16">
-                    <div class="metric" style="padding:18px;">
-                        <div class="metric-label mb-12">Ticket Trends</div>
-                        <div class="chart">
-                            <div class="chart-col"><div class="chart-bar purple" style="height:8px;"></div><div class="chart-lbl">Mon</div></div>
-                            <div class="chart-col"><div class="chart-bar purple" style="height:8px;"></div><div class="chart-lbl">Tue</div></div>
-                            <div class="chart-col"><div class="chart-bar purple" style="height:8px;"></div><div class="chart-lbl">Wed</div></div>
-                            <div class="chart-col"><div class="chart-bar purple" style="height:8px;"></div><div class="chart-lbl">Thu</div></div>
-                            <div class="chart-col"><div class="chart-bar purple" style="height:55px;"></div><div class="chart-lbl">Fri</div></div>
-                            <div class="chart-col"><div class="chart-bar purple" style="height:8px;"></div><div class="chart-lbl">Sat</div></div>
-                            <div class="chart-col"><div class="chart-bar purple" style="height:8px;"></div><div class="chart-lbl">Sun</div></div>
-                        </div>
-                    </div>
-                    <div class="metric" style="padding:18px;">
-                        <div class="metric-label mb-12">Staff Ratings Breakdown</div>
-                        <div style="display:flex;align-items:flex-end;gap:24px;height:70px;justify-content:center;">
-                            <div style="text-align:center;">
-                                <div style="width:36px;height:45px;background:linear-gradient(180deg,var(--success),hsl(145,63%,40%));border-radius:4px 4px 2px 2px;margin:0 auto 6px;"></div>
-                                <div class="chart-lbl">Staff 1</div>
-                            </div>
-                            <div style="text-align:center;">
-                                <div style="width:36px;height:28px;background:linear-gradient(180deg,var(--success),hsl(145,63%,40%));border-radius:4px 4px 2px 2px;margin:0 auto 6px;"></div>
-                                <div class="chart-lbl">Staff 2</div>
-                            </div>
-                        </div>
-                        <div style="display:flex;justify-content:center;gap:16px;margin-top:8px;font-size:0.7rem;color:var(--muted);">
-                            <span><span class="text-success">■</span> Positive (4-5★)</span>
-                            <span><span class="text-destructive">■</span> Negative (1-2★)</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Bottom stats -->
-                <div class="grid-3 mb-16">
-                    <div class="metric">
-                        <div class="metric-label">Resolution Rate</div>
-                        <div class="metric-val text-success">87.0%</div>
-                        <div class="metric-sub">20 of 23 resolved</div>
-                    </div>
-                    <div class="metric">
-                        <div class="metric-label">Daily Average</div>
-                        <div class="metric-val text-primary">23</div>
-                        <div class="metric-sub">Tickets per day</div>
-                    </div>
-                    <div class="metric">
-                        <div class="metric-label">Top Staff Member</div>
-                        <div class="metric-val text-warning">gotikj.</div>
-                        <div class="metric-sub">0.0★ avg · 9 tickets</div>
-                    </div>
-                </div>
-
-                <!-- Staff Performance Table -->
-                <div class="metric" style="padding:18px;">
-                    <div class="metric-label mb-8">Staff Performance</div>
-                    <div class="perf-table">
-                        <div class="perf-table-head">
-                            <span>Staff</span><span>Tickets</span><span>Rated</span><span>Avg Rating</span><span>Positive</span>
-                        </div>
-                        <div class="perf-table-row">
-                            <span>gotikj.</span><span class="text-muted">9</span><span class="text-muted">0</span><span class="text-warning">0.0★</span><span class="text-success">0</span>
-                        </div>
-                        <div class="perf-table-row" style="border:none;">
-                            <span>threadcord</span><span class="text-muted">2</span><span class="text-muted">0</span><span class="text-warning">0.0★</span><span class="text-success">0</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <div class="divider"></div>
-
-    <!-- Features -->
-    <section class="section" id="features">
-        <div class="section-header">
-            <span class="section-label">Powerful Features</span>
-            <h2 class="section-title">Everything You Need to Run Support</h2>
-            <p class="section-desc">Private threads, automation rules, smart assignment, and real-time analytics — all out of the box.</p>
-        </div>
-
-        <div class="grid-3 mb-24">
-            <div class="card">
-                <div class="card-icon purple">🔒</div>
-                <h3>Private Thread Tickets</h3>
-                <p>Every message in your support channel creates a private thread. Only the user and staff can see it — no channel clutter.</p>
-            </div>
-            <div class="card">
-                <div class="card-icon purple">📊</div>
-                <h3>Web Dashboard</h3>
-                <p>Ticket volume charts, resolution tracking, staff metrics, priority breakdowns, and satisfaction scores — all in one place.</p>
-            </div>
-            <div class="card">
-                <div class="card-icon green">🤖</div>
-                <h3>Automation Rules</h3>
-                <p>Keyword and regex rules that auto-assign staff, set priority, delete messages, or send custom DMs with embeds.</p>
-            </div>
-            <div class="card">
-                <div class="card-icon red">🚨</div>
-                <h3>Priority Escalation</h3>
-                <p>Tickets auto-escalate from New → Medium → Escalating → Urgent based on your configurable time thresholds.</p>
-            </div>
-            <div class="card">
-                <div class="card-icon purple">👥</div>
-                <h3>Smart Assignment</h3>
-                <p>All Staff, Round Robin, or Primary Owner strategies. Override per-rule for specific keywords or categories.</p>
-            </div>
-            <div class="card">
-                <div class="card-icon orange">⭐</div>
-                <h3>Satisfaction Ratings</h3>
-                <p>Users receive a star rating DM after ticket closure. Track ratings per staff member and overall trends.</p>
-            </div>
-        </div>
-    </section>
-
-    <div class="divider"></div>
-
-    <!-- Comparison -->
-    <section class="section">
-        <div class="section-header">
-            <span class="section-label">Why threadcord?</span>
-            <h2 class="section-title">Faster Resolutions. Happier Users. Smarter Support.</h2>
-            <p class="section-desc">threadcord uses private threads to keep support clean and organized, while real-time analytics help your team resolve issues faster and continuously improve.</p>
-        </div>
-
-        <div class="grid-2">
-            <div class="cmp-card cmp-old">
-                <h4>Other Ticket Bots</h4>
-                <ul class="cmp-list">
-                    <li>Channel-based tickets that clutter your server</li>
-                    <li>Manual management with no insights</li>
-                    <li>Complex setup with dozens of commands</li>
-                    <li>No analytics or performance tracking</li>
-                    <li>Static priority — no escalation</li>
-                </ul>
-            </div>
-            <div class="cmp-card cmp-new">
-                <h4>threadcord</h4>
-                <ul class="cmp-list">
-                    <li>Private threads — clean, invisible, organized</li>
-                    <li>Full web dashboard with real-time analytics</li>
-                    <li>One command setup: <span class="code">/setup</span></li>
-                    <li>Staff performance, resolution times, ratings</li>
-                    <li>Auto-escalating priority system</li>
-                </ul>
-            </div>
-        </div>
-    </section>
-
-    <div class="divider"></div>
-
-    <!-- In-Thread Controls -->
-    <section class="section">
-        <div class="section-header">
-            <span class="section-label">In-Thread Controls</span>
-            <h2 class="section-title">One-Click Ticket Management</h2>
-            <p class="section-desc">Every ticket thread comes with button controls — no commands needed.</p>
-        </div>
-
-        <div class="grid-2" style="max-width:600px;margin:0 auto;">
-            <div class="btn-ctrl">
-                <span class="btn-ctrl-icon">👋</span>
-                <h4>Assign to Me</h4>
-                <p>Claim the ticket as yours</p>
-            </div>
-            <div class="btn-ctrl">
-                <span class="btn-ctrl-icon">🔒</span>
-                <h4>Close Ticket</h4>
-                <p>Close with a reason that gets logged</p>
-            </div>
-        </div>
-    </section>
-
-    <div class="divider"></div>
-
-    <!-- Automation Highlight -->
-    <section class="section">
-        <div class="highlight">
-            <div class="highlight-split">
-                <div>
-                    <span class="section-label">Automation</span>
-                    <h3 style="font-size:1.25rem;font-weight:700;margin-bottom:8px;">Rules That Work While You Sleep</h3>
-                    <p style="font-size:0.9rem;color:var(--muted);line-height:1.6;margin-bottom:16px;">Keyword or regex triggers that automatically take action when a ticket is created.</p>
-                    <ul class="feat-list">
-                        <li><span class="feat-check">✓</span> Auto-assign specific staff by keyword</li>
-                        <li><span class="feat-check">✓</span> Set ticket priority on match</li>
-                        <li><span class="feat-check">✓</span> Delete triggering messages</li>
-                        <li><span class="feat-check">✓</span> Send custom DM with embed</li>
-                        <li><span class="feat-check">✓</span> Override or add to default assignment</li>
-                    </ul>
-                </div>
-                <div>
-                    <div class="card" style="margin:0;">
-                        <p style="font-size:0.75rem;color:hsl(235,86%,75%);font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:10px;">Example Rule</p>
-                        <h3 style="font-size:1rem;">Billing Support</h3>
-                        <p style="margin-top:6px;">Trigger: <span class="code">billing, payment, refund</span></p>
-                        <p style="margin-top:10px;font-size:0.875rem;">Actions:</p>
-                        <div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:6px;">
-                            <span style="display:inline-flex;padding:4px 12px;border-radius:20px;font-size:0.75rem;font-weight:600;background:rgba(88,101,242,0.15);color:hsl(235,86%,75%);border:1px solid rgba(88,101,242,0.25);">Auto-Assign: @BillingTeam</span>
-                            <span style="display:inline-flex;padding:4px 12px;border-radius:20px;font-size:0.75rem;font-weight:600;background:rgba(240,160,48,0.12);color:var(--warning);border:1px solid rgba(240,160,48,0.2);">Priority: Urgent</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <div class="divider"></div>
-
-    <!-- Setup -->
-    <section class="section">
-        <div class="section-header">
-            <span class="section-label">Getting Started</span>
-            <h2 class="section-title">Live in 30 Seconds</h2>
-            <p class="section-desc">No complex configuration. One command and you're ready.</p>
-        </div>
-
-        <div class="flex-col gap-12" style="max-width:700px;margin:0 auto;">
-            <div class="step">
-                <div class="step-num">1</div>
-                <div>
-                    <h3>Invite threadcord</h3>
-                    <p>Add the bot to your server. Required permissions are requested automatically.</p>
-                </div>
-            </div>
-            <div class="step">
-                <div class="step-num">2</div>
-                <div>
-                    <h3>Run <span class="code">/setup</span></h3>
-                    <p>Select your support channel, staff role, and optionally a logs channel.</p>
-                </div>
-            </div>
-            <div class="step">
-                <div class="step-num">3</div>
-                <div>
-                    <h3>You're Live</h3>
-                    <p>Any message in your support channel creates a private thread. Staff are notified, analytics start tracking.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <div class="divider"></div>
-
-    <!-- Everything Included -->
-    <section class="section">
-        <div class="section-header">
-            <h2 class="section-title">Everything Included</h2>
-        </div>
-
-        <div class="grid-2">
-            <div class="card">
-                <h3>📊 Analytics & Insights</h3>
-                <ul class="feat-list">
-                    <li><span class="feat-check">✓</span> Ticket volume over time</li>
-                    <li><span class="feat-check">✓</span> Staff performance metrics</li>
-                    <li><span class="feat-check">✓</span> Average resolution time</li>
-                    <li><span class="feat-check">✓</span> Priority breakdown</li>
-                    <li><span class="feat-check">✓</span> User satisfaction scores</li>
-                </ul>
-            </div>
-            <div class="card">
-                <h3>🎛️ Ticket Management</h3>
-                <ul class="feat-list">
-                    <li><span class="feat-check">✓</span> Assign / reassign staff</li>
-                    <li><span class="feat-check">✓</span> Ticket closure logging</li>
-                    <li><span class="feat-check">✓</span> Close with reason logging</li>
-                    <li><span class="feat-check">✓</span> Auto-close inactive tickets</li>
-                    <li><span class="feat-check">✓</span> Full message history</li>
-                </ul>
-            </div>
-            <div class="card">
-                <h3>⚙️ Automation & Rules</h3>
-                <ul class="feat-list">
-                    <li><span class="feat-check">✓</span> Keyword & regex triggers</li>
-                    <li><span class="feat-check">✓</span> Auto-assign specific staff</li>
-                    <li><span class="feat-check">✓</span> Set priority on match</li>
-                    <li><span class="feat-check">✓</span> Custom DM responses</li>
-                    <li><span class="feat-check">✓</span> Override / add modes</li>
-                </ul>
-            </div>
-            <div class="card">
-                <h3>🎨 Customization</h3>
-                <ul class="feat-list">
-                    <li><span class="feat-check">✓</span> Custom embed colors & layout</li>
-                    <li><span class="feat-check">✓</span> Configurable ticket prefix</li>
-                    <li><span class="feat-check">✓</span> Priority time thresholds</li>
-                    <li><span class="feat-check">✓</span> Branded thumbnails</li>
-                    <li><span class="feat-check">✓</span> Custom footer text</li>
-                </ul>
-            </div>
-        </div>
-    </section>
-
-    <!-- CTA -->
-    <section class="cta">
-        <h2>Ready to upgrade your support?</h2>
-        <p>Join servers already using threadcord — for free.</p>
-        <div class="hero-btns">
-            <a href="https://discord.com/oauth2/authorize?client_id=1466937933981548676&permissions=362924828672&scope=bot%20applications.commands" class="btn btn-primary">Add to Discord</a>
-            <a href="https://dashboard.threadcord.xyz" class="btn btn-secondary">Open Dashboard</a>
-            <a href="https://discord.gg/YZExCVBhUt" class="btn btn-ghost">Support Server</a>
-        </div>
-    </section>
+    </div>
 
     <!-- Footer -->
     <footer class="footer">
@@ -1104,7 +284,7 @@
                 <a href="https://discord.gg/YZExCVBhUt">Support</a>
                 <a href="https://dashboard.threadcord.xyz">Dashboard</a>
             </div>
-            <span class="footer-copy">© 2026 threadcord. Not affiliated with Discord Inc.</span>
+            <span class="footer-copy">&copy; 2026 threadcord. Not affiliated with Discord Inc.</span>
         </div>
     </footer>
 
