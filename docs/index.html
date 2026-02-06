@@ -406,7 +406,7 @@
         /* Stat card with icon (dashboard-style) */
         .dstat {
             background: hsl(232, 12%, 14% / 0.6);
-            border: 1px solid hsl(228, 6%, 25% / 0.4);
+            border: 1px solid hsl(228, 6%, 25% / 0.7);
             border-radius: 12px;
             padding: 18px;
             position: relative;
@@ -469,7 +469,7 @@
         /* Dashboard section card */
         .dsection {
             background: hsl(232, 12%, 14% / 0.6);
-            border: 1px solid hsl(228, 6%, 25% / 0.4);
+            border: 1px solid hsl(228, 6%, 25% / 0.7);
             border-radius: 12px;
             padding: 20px;
         }
@@ -641,7 +641,7 @@
         /* Rule card */
         .rule-card {
             background: hsl(232, 12%, 14% / 0.6);
-            border: 1px solid hsl(228, 6%, 25% / 0.4);
+            border: 1px solid hsl(228, 6%, 25% / 0.7);
             border-radius: 12px;
             padding: 16px 20px;
         }
@@ -904,10 +904,61 @@
         .highlight-split {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 32px;
+            gap: 48px;
             align-items: center;
         }
         @media (max-width: 768px) { .highlight-split { grid-template-columns: 1fr; } }
+
+        /* Feature list (MEE6 style) */
+        .feat-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .feat-list li {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.92rem;
+            color: var(--foreground);
+        }
+        .feat-check {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: rgba(46, 204, 113, 0.15);
+            color: var(--success);
+            font-size: 0.7rem;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        /* Simplified inline chart */
+        .chart {
+            display: flex;
+            align-items: flex-end;
+            gap: 4px;
+            width: 100%;
+        }
+        .chart .chart-col {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+        }
+        .chart .chart-bar {
+            width: 80%;
+            max-width: 28px;
+            border-radius: 3px 3px 1px 1px;
+        }
+        .chart .chart-bar.purple { background: hsl(270, 70%, 55%); }
+        .chart .chart-bar.green { background: hsl(145, 63%, 49%); }
 
         /* Flex helpers */
         .flex-between { display: flex; justify-content: space-between; align-items: center; }
@@ -981,7 +1032,7 @@
 
     <div class="divider"></div>
 
-    <!-- Analytics Section -->
+    <!-- Analytics Section - MEE6 style alternating layout -->
     <section class="section" id="analytics">
         <div class="section-header">
             <span class="section-label">Real-Time Analytics</span>
@@ -989,190 +1040,215 @@
             <p class="section-desc">A Daily Dashboard for at-a-glance operations, a full Analytics page for deep insights, and automation rules — all in one place.</p>
         </div>
 
-        <!-- ===== DAILY DASHBOARD ===== -->
-        <div class="dash-preview mb-24">
-            <div class="dash-titlebar">
-                <div class="dash-dot red"></div>
-                <div class="dash-dot yellow"></div>
-                <div class="dash-dot green"></div>
-                <div class="dash-url">dashboard.threadcord.xyz</div>
-            </div>
-            <div class="dash-body">
-                <div class="mb-24">
-                    <h3 style="font-size:1.2rem;font-weight:700;">Daily Dashboard</h3>
-                    <p style="font-size:0.8rem;color:var(--muted);">Today's operations for <span style="font-style:italic;color:hsl(235,86%,75%);">your-server</span></p>
+        <!-- ===== 1. DAILY DASHBOARD — preview LEFT, text RIGHT ===== -->
+        <div class="highlight-split" style="margin-bottom:80px;">
+            <!-- Preview -->
+            <div class="dash-preview" style="margin:0;">
+                <div class="dash-titlebar">
+                    <div class="dash-dot red"></div>
+                    <div class="dash-dot yellow"></div>
+                    <div class="dash-dot green"></div>
+                    <div class="dash-url">dashboard.threadcord.xyz</div>
                 </div>
-
-                <!-- 4 stat cards with Lucide SVG icons + gradient corners -->
-                <div class="grid-4 mb-16">
-                    <!-- Total Tickets: FileText icon, blue -->
-                    <div class="dstat">
-                        <div class="dstat-corner blue"></div>
-                        <div class="dstat-icon blue">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="hsl(235,86%,65%)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M10 9H8"/><path d="M16 13H8"/><path d="M16 17H8"/></svg>
-                        </div>
-                        <div class="dstat-val">156</div>
-                        <div class="dstat-label">Total Tickets</div>
+                <div class="dash-body">
+                    <div style="margin-bottom:14px;">
+                        <h3 style="font-size:1rem;font-weight:700;">Daily Dashboard</h3>
+                        <p style="font-size:0.72rem;color:var(--muted);">Today's operations for <span style="font-style:italic;color:hsl(235,86%,75%);">your-server</span></p>
                     </div>
-                    <!-- Open Tickets: AlertTriangle icon, orange -->
-                    <div class="dstat">
-                        <div class="dstat-corner orange"></div>
-                        <div class="dstat-icon orange">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="hsl(38,92%,54%)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg>
+                    <div class="grid-2" style="gap:8px;margin-bottom:10px;">
+                        <div class="dstat" style="padding:12px;">
+                            <div class="dstat-corner blue"></div>
+                            <div class="dstat-icon blue" style="width:26px;height:26px;margin-bottom:8px;">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="hsl(235,86%,65%)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/></svg>
+                            </div>
+                            <div class="dstat-val" style="font-size:1.1rem;">156</div>
+                            <div class="dstat-label" style="font-size:0.68rem;">Total Tickets</div>
                         </div>
-                        <div class="dstat-val">3</div>
-                        <div class="dstat-label">Open Tickets</div>
-                        <div class="dstat-sub"><span class="status-dot" style="background:var(--warning);width:6px;height:6px;"></span> Needs attention</div>
-                        <span class="dstat-badge time-badge-active">Active</span>
-                    </div>
-                    <!-- Avg Response: Clock icon, green -->
-                    <div class="dstat">
-                        <div class="dstat-corner green"></div>
-                        <div class="dstat-icon green">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="hsl(145,63%,49%)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                        <div class="dstat" style="padding:12px;">
+                            <div class="dstat-corner orange"></div>
+                            <div class="dstat-icon orange" style="width:26px;height:26px;margin-bottom:8px;">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="hsl(38,92%,54%)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg>
+                            </div>
+                            <div class="dstat-val" style="font-size:1.1rem;">3</div>
+                            <div class="dstat-label" style="font-size:0.68rem;">Open Tickets</div>
+                            <span class="dstat-badge time-badge-active" style="font-size:0.6rem;">Active</span>
                         </div>
-                        <div class="dstat-val">8m</div>
-                        <div class="dstat-label">Avg Response</div>
-                    </div>
-                    <!-- Avg Rating: Star/ClipboardList icon, orange -->
-                    <div class="dstat">
-                        <div class="dstat-corner purple"></div>
-                        <div class="dstat-icon orange">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="hsl(38,92%,54%)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <div class="dstat" style="padding:12px;">
+                            <div class="dstat-corner green"></div>
+                            <div class="dstat-icon green" style="width:26px;height:26px;margin-bottom:8px;">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="hsl(145,63%,49%)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                            </div>
+                            <div class="dstat-val" style="font-size:1.1rem;">8m</div>
+                            <div class="dstat-label" style="font-size:0.68rem;">Avg Response</div>
                         </div>
-                        <div class="dstat-val">4.8</div>
-                        <div class="dstat-label">Avg Rating</div>
-                        <div style="margin-top:4px;color:var(--warning);font-size:0.75rem;letter-spacing:2px;">★★★★★</div>
+                        <div class="dstat" style="padding:12px;">
+                            <div class="dstat-corner purple"></div>
+                            <div class="dstat-icon orange" style="width:26px;height:26px;margin-bottom:8px;">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="hsl(38,92%,54%)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                            </div>
+                            <div class="dstat-val" style="font-size:1.1rem;">4.8</div>
+                            <div class="dstat-label" style="font-size:0.68rem;">Avg Rating</div>
+                            <div style="color:var(--warning);font-size:0.65rem;letter-spacing:1px;margin-top:2px;">★★★★★</div>
+                        </div>
                     </div>
-                </div>
-
-                <!-- Resolution Rate + Today's Performance -->
-                <div class="grid-2 mb-16">
-                    <div class="dsection">
-                        <div class="dsection-head">
-                            <div class="dsection-icon" style="background:rgba(46,204,113,0.15);">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="hsl(145,63%,49%)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                    <div class="dsection" style="padding:12px;margin-bottom:8px;">
+                        <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px;">
+                            <div style="width:22px;height:22px;border-radius:6px;background:rgba(46,204,113,0.15);display:flex;align-items:center;justify-content:center;">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="hsl(145,63%,49%)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
                             </div>
                             <div>
-                                <div class="dsection-title">Resolution Rate</div>
-                                <div class="dsection-subtitle">This month</div>
+                                <div style="font-family:'Poppins',sans-serif;font-size:0.78rem;font-weight:700;">Resolution Rate</div>
+                                <div style="font-size:0.62rem;color:var(--muted);">This month</div>
                             </div>
                         </div>
-                        <div class="dstat-val text-success" style="font-size:1.8rem;">92.3%</div>
-                        <div style="font-size:0.78rem;color:var(--muted);margin-top:2px;">144 of 156 resolved</div>
-                        <div class="progress-track">
+                        <div class="dstat-val text-success" style="font-size:1.3rem;">92.3%</div>
+                        <div style="font-size:0.68rem;color:var(--muted);">144 of 156 resolved</div>
+                        <div class="progress-track" style="margin-top:6px;height:6px;">
                             <div class="progress-fill" style="width:92%;"></div>
                         </div>
-                        <div class="progress-labels">
-                            <span>0%</span>
-                            <span>Target: 85%</span>
-                            <span>100%</span>
-                        </div>
                     </div>
-                    <div class="dsection">
-                        <div class="dsection-head">
-                            <div class="dsection-icon" style="background:rgba(88,101,242,0.15);">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="hsl(235,86%,65%)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-                            </div>
-                            <div>
-                                <div class="dsection-title">Today's Performance</div>
-                                <div class="dsection-subtitle">Live metrics</div>
+                    <div class="grid-2" style="gap:8px;">
+                        <div class="dsection" style="padding:12px;">
+                            <div style="font-family:'Poppins',sans-serif;font-size:0.75rem;font-weight:700;margin-bottom:8px;">Staff Activity</div>
+                            <div class="flex-col gap-4" style="font-size:0.75rem;">
+                                <div class="flex-between"><span class="text-muted">Total Staff</span><span>5</span></div>
+                                <div class="flex-between"><span class="text-muted">Active Chats</span><span>3</span></div>
+                                <div class="flex-between"><span class="text-muted">Avg Response</span><span class="text-success">8m</span></div>
                             </div>
                         </div>
-                        <div style="display:flex;gap:48px;margin-top:16px;">
-                            <div style="text-align:center;">
-                                <div class="dstat-val" style="font-size:1.6rem;">7</div>
-                                <div style="font-size:0.78rem;color:var(--muted);">Closed Today</div>
-                            </div>
-                            <div style="text-align:center;">
-                                <div class="dstat-val" style="font-size:1.6rem;">4.8</div>
-                                <div style="font-size:0.78rem;color:var(--muted);">Today's Rating</div>
-                                <div style="font-size:0.7rem;color:var(--warning);margin-top:2px;">★ Excellent</div>
+                        <div class="dsection" style="padding:12px;">
+                            <div style="font-family:'Poppins',sans-serif;font-size:0.75rem;font-weight:700;margin-bottom:8px;">Status Breakdown</div>
+                            <div class="flex-col gap-4" style="font-size:0.75rem;">
+                                <div class="flex-between"><span><span class="status-dot" style="background:hsl(145,63%,49%);"></span> New <span class="status-time">(5m)</span></span><span>1</span></div>
+                                <div class="flex-between"><span><span class="status-dot" style="background:hsl(38,92%,54%);"></span> Medium <span class="status-time">(15m)</span></span><span>1</span></div>
+                                <div class="flex-between"><span><span class="status-dot" style="background:hsl(15,80%,55%);"></span> Escalating <span class="status-time">(45m)</span></span><span>1</span></div>
+                                <div class="flex-between"><span><span class="status-dot" style="background:hsl(0,84%,60%);"></span> Urgent <span class="status-time">(120m)</span></span><span>0</span></div>
                             </div>
                         </div>
                     </div>
                 </div>
+            </div>
+            <!-- Text -->
+            <div style="display:flex;flex-direction:column;justify-content:center;">
+                <span class="section-label">Daily Dashboard</span>
+                <h2 style="font-size:1.6rem;font-weight:700;margin-bottom:12px;">See Everything at a Glance</h2>
+                <p style="color:var(--muted);font-size:0.95rem;line-height:1.7;margin-bottom:20px;">Your Daily Dashboard gives you a real-time overview of your entire support operation. Track total tickets, open issues, response times, and satisfaction ratings — all updating live as your team works.</p>
+                <ul class="feat-list" style="margin-bottom:24px;">
+                    <li><span class="feat-check">✓</span> Resolution rate with configurable targets</li>
+                    <li><span class="feat-check">✓</span> Staff activity with member list</li>
+                    <li><span class="feat-check">✓</span> Priority status breakdown with time thresholds</li>
+                    <li><span class="feat-check">✓</span> Today's performance metrics (live)</li>
+                </ul>
+                <a href="https://dashboard.threadcord.xyz" class="btn btn-primary" style="align-self:flex-start;">Open Dashboard</a>
+            </div>
+        </div>
 
-                <!-- Staff Activity + Status Breakdown -->
-                <div class="grid-2">
-                    <div class="dsection">
-                        <div class="dsection-head">
-                            <div class="dsection-icon" style="background:rgba(88,101,242,0.15);">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="hsl(235,86%,65%)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-                            </div>
-                            <div class="dsection-title">Staff Activity</div>
+        <!-- ===== 2. ANALYTICS — text LEFT, preview RIGHT ===== -->
+        <div class="highlight-split" style="margin-bottom:80px;">
+            <!-- Text -->
+            <div style="display:flex;flex-direction:column;justify-content:center;">
+                <span class="section-label">Deep Analytics</span>
+                <h2 style="font-size:1.6rem;font-weight:700;margin-bottom:12px;">Understand Your Support Quality</h2>
+                <p style="color:var(--muted);font-size:0.95rem;line-height:1.7;margin-bottom:20px;">Dive deeper with ticket trend charts, staff rating breakdowns, response time analytics, and a full staff performance table. Filter by 7 days, 30 days, or all time to spot patterns and improve.</p>
+                <ul class="feat-list" style="margin-bottom:24px;">
+                    <li><span class="feat-check">✓</span> Ticket volume trends over time</li>
+                    <li><span class="feat-check">✓</span> Staff ratings breakdown (positive vs negative)</li>
+                    <li><span class="feat-check">✓</span> Response time tracking with targets</li>
+                    <li><span class="feat-check">✓</span> Per-staff performance table</li>
+                    <li><span class="feat-check">✓</span> Top staff member recognition</li>
+                </ul>
+                <a href="https://dashboard.threadcord.xyz" class="btn btn-primary" style="align-self:flex-start;">View Analytics</a>
+            </div>
+            <!-- Preview -->
+            <div class="dash-preview" style="margin:0;">
+                <div class="dash-titlebar">
+                    <div class="dash-dot red"></div>
+                    <div class="dash-dot yellow"></div>
+                    <div class="dash-dot green"></div>
+                    <div class="dash-url">dashboard.threadcord.xyz/analytics</div>
+                </div>
+                <div class="dash-body">
+                    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;">
+                        <div>
+                            <h3 style="font-size:1rem;font-weight:700;">Analytics</h3>
+                            <p style="font-size:0.72rem;color:var(--muted);">Insights for <span style="font-style:italic;color:hsl(235,86%,75%);">your-server</span></p>
                         </div>
-                        <div class="flex-col gap-8">
-                            <div class="flex-between" style="font-size:0.85rem;">
-                                <div style="display:flex;align-items:center;gap:6px;">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="hsl(235,86%,65%)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-                                    <span class="text-muted">Total Staff</span>
-                                </div>
-                                <span>5</span>
+                        <div style="display:flex;gap:0;border-radius:6px;overflow:hidden;border:1px solid var(--border);">
+                            <span style="padding:3px 10px;font-size:0.62rem;font-weight:600;background:var(--success);color:#fff;">7 Days</span>
+                            <span style="padding:3px 10px;font-size:0.62rem;font-weight:600;background:var(--secondary);color:var(--muted);">30 Days</span>
+                            <span style="padding:3px 10px;font-size:0.62rem;font-weight:600;background:var(--secondary);color:var(--muted);">All Time</span>
+                        </div>
+                    </div>
+                    <!-- Charts -->
+                    <div class="grid-2" style="gap:8px;margin-bottom:10px;">
+                        <div class="dsection" style="padding:12px;">
+                            <div style="font-family:'Poppins',sans-serif;font-size:0.75rem;font-weight:700;margin-bottom:10px;">Ticket Trends</div>
+                            <div class="chart" style="height:60px;">
+                                <div class="chart-col"><div class="chart-bar purple" style="height:20px;"></div></div>
+                                <div class="chart-col"><div class="chart-bar purple" style="height:32px;"></div></div>
+                                <div class="chart-col"><div class="chart-bar purple" style="height:14px;"></div></div>
+                                <div class="chart-col"><div class="chart-bar purple" style="height:45px;"></div></div>
+                                <div class="chart-col"><div class="chart-bar purple" style="height:24px;"></div></div>
+                                <div class="chart-col"><div class="chart-bar purple" style="height:10px;"></div></div>
+                                <div class="chart-col"><div class="chart-bar purple" style="height:6px;"></div></div>
                             </div>
-                            <div class="flex-between" style="font-size:0.85rem;">
-                                <div style="display:flex;align-items:center;gap:6px;">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--muted)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg>
-                                    <span class="text-muted">Active Chats</span>
-                                </div>
-                                <span>3</span>
-                            </div>
-                            <div class="flex-between" style="font-size:0.85rem;">
-                                <div style="display:flex;align-items:center;gap:6px;">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--muted)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-                                    <span class="text-muted">Avg Response</span>
-                                </div>
-                                <span class="text-success">8m</span>
+                            <div style="display:flex;justify-content:space-around;margin-top:4px;">
+                                <span class="chart-xlabel" style="font-size:0.55rem;">M</span>
+                                <span class="chart-xlabel" style="font-size:0.55rem;">T</span>
+                                <span class="chart-xlabel" style="font-size:0.55rem;">W</span>
+                                <span class="chart-xlabel" style="font-size:0.55rem;">T</span>
+                                <span class="chart-xlabel" style="font-size:0.55rem;">F</span>
+                                <span class="chart-xlabel" style="font-size:0.55rem;">S</span>
+                                <span class="chart-xlabel" style="font-size:0.55rem;">S</span>
                             </div>
                         </div>
-                        <div style="margin-top:14px;padding-top:12px;border-top:1px solid hsl(228,6%,25%/0.3);">
-                            <div style="font-size:0.72rem;color:var(--muted);margin-bottom:8px;">Staff Members</div>
-                            <div class="flex-col gap-6">
-                                <div class="staff-row"><span class="staff-dot" style="background:var(--success);"></span> alex_support</div>
-                                <div class="staff-row"><span class="staff-dot" style="background:var(--primary);"></span> jordan_mod</div>
-                                <div class="staff-row"><span class="staff-dot" style="background:hsl(270,70%,55%);"></span> sam_admin</div>
+                        <div class="dsection" style="padding:12px;">
+                            <div style="font-family:'Poppins',sans-serif;font-size:0.75rem;font-weight:700;margin-bottom:10px;">Staff Ratings</div>
+                            <div class="chart" style="height:60px;">
+                                <div class="chart-col"><div class="chart-bar green" style="height:50px;"></div></div>
+                                <div class="chart-col"><div class="chart-bar green" style="height:38px;"></div></div>
+                                <div class="chart-col"><div class="chart-bar green" style="height:28px;"></div></div>
+                            </div>
+                            <div style="display:flex;justify-content:space-around;margin-top:4px;">
+                                <span class="chart-xlabel" style="font-size:0.55rem;">alex</span>
+                                <span class="chart-xlabel" style="font-size:0.55rem;">jordan</span>
+                                <span class="chart-xlabel" style="font-size:0.55rem;">sam</span>
                             </div>
                         </div>
                     </div>
-                    <div class="dsection">
-                        <div class="dsection-head">
-                            <div class="dsection-icon" style="background:rgba(240,160,48,0.15);">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="hsl(38,92%,54%)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg>
-                            </div>
-                            <div class="dsection-title">Status Breakdown</div>
+                    <!-- Bottom stats -->
+                    <div class="grid-3" style="gap:8px;margin-bottom:10px;">
+                        <div class="dsection" style="padding:10px;">
+                            <div style="font-size:0.65rem;font-weight:700;margin-bottom:4px;">Resolution Rate</div>
+                            <div class="dstat-val text-success" style="font-size:1.1rem;">92.3%</div>
+                            <div style="font-size:0.6rem;color:var(--muted);">144 of 156</div>
                         </div>
-                        <div class="flex-col gap-8">
-                            <div class="status-row">
-                                <div class="status-left">
-                                    <span class="status-dot" style="background:hsl(145,63%,49%);"></span>
-                                    <span>New</span>
-                                    <span class="status-time">(5m)</span>
-                                </div>
-                                <div class="status-right"><span style="font-weight:600;">1</span><span>(33%)</span></div>
+                        <div class="dsection" style="padding:10px;">
+                            <div style="font-size:0.65rem;font-weight:700;margin-bottom:4px;">Daily Average</div>
+                            <div class="dstat-val text-primary" style="font-size:1.1rem;">22</div>
+                            <div style="font-size:0.6rem;color:var(--muted);">Tickets/day</div>
+                        </div>
+                        <div class="dsection" style="padding:10px;">
+                            <div style="font-size:0.65rem;font-weight:700;margin-bottom:4px;">Top Staff</div>
+                            <div class="dstat-val text-warning" style="font-size:1.1rem;">alex</div>
+                            <div style="font-size:0.6rem;color:var(--muted);">4.9★ · 52 tickets</div>
+                        </div>
+                    </div>
+                    <!-- Staff table -->
+                    <div class="dsection" style="padding:12px;">
+                        <div style="font-size:0.75rem;font-weight:700;margin-bottom:8px;">Staff Performance</div>
+                        <div class="perf-table" style="font-size:0.68rem;">
+                            <div class="perf-table-head" style="font-size:0.58rem;">
+                                <span>Staff</span><span>Tickets</span><span>Rated</span><span>Avg</span><span>Pos</span><span>Neg</span>
                             </div>
-                            <div class="status-row">
-                                <div class="status-left">
-                                    <span class="status-dot" style="background:hsl(38,92%,54%);"></span>
-                                    <span>Medium</span>
-                                    <span class="status-time">(15m)</span>
-                                </div>
-                                <div class="status-right"><span style="font-weight:600;">1</span><span>(33%)</span></div>
+                            <div class="perf-table-row">
+                                <span>alex</span><span class="text-muted">52</span><span class="text-muted">38</span><span class="text-warning">4.9★</span><span class="text-success">36</span><span class="text-destructive">0</span>
                             </div>
-                            <div class="status-row">
-                                <div class="status-left">
-                                    <span class="status-dot" style="background:hsl(15,80%,55%);"></span>
-                                    <span>Escalating</span>
-                                    <span class="status-time">(45m)</span>
-                                </div>
-                                <div class="status-right"><span style="font-weight:600;">1</span><span>(33%)</span></div>
+                            <div class="perf-table-row">
+                                <span>jordan</span><span class="text-muted">41</span><span class="text-muted">29</span><span class="text-warning">4.7★</span><span class="text-success">27</span><span class="text-destructive">1</span>
                             </div>
-                            <div class="status-row">
-                                <div class="status-left">
-                                    <span class="status-dot" style="background:hsl(0,84%,60%);"></span>
-                                    <span>Urgent</span>
-                                    <span class="status-time">(120m)</span>
-                                </div>
-                                <div class="status-right"><span style="font-weight:600;">0</span><span>(0%)</span></div>
+                            <div class="perf-table-row" style="border:none;">
+                                <span>sam</span><span class="text-muted">35</span><span class="text-muted">22</span><span class="text-warning">4.6★</span><span class="text-success">20</span><span class="text-destructive">0</span>
                             </div>
                         </div>
                     </div>
@@ -1180,261 +1256,83 @@
             </div>
         </div>
 
-        <!-- ===== ANALYTICS PAGE ===== -->
-        <div class="dash-preview mb-24">
-            <div class="dash-titlebar">
-                <div class="dash-dot red"></div>
-                <div class="dash-dot yellow"></div>
-                <div class="dash-dot green"></div>
-                <div class="dash-url">dashboard.threadcord.xyz/analytics</div>
-            </div>
-            <div class="dash-body">
-                <div class="flex-between mb-24">
-                    <div>
-                        <h3 style="font-size:1.2rem;font-weight:700;">Analytics</h3>
-                        <p style="font-size:0.8rem;color:var(--muted);">Insights for <span style="font-style:italic;color:hsl(235,86%,75%);">your-server</span></p>
-                    </div>
-                    <div style="display:flex;gap:0;border-radius:8px;overflow:hidden;border:1px solid var(--border);">
-                        <span style="padding:5px 14px;font-size:0.72rem;font-weight:600;background:var(--success);color:#fff;">7 Days</span>
-                        <span style="padding:5px 14px;font-size:0.72rem;font-weight:600;background:var(--secondary);color:var(--muted);">30 Days</span>
-                        <span style="padding:5px 14px;font-size:0.72rem;font-weight:600;background:var(--secondary);color:var(--muted);">All Time</span>
-                    </div>
+        <!-- ===== 3. RULES — preview LEFT, text RIGHT ===== -->
+        <div class="highlight-split">
+            <!-- Preview -->
+            <div class="dash-preview" style="margin:0;">
+                <div class="dash-titlebar">
+                    <div class="dash-dot red"></div>
+                    <div class="dash-dot yellow"></div>
+                    <div class="dash-dot green"></div>
+                    <div class="dash-url">dashboard.threadcord.xyz/rules</div>
                 </div>
-
-                <!-- 5 stat cards with SVG icons -->
-                <div class="grid-5 mb-16">
-                    <div class="dstat">
-                        <div class="dstat-icon blue">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="hsl(235,86%,65%)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M10 9H8"/><path d="M16 13H8"/><path d="M16 17H8"/></svg>
-                        </div>
-                        <div class="dstat-val">156</div>
-                        <div class="dstat-label">Total Tickets</div>
-                        <div class="dstat-sub">All time</div>
+                <div class="dash-body">
+                    <div style="margin-bottom:14px;">
+                        <h3 style="font-size:1rem;font-weight:700;">Rules</h3>
+                        <p style="font-size:0.72rem;color:var(--muted);">Create automated responses for ticket messages in <span style="font-style:italic;color:hsl(235,86%,75%);">your-server</span></p>
                     </div>
-                    <div class="dstat">
-                        <div class="dstat-icon green">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="hsl(145,63%,49%)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                    <div class="info-banner" style="margin-bottom:12px;padding:10px 12px;">
+                        <div class="info-banner-icon" style="width:20px;height:20px;">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="hsl(235,86%,75%)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
                         </div>
-                        <div class="dstat-val">3</div>
-                        <div class="dstat-label">Open Tickets</div>
-                        <div class="dstat-sub">Needs attention</div>
-                    </div>
-                    <div class="dstat">
-                        <div class="dstat-icon blue">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="hsl(235,86%,65%)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/></svg>
-                        </div>
-                        <div class="dstat-val">7</div>
-                        <div class="dstat-label">Closed Today</div>
-                        <div class="dstat-sub">Last 24 hours</div>
-                    </div>
-                    <div class="dstat">
-                        <div class="dstat-icon green">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="hsl(145,63%,49%)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-                        </div>
-                        <div class="dstat-val">8m</div>
-                        <div class="dstat-label">Avg. Resolution</div>
-                        <div class="dstat-sub">Time to close</div>
-                    </div>
-                    <div class="dstat">
-                        <div class="dstat-icon orange">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="hsl(38,92%,54%)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                        </div>
-                        <div class="dstat-val">4.8</div>
-                        <div class="dstat-label">Avg. Rating</div>
-                        <div class="dstat-sub">User satisfaction</div>
-                        <div style="margin-top:6px;height:4px;background:var(--warning);border-radius:2px;"></div>
-                    </div>
-                </div>
-
-                <!-- Charts: Ticket Trends + Staff Ratings -->
-                <div class="grid-2 mb-16">
-                    <div class="dsection" style="padding:20px;">
-                        <div style="font-family:'Poppins',sans-serif;font-size:0.95rem;font-weight:700;margin-bottom:18px;">Ticket Trends</div>
-                        <div style="display:flex;">
-                            <div class="chart-yaxis">
-                                <span>30</span><span>20</span><span>10</span><span>0</span>
-                            </div>
-                            <div class="chart-area">
-                                <div class="chart-gridline" style="bottom:33%;"></div>
-                                <div class="chart-gridline" style="bottom:66%;"></div>
-                                <div class="chart-col"><div class="chart-bar purple" style="height:25px;width:80%;max-width:32px;border-radius:3px 3px 1px 1px;"></div></div>
-                                <div class="chart-col"><div class="chart-bar purple" style="height:40px;width:80%;max-width:32px;border-radius:3px 3px 1px 1px;"></div></div>
-                                <div class="chart-col"><div class="chart-bar purple" style="height:18px;width:80%;max-width:32px;border-radius:3px 3px 1px 1px;"></div></div>
-                                <div class="chart-col"><div class="chart-bar purple" style="height:55px;width:80%;max-width:32px;border-radius:3px 3px 1px 1px;"></div></div>
-                                <div class="chart-col"><div class="chart-bar purple" style="height:30px;width:80%;max-width:32px;border-radius:3px 3px 1px 1px;"></div></div>
-                                <div class="chart-col"><div class="chart-bar purple" style="height:12px;width:80%;max-width:32px;border-radius:3px 3px 1px 1px;"></div></div>
-                                <div class="chart-col"><div class="chart-bar purple" style="height:8px;width:80%;max-width:32px;border-radius:3px 3px 1px 1px;"></div></div>
-                            </div>
-                        </div>
-                        <div style="display:flex;justify-content:space-around;margin-left:28px;margin-top:6px;">
-                            <span class="chart-xlabel">Mon</span>
-                            <span class="chart-xlabel">Tue</span>
-                            <span class="chart-xlabel">Wed</span>
-                            <span class="chart-xlabel">Thu</span>
-                            <span class="chart-xlabel">Fri</span>
-                            <span class="chart-xlabel">Sat</span>
-                            <span class="chart-xlabel">Sun</span>
+                        <div>
+                            <div class="info-banner-title" style="font-size:0.72rem;">Automated Rules</div>
+                            <div class="info-banner-text" style="font-size:0.65rem;">Automatically filter spam, block inappropriate content, and provide instant responses.</div>
                         </div>
                     </div>
-                    <div class="dsection" style="padding:20px;">
-                        <div style="font-family:'Poppins',sans-serif;font-size:0.95rem;font-weight:700;margin-bottom:18px;">Staff Ratings Breakdown</div>
-                        <div style="display:flex;">
-                            <div class="chart-yaxis">
-                                <span>5</span><span>4</span><span>3</span><span>2</span><span>0</span>
-                            </div>
-                            <div class="chart-area" style="justify-content:space-evenly;">
-                                <div class="chart-gridline" style="bottom:20%;"></div>
-                                <div class="chart-gridline" style="bottom:40%;"></div>
-                                <div class="chart-gridline" style="bottom:60%;"></div>
-                                <div class="chart-gridline" style="bottom:80%;"></div>
-                                <div class="chart-col"><div class="chart-bar green" style="height:75px;width:70%;max-width:32px;border-radius:3px 3px 1px 1px;"></div></div>
-                                <div class="chart-col"><div class="chart-bar green" style="height:55px;width:70%;max-width:32px;border-radius:3px 3px 1px 1px;"></div></div>
-                                <div class="chart-col"><div class="chart-bar green" style="height:40px;width:70%;max-width:32px;border-radius:3px 3px 1px 1px;"></div></div>
-                            </div>
-                        </div>
-                        <div style="display:flex;justify-content:space-evenly;margin-left:28px;margin-top:6px;">
-                            <span class="chart-xlabel">alex</span>
-                            <span class="chart-xlabel">jordan</span>
-                            <span class="chart-xlabel">sam</span>
-                        </div>
-                        <div style="display:flex;justify-content:center;gap:16px;margin-top:12px;font-size:0.7rem;color:var(--muted);">
-                            <span><span style="display:inline-block;width:10px;height:10px;border-radius:2px;background:var(--success);vertical-align:middle;margin-right:4px;"></span> Positive (4-5★)</span>
-                            <span><span style="display:inline-block;width:10px;height:10px;border-radius:2px;background:var(--destructive);vertical-align:middle;margin-right:4px;"></span> Negative (1-2★)</span>
-                        </div>
+                    <div style="text-align:right;margin-bottom:10px;">
+                        <span style="display:inline-flex;align-items:center;gap:4px;padding:5px 12px;border-radius:6px;background:var(--primary);color:#fff;font-size:0.7rem;font-weight:600;">+ Create Rule</span>
                     </div>
-                </div>
-
-                <!-- Response Time + Ticket Status Distribution -->
-                <div class="grid-2 mb-16">
-                    <div class="dsection">
-                        <div style="font-family:'Poppins',sans-serif;font-size:0.95rem;font-weight:700;margin-bottom:12px;">Response Time Analytics</div>
-                        <div class="dstat-val text-success" style="font-size:1.6rem;">8 min</div>
-                        <div style="font-size:0.78rem;color:var(--muted);margin-top:2px;">Average response time</div>
-                        <div class="progress-track" style="margin-top:14px;">
-                            <div class="progress-fill" style="width:13%;background:var(--primary);"></div>
-                        </div>
-                        <div style="font-size:0.68rem;color:var(--muted);margin-top:6px;">Target: &lt;60 minutes</div>
-                    </div>
-                    <div class="dsection">
-                        <div style="font-family:'Poppins',sans-serif;font-size:0.95rem;font-weight:700;margin-bottom:12px;">Ticket Status Distribution</div>
-                        <div class="flex-col gap-8">
-                            <div class="flex-between" style="font-size:0.88rem;">
-                                <span>Open</span><span style="font-weight:600;">3</span>
-                            </div>
-                            <div class="flex-between" style="font-size:0.88rem;">
-                                <span>Closed</span><span style="font-weight:600;">144</span>
-                            </div>
-                            <div class="flex-between" style="font-size:0.88rem;">
-                                <span>Closed Today</span><span style="font-weight:600;">7</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Resolution Rate + Daily Average + Top Staff -->
-                <div class="grid-3 mb-16">
-                    <div class="dsection">
-                        <div style="font-family:'Poppins',sans-serif;font-size:0.88rem;font-weight:700;margin-bottom:8px;">Resolution Rate</div>
-                        <div class="dstat-val text-success" style="font-size:1.6rem;">92.3%</div>
-                        <div style="font-size:0.78rem;color:var(--muted);margin-top:2px;">144 of 156 tickets resolved</div>
-                    </div>
-                    <div class="dsection">
-                        <div style="font-family:'Poppins',sans-serif;font-size:0.88rem;font-weight:700;margin-bottom:8px;">Daily Average</div>
-                        <div class="dstat-val text-primary" style="font-size:1.6rem;">22</div>
-                        <div style="font-size:0.78rem;color:var(--muted);margin-top:2px;">Tickets per day</div>
-                    </div>
-                    <div class="dsection">
-                        <div style="font-family:'Poppins',sans-serif;font-size:0.88rem;font-weight:700;margin-bottom:8px;">Top Staff Member</div>
-                        <div class="dstat-val text-warning" style="font-size:1.6rem;">alex</div>
-                        <div style="font-size:0.78rem;color:var(--muted);margin-top:2px;">4.9★ avg · 52 tickets</div>
-                    </div>
-                </div>
-
-                <!-- Staff Performance Table -->
-                <div class="dsection" style="padding:20px;">
-                    <div style="font-family:'Poppins',sans-serif;font-size:0.95rem;font-weight:700;margin-bottom:14px;">Staff Performance</div>
-                    <div class="perf-table">
-                        <div class="perf-table-head">
-                            <span>Staff ID</span><span>Total Tickets</span><span>Rated Tickets</span><span>Avg Rating</span><span>Positive (4-5★)</span><span>Negative (1-2★)</span>
-                        </div>
-                        <div class="perf-table-row">
-                            <span>alex_support</span><span class="text-muted">52</span><span class="text-muted">38</span><span class="text-warning">4.9★</span><span class="text-success">36</span><span class="text-destructive">0</span>
-                        </div>
-                        <div class="perf-table-row">
-                            <span>jordan_mod</span><span class="text-muted">41</span><span class="text-muted">29</span><span class="text-warning">4.7★</span><span class="text-success">27</span><span class="text-destructive">1</span>
-                        </div>
-                        <div class="perf-table-row" style="border:none;">
-                            <span>sam_admin</span><span class="text-muted">35</span><span class="text-muted">22</span><span class="text-warning">4.6★</span><span class="text-success">20</span><span class="text-destructive">0</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- ===== RULES PAGE ===== -->
-        <div class="dash-preview">
-            <div class="dash-titlebar">
-                <div class="dash-dot red"></div>
-                <div class="dash-dot yellow"></div>
-                <div class="dash-dot green"></div>
-                <div class="dash-url">dashboard.threadcord.xyz/rules</div>
-            </div>
-            <div class="dash-body">
-                <div class="mb-16">
-                    <h3 style="font-size:1.15rem;font-weight:700;">Rules</h3>
-                    <p style="font-size:0.78rem;color:var(--muted);">Create automated responses for ticket messages in <span style="font-style:italic;color:hsl(235,86%,75%);">threadcord - bot support</span></p>
-                </div>
-
-                <!-- Info banner -->
-                <div class="info-banner mb-16">
-                    <div class="info-banner-icon">ℹ️</div>
-                    <div>
-                        <div class="info-banner-title">Automated Rules</div>
-                        <div class="info-banner-text">Automatically filter spam, block inappropriate content, and provide instant responses to common questions. Rules help keep your support channel clean and organized.</div>
-                    </div>
-                </div>
-
-                <!-- Create Rule button -->
-                <div style="text-align:right;margin-bottom:12px;">
-                    <span style="display:inline-flex;align-items:center;gap:6px;padding:6px 14px;border-radius:8px;background:var(--primary);color:#fff;font-size:0.78rem;font-weight:600;">+ Create Rule</span>
-                </div>
-
-                <!-- Rule cards -->
-                <div class="flex-col gap-12">
-                    <div class="rule-card">
-                        <div class="rule-top">
-                            <div>
-                                <div class="rule-name">ggs</div>
-                                <div class="rule-trigger">Trigger: <span class="rule-trigger-val">ggs</span></div>
-                                <div class="rule-actions">
-                                    <span class="rule-action-badge purple">Auto-Assign Staff</span>
-                                    <span class="rule-action-badge orange">Set Priority: Urgent</span>
+                    <div class="flex-col gap-8">
+                        <div class="rule-card" style="padding:12px 14px;">
+                            <div class="rule-top">
+                                <div>
+                                    <div class="rule-name" style="font-size:0.85rem;">billing support</div>
+                                    <div class="rule-trigger" style="font-size:0.7rem;">Trigger: <span class="rule-trigger-val" style="font-size:0.68rem;">billing, payment, refund</span></div>
+                                    <div class="rule-actions" style="margin-top:4px;">
+                                        <span class="rule-action-badge purple" style="font-size:0.62rem;">Auto-Assign Staff</span>
+                                        <span class="rule-action-badge orange" style="font-size:0.62rem;">Set Priority: Urgent</span>
+                                    </div>
+                                </div>
+                                <div class="rule-controls">
+                                    <div class="rule-toggle" style="width:30px;height:16px;"></div>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--muted)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"/><path d="m15 5 4 4"/></svg>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--muted)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18"/><path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"/><path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"/><line x1="10" x2="10" y1="11" y2="17"/><line x1="14" x2="14" y1="11" y2="17"/></svg>
                                 </div>
                             </div>
-                            <div class="rule-controls">
-                                <div class="rule-toggle"></div>
-                                <span style="font-size:0.85rem;color:var(--muted);">✏️</span>
-                                <span style="font-size:0.85rem;color:var(--muted);">🗑️</span>
-                            </div>
                         </div>
-                    </div>
-                    <div class="rule-card">
-                        <div class="rule-top">
-                            <div>
-                                <div class="rule-name">windsurf rule</div>
-                                <div class="rule-trigger">Trigger: <span class="rule-trigger-val">windsurf</span></div>
-                                <div class="rule-actions">
-                                    <span class="rule-action-badge purple">Auto-Assign Staff</span>
+                        <div class="rule-card" style="padding:12px 14px;">
+                            <div class="rule-top">
+                                <div>
+                                    <div class="rule-name" style="font-size:0.85rem;">bug reports</div>
+                                    <div class="rule-trigger" style="font-size:0.7rem;">Trigger: <span class="rule-trigger-val" style="font-size:0.68rem;">bug, crash, error</span></div>
+                                    <div class="rule-actions" style="margin-top:4px;">
+                                        <span class="rule-action-badge purple" style="font-size:0.62rem;">Auto-Assign Staff</span>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="rule-controls">
-                                <div class="rule-toggle"></div>
-                                <span style="font-size:0.85rem;color:var(--muted);">✏️</span>
-                                <span style="font-size:0.85rem;color:var(--muted);">🗑️</span>
+                                <div class="rule-controls">
+                                    <div class="rule-toggle" style="width:30px;height:16px;"></div>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--muted)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"/><path d="m15 5 4 4"/></svg>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--muted)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18"/><path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"/><path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"/><line x1="10" x2="10" y1="11" y2="17"/><line x1="14" x2="14" y1="11" y2="17"/></svg>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
+            </div>
+            <!-- Text -->
+            <div style="display:flex;flex-direction:column;justify-content:center;">
+                <span class="section-label">Automation Rules</span>
+                <h2 style="font-size:1.6rem;font-weight:700;margin-bottom:12px;">Rules That Work While You Sleep</h2>
+                <p style="color:var(--muted);font-size:0.95rem;line-height:1.7;margin-bottom:20px;">Create keyword or regex-based rules that automatically take action when a ticket is created. Auto-assign the right staff, set priority levels, delete spam, or send custom DM responses — all without lifting a finger.</p>
+                <ul class="feat-list" style="margin-bottom:24px;">
+                    <li><span class="feat-check">✓</span> Keyword and regex trigger matching</li>
+                    <li><span class="feat-check">✓</span> Auto-assign specific staff members</li>
+                    <li><span class="feat-check">✓</span> Set ticket priority on match</li>
+                    <li><span class="feat-check">✓</span> Delete triggering messages</li>
+                    <li><span class="feat-check">✓</span> Send custom DM with embed</li>
+                </ul>
+                <a href="https://dashboard.threadcord.xyz" class="btn btn-primary" style="align-self:flex-start;">Manage Rules</a>
             </div>
         </div>
     </section>
@@ -1537,40 +1435,6 @@
                 <span class="btn-ctrl-icon">🔒</span>
                 <h4>Close Ticket</h4>
                 <p>Close with a reason that gets logged</p>
-            </div>
-        </div>
-    </section>
-
-    <div class="divider"></div>
-
-    <!-- Automation Highlight -->
-    <section class="section">
-        <div class="highlight">
-            <div class="highlight-split">
-                <div>
-                    <span class="section-label">Automation</span>
-                    <h3 style="font-size:1.25rem;font-weight:700;margin-bottom:8px;">Rules That Work While You Sleep</h3>
-                    <p style="font-size:0.9rem;color:var(--muted);line-height:1.6;margin-bottom:16px;">Keyword or regex triggers that automatically take action when a ticket is created.</p>
-                    <ul class="feat-list">
-                        <li><span class="feat-check">✓</span> Auto-assign specific staff by keyword</li>
-                        <li><span class="feat-check">✓</span> Set ticket priority on match</li>
-                        <li><span class="feat-check">✓</span> Delete triggering messages</li>
-                        <li><span class="feat-check">✓</span> Send custom DM with embed</li>
-                        <li><span class="feat-check">✓</span> Override or add to default assignment</li>
-                    </ul>
-                </div>
-                <div>
-                    <div class="card" style="margin:0;">
-                        <p style="font-size:0.75rem;color:hsl(235,86%,75%);font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:10px;">Example Rule</p>
-                        <h3 style="font-size:1rem;">Billing Support</h3>
-                        <p style="margin-top:6px;">Trigger: <span class="code">billing, payment, refund</span></p>
-                        <p style="margin-top:10px;font-size:0.875rem;">Actions:</p>
-                        <div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:6px;">
-                            <span style="display:inline-flex;padding:4px 12px;border-radius:20px;font-size:0.75rem;font-weight:600;background:rgba(88,101,242,0.15);color:hsl(235,86%,75%);border:1px solid rgba(88,101,242,0.25);">Auto-Assign: @BillingTeam</span>
-                            <span style="display:inline-flex;padding:4px 12px;border-radius:20px;font-size:0.75rem;font-weight:600;background:rgba(240,160,48,0.12);color:var(--warning);border:1px solid rgba(240,160,48,0.2);">Priority: Urgent</span>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
     </section>
