@@ -1143,7 +1143,7 @@
                 <a href="#features" class="nav-link">Features</a>
                 <a href="#analytics" class="nav-link">Analytics</a>
                 <a href="https://dashboard.threadcord.xyz" class="nav-link">Dashboard</a>
-                <a href="http://discord.com/invite/3aSWbtPC3V" class="nav-link">Support</a>
+                <a href="https://discord.gg/YZExCVBhUt" class="nav-link">Support</a>
                 <a href="https://discord.com/oauth2/authorize?client_id=1466937933981548676&permissions=362924828672&scope=bot%20applications.commands" class="nav-btn">Add to Discord</a>
             </div>
         </div>
@@ -1160,7 +1160,7 @@
         <div class="hero-btns fade-up fade-up-d3">
             <a href="https://discord.com/oauth2/authorize?client_id=1466937933981548676&permissions=362924828672&scope=bot%20applications.commands" class="btn btn-primary">Add to Discord</a>
             <a href="https://dashboard.threadcord.xyz" class="btn btn-secondary">Open Dashboard</a>
-            <a href="http://discord.com/invite/3aSWbtPC3V" class="btn btn-ghost">Support Server</a>
+            <a href="https://discord.gg/YZExCVBhUt" class="btn btn-ghost">Support Server</a>
         </div>
         <div class="stats-bar fade-up fade-up-d3">
             <div class="stat-item">
@@ -1436,36 +1436,91 @@
                         <span style="display:inline-flex;align-items:center;gap:4px;padding:5px 12px;border-radius:6px;background:var(--primary);color:#fff;font-size:0.7rem;font-weight:600;">+ Create Rule</span>
                     </div>
                     <div class="flex-col gap-8">
+                        <!-- Phishing Protection Rule -->
                         <div class="rule-card" style="padding:12px 14px;">
-                            <div class="rule-top">
-                                <div>
-                                    <div class="rule-name" style="font-size:0.85rem;">billing support</div>
-                                    <div class="rule-trigger" style="font-size:0.7rem;">Trigger: <span class="rule-trigger-val" style="font-size:0.68rem;">billing, payment, refund</span></div>
-                                    <div class="rule-actions" style="margin-top:4px;">
-                                        <span class="rule-action-badge purple" style="font-size:0.62rem;">Auto-Assign Staff</span>
-                                        <span class="rule-action-badge orange" style="font-size:0.62rem;">Set Priority: Urgent</span>
-                                    </div>
-                                </div>
-                                <div class="rule-controls">
+                            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
+                                <div class="rule-name" style="font-size:0.85rem;">Phishing Protection</div>
+                                <div style="display:flex;align-items:center;gap:8px;">
                                     <div class="rule-toggle" style="width:30px;height:16px;"></div>
                                     <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--muted)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"/><path d="m15 5 4 4"/></svg>
                                     <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--muted)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18"/><path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"/><path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"/><line x1="10" x2="10" y1="11" y2="17"/><line x1="14" x2="14" y1="11" y2="17"/></svg>
                                 </div>
                             </div>
-                        </div>
-                        <div class="rule-card" style="padding:12px 14px;">
-                            <div class="rule-top">
-                                <div>
-                                    <div class="rule-name" style="font-size:0.85rem;">bug reports</div>
-                                    <div class="rule-trigger" style="font-size:0.7rem;">Trigger: <span class="rule-trigger-val" style="font-size:0.68rem;">bug, crash, error</span></div>
-                                    <div class="rule-actions" style="margin-top:4px;">
-                                        <span class="rule-action-badge purple" style="font-size:0.62rem;">Auto-Assign Staff</span>
-                                    </div>
+                            <div style="display:flex;align-items:center;gap:6px;font-size:0.68rem;flex-wrap:wrap;">
+                                <span style="color:var(--muted);">Trigger:</span>
+                                <span class="rule-trigger-val">verify account</span>
+                                <span style="color:hsl(235,86%,75%);">OR</span>
+                                <span class="rule-trigger-val">suspended</span>
+                                <span style="color:hsl(235,86%,75%);">OR</span>
+                                <span class="rule-trigger-val">click to verify</span>
+                                <span style="color:hsl(235,86%,75%);">OR</span>
+                                <span class="rule-trigger-val">urgent action required</span>
+                                <span style="color:hsl(235,86%,75%);">OR</span>
+                                <span class="rule-trigger-val">confirm identity</span>
+                                <span style="color:hsl(235,86%,75%);">OR</span>
+                                <span class="rule-trigger-val">security alert</span>
+                            </div>
+                            <div style="margin-top:8px;font-size:0.68rem;color:var(--muted);">
+                                <span style="font-weight:600;">Workflow:</span>
+                            </div>
+                            <div style="display:flex;align-items:center;gap:6px;margin-top:4px;flex-wrap:wrap;">
+                                <div style="display:flex;align-items:center;gap:6px;padding:4px 10px;border-radius:6px;background:rgba(231,76,60,0.15);border:1px solid rgba(231,76,60,0.3);">
+                                    <span style="font-size:0.65rem;color:hsl(0,84%,60%);">⊗</span>
+                                    <span style="font-size:0.65rem;font-weight:600;color:hsl(0,84%,60%);">No Ticket</span>
                                 </div>
-                                <div class="rule-controls">
+                                <span style="color:var(--muted);font-size:0.7rem;">→</span>
+                                <div style="display:flex;align-items:center;gap:6px;padding:4px 10px;border-radius:6px;background:rgba(231,76,60,0.15);border:1px solid rgba(231,76,60,0.3);">
+                                    <span style="font-size:0.65rem;color:hsl(0,84%,60%);">🗑</span>
+                                    <span style="font-size:0.65rem;font-weight:600;color:hsl(0,84%,60%);">Delete Message</span>
+                                </div>
+                                <span style="color:var(--muted);font-size:0.7rem;">→</span>
+                                <div style="display:flex;align-items:center;gap:6px;padding:4px 10px;border-radius:6px;background:rgba(88,101,242,0.15);border:1px solid rgba(88,101,242,0.3);">
+                                    <span style="font-size:0.65rem;">📩</span>
+                                    <span style="font-size:0.65rem;font-weight:600;color:hsl(235,86%,75%);">Send DM</span>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Spam Filter Rule -->
+                        <div class="rule-card" style="padding:12px 14px;">
+                            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
+                                <div class="rule-name" style="font-size:0.85rem;">Spam Filter</div>
+                                <div style="display:flex;align-items:center;gap:8px;">
                                     <div class="rule-toggle" style="width:30px;height:16px;"></div>
                                     <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--muted)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"/><path d="m15 5 4 4"/></svg>
                                     <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--muted)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18"/><path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"/><path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"/><line x1="10" x2="10" y1="11" y2="17"/><line x1="14" x2="14" y1="11" y2="17"/></svg>
+                                </div>
+                            </div>
+                            <div style="display:flex;align-items:center;gap:6px;font-size:0.68rem;flex-wrap:wrap;">
+                                <span style="color:var(--muted);">Trigger:</span>
+                                <span class="rule-trigger-val">discord.gg</span>
+                                <span style="color:hsl(235,86%,75%);">OR</span>
+                                <span class="rule-trigger-val">bit.ly</span>
+                                <span style="color:hsl(235,86%,75%);">OR</span>
+                                <span class="rule-trigger-val">free nitro</span>
+                                <span style="color:hsl(235,86%,75%);">OR</span>
+                                <span class="rule-trigger-val">click here</span>
+                                <span style="color:hsl(235,86%,75%);">OR</span>
+                                <span class="rule-trigger-val">giveaway</span>
+                                <span style="color:hsl(235,86%,75%);">OR</span>
+                                <span class="rule-trigger-val">dm me</span>
+                            </div>
+                            <div style="margin-top:8px;font-size:0.68rem;color:var(--muted);">
+                                <span style="font-weight:600;">Workflow:</span>
+                            </div>
+                            <div style="display:flex;align-items:center;gap:6px;margin-top:4px;flex-wrap:wrap;">
+                                <div style="display:flex;align-items:center;gap:6px;padding:4px 10px;border-radius:6px;background:rgba(231,76,60,0.15);border:1px solid rgba(231,76,60,0.3);">
+                                    <span style="font-size:0.65rem;color:hsl(0,84%,60%);">⊗</span>
+                                    <span style="font-size:0.65rem;font-weight:600;color:hsl(0,84%,60%);">No Ticket</span>
+                                </div>
+                                <span style="color:var(--muted);font-size:0.7rem;">→</span>
+                                <div style="display:flex;align-items:center;gap:6px;padding:4px 10px;border-radius:6px;background:rgba(231,76,60,0.15);border:1px solid rgba(231,76,60,0.3);">
+                                    <span style="font-size:0.65rem;color:hsl(0,84%,60%);">🗑</span>
+                                    <span style="font-size:0.65rem;font-weight:600;color:hsl(0,84%,60%);">Delete Message</span>
+                                </div>
+                                <span style="color:var(--muted);font-size:0.7rem;">→</span>
+                                <div style="display:flex;align-items:center;gap:6px;padding:4px 10px;border-radius:6px;background:rgba(88,101,242,0.15);border:1px solid rgba(88,101,242,0.3);">
+                                    <span style="font-size:0.65rem;">📩</span>
+                                    <span style="font-size:0.65rem;font-weight:600;color:hsl(235,86%,75%);">Send DM</span>
                                 </div>
                             </div>
                         </div>
@@ -1697,7 +1752,7 @@
         <div class="hero-btns">
             <a href="https://discord.com/oauth2/authorize?client_id=1466937933981548676&permissions=362924828672&scope=bot%20applications.commands" class="btn btn-primary">Add to Discord</a>
             <a href="https://dashboard.threadcord.xyz" class="btn btn-secondary">Open Dashboard</a>
-            <a href="https://discord.com/invite/3aSWbtPC3V" class="btn btn-ghost">Support Server</a>
+            <a href="https://discord.gg/YZExCVBhUt" class="btn btn-ghost">Support Server</a>
         </div>
     </section>
 
@@ -1708,7 +1763,7 @@
             <div class="footer-links">
                 <a href="terms.html">Terms of Service</a>
                 <a href="privacy.html">Privacy Policy</a>
-                <a href="https://discord.gg/YZExCVBhUt">Support</a>
+                <a href="https://discord.com/invite/3aSWbtPC3V">Support</a>
                 <a href="https://dashboard.threadcord.xyz">Dashboard</a>
             </div>
             <span class="footer-copy">© 2026 threadcord. Not affiliated with Discord Inc.</span>
