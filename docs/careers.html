@@ -290,11 +290,11 @@
         }
         .apply-btn:hover { opacity: 0.9; box-shadow: var(--shadow-glow); }
 
-        /* Form */
+        /* Form - ThreadCord Dashboard Style */
         .form-section {
-            background: var(--card);
-            border: 1px solid hsl(228, 6%, 25% / 0.5);
-            border-radius: 12px;
+            background: hsl(var(--card));
+            border: 1px solid hsl(var(--border));
+            border-radius: 0.75rem;
             padding: 32px;
             box-shadow: var(--shadow-card);
             margin-top: 60px;
@@ -306,7 +306,7 @@
             display: block;
             margin-bottom: 8px;
             font-weight: 500;
-            color: var(--foreground);
+            color: hsl(var(--foreground));
             font-size: 0.875rem;
         }
         .form-group input,
@@ -314,10 +314,10 @@
         .form-group textarea {
             width: 100%;
             padding: 12px;
-            background: hsl(232, 12%, 14% / 0.6) !important;
-            border: 1px solid hsl(228, 6%, 25% / 0.7) !important;
-            border-radius: 8px;
-            color: var(--foreground) !important;
+            background: hsl(var(--background));
+            border: 1px solid hsl(var(--input));
+            border-radius: 0.5rem;
+            color: hsl(var(--foreground));
             font-size: 0.875rem;
             transition: all 0.2s ease;
             font-family: inherit;
@@ -325,41 +325,32 @@
             -moz-appearance: none;
             appearance: none;
         }
-        .form-group input[type="text"],
-        .form-group input[type="email"],
-        .form-group input[type="url"] {
-            background: hsl(232, 12%, 14% / 0.6) !important;
-            color: var(--foreground) !important;
-        }
-        .form-group select {
-            background: hsl(232, 12%, 14% / 0.6) !important;
-            color: var(--foreground) !important;
-            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='hsl(227, 6%, 73%)' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6,9 12,15 18,9'%3e%3c/polyline%3e%3c/svg%3e");
-            background-repeat: no-repeat;
-            background-position: right 12px center;
-            background-size: 16px;
-            padding-right: 40px;
-        }
         .form-group input:focus,
         .form-group select:focus,
         .form-group textarea:focus {
             outline: none;
-            border-color: var(--primary);
-            box-shadow: 0 0 0 3px rgba(88, 101, 242, 0.1);
+            border-color: hsl(var(--ring));
+            box-shadow: 0 0 0 2px hsl(var(--ring) / 0.2);
         }
         .form-group input::placeholder,
         .form-group select::placeholder,
         .form-group textarea::placeholder {
-            color: hsl(227, 6%, 73%);
-            opacity: 0.7;
+            color: hsl(var(--muted-foreground));
+            opacity: 1;
+        }
+        .form-group select {
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%239ca3af' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
+            background-position: right 12px center;
+            background-repeat: no-repeat;
+            background-size: 16px;
+            padding-right: 40px;
         }
         .form-group select option {
-            background: hsl(232, 12%, 14%);
-            color: var(--foreground);
-            border: none;
+            background: hsl(var(--background));
+            color: hsl(var(--foreground));
         }
         .form-group textarea {
-            min-height: 100px;
+            min-height: 80px;
             resize: vertical;
         }
         .form-row {
@@ -368,11 +359,11 @@
             gap: 16px;
         }
         .submit-btn {
-            background: var(--primary);
-            color: #fff;
+            background: hsl(var(--primary));
+            color: hsl(var(--primary-foreground));
             padding: 12px 32px;
             border: none;
-            border-radius: 8px;
+            border-radius: 0.5rem;
             font-size: 0.95rem;
             font-weight: 600;
             cursor: pointer;
@@ -380,29 +371,33 @@
             display: block;
             margin: 24px auto 0;
         }
-        .submit-btn:hover { opacity: 0.9; box-shadow: var(--shadow-glow); }
+        .submit-btn:hover { 
+            background: hsl(var(--primary) / 0.9);
+            box-shadow: var(--shadow-glow);
+        }
         .submit-btn:disabled {
-            background: var(--muted);
+            background: hsl(var(--muted));
+            color: hsl(var(--muted-foreground));
             cursor: not-allowed;
         }
 
         .form-message {
             padding: 16px;
-            border-radius: 8px;
+            border-radius: 0.5rem;
             margin-top: 20px;
             text-align: center;
             display: none;
             font-size: 0.875rem;
         }
         .form-message.success {
-            background: rgba(46, 204, 113, 0.1);
-            border: 1px solid rgba(46, 204, 113, 0.3);
-            color: var(--success);
+            background: hsl(var(--success) / 0.1);
+            border: 1px solid hsl(var(--success) / 0.3);
+            color: hsl(var(--success));
         }
         .form-message.error {
-            background: rgba(231, 76, 60, 0.1);
-            border: 1px solid rgba(231, 76, 60, 0.3);
-            color: var(--destructive);
+            background: hsl(var(--destructive) / 0.1);
+            border: 1px solid hsl(var(--destructive) / 0.3);
+            color: hsl(var(--destructive));
         }
 
         .loading {
