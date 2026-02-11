@@ -1,477 +1,568 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>ThreadCord • Careers</title>
-    <meta name="description" content="Join the ThreadCord team - Help us build the future of Discord ticket management" />
-    <meta name="author" content="ThreadCord" />
-
-    <meta property="og:title" content="ThreadCord • Careers" />
-    <meta property="og:description" content="Join the ThreadCord team - Help us build the future of Discord ticket management" />
-    <meta property="og:type" content="website" />
-
-    <meta name="twitter:card" content="summary_large_image" />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>threadcord - Careers</title>
+    <meta name="description" content="Help test and improve the threadcord Discord support system">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%235865F2' rx='6'/%3E%3Ctext x='16' y='22' font-family='Arial, sans-serif' font-size='20' font-weight='bold' text-anchor='middle' fill='white'%3ET%3C/text%3E%3C/svg%3E">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
     
     <style>
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
-
-      body {
-        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        min-height: 100vh;
-        color: #333;
-      }
-
-      .container {
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 20px;
-      }
-
-      header {
-        text-align: center;
-        padding: 60px 20px;
-        color: white;
-      }
-
-      header h1 {
-        font-size: 3rem;
-        margin-bottom: 20px;
-        font-weight: 700;
-      }
-
-      header p {
-        font-size: 1.2rem;
-        opacity: 0.9;
-        max-width: 600px;
-        margin: 0 auto;
-      }
-
-      .positions {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-        gap: 30px;
-        margin-top: 40px;
-      }
-
-      .position-card {
-        background: white;
-        border-radius: 16px;
-        padding: 30px;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-      }
-
-      .position-card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
-      }
-
-      .position-title {
-        font-size: 1.5rem;
-        font-weight: 600;
-        color: #667eea;
-        margin-bottom: 10px;
-      }
-
-      .position-type {
-        display: inline-block;
-        background: #f0f4ff;
-        color: #667eea;
-        padding: 5px 15px;
-        border-radius: 20px;
-        font-size: 0.9rem;
-        margin-bottom: 20px;
-      }
-
-      .tasks {
-        margin-top: 20px;
-      }
-
-      .tasks h3 {
-        font-size: 1.1rem;
-        margin-bottom: 15px;
-        color: #333;
-      }
-
-      .task-list {
-        list-style: none;
-      }
-
-      .task-list li {
-        padding: 8px 0;
-        padding-left: 25px;
-        position: relative;
-        color: #666;
-        line-height: 1.5;
-      }
-
-      .task-list li:before {
-        content: "✓";
-        position: absolute;
-        left: 0;
-        color: #667eea;
-        font-weight: bold;
-      }
-
-      .apply-btn {
-        display: inline-block;
-        background: #667eea;
-        color: white;
-        padding: 12px 30px;
-        border-radius: 8px;
-        text-decoration: none;
-        font-weight: 500;
-        margin-top: 20px;
-        transition: background 0.3s ease;
-        cursor: pointer;
-        border: none;
-      }
-
-      .apply-btn:hover {
-        background: #5a6fd8;
-      }
-
-      .application-form {
-        background: white;
-        border-radius: 16px;
-        padding: 40px;
-        margin-top: 60px;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-      }
-
-      .application-form h2 {
-        font-size: 2rem;
-        color: #667eea;
-        margin-bottom: 30px;
-        text-align: center;
-      }
-
-      .form-group {
-        margin-bottom: 20px;
-      }
-
-      .form-group label {
-        display: block;
-        margin-bottom: 8px;
-        font-weight: 500;
-        color: #333;
-      }
-
-      .form-group input,
-      .form-group select,
-      .form-group textarea {
-        width: 100%;
-        padding: 12px;
-        border: 2px solid #e1e5e9;
-        border-radius: 8px;
-        font-size: 1rem;
-        transition: border-color 0.3s ease;
-        font-family: inherit;
-      }
-
-      .form-group input:focus,
-      .form-group select:focus,
-      .form-group textarea:focus {
-        outline: none;
-        border-color: #667eea;
-      }
-
-      .form-group textarea {
-        min-height: 120px;
-        resize: vertical;
-      }
-
-      .form-row {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 20px;
-      }
-
-      .submit-btn {
-        background: #667eea;
-        color: white;
-        padding: 15px 40px;
-        border: none;
-        border-radius: 8px;
-        font-size: 1.1rem;
-        font-weight: 500;
-        cursor: pointer;
-        transition: background 0.3s ease;
-        display: block;
-        margin: 30px auto 0;
-      }
-
-      .submit-btn:hover {
-        background: #5a6fd8;
-      }
-
-      .submit-btn:disabled {
-        background: #ccc;
-        cursor: not-allowed;
-      }
-
-      .form-message {
-        padding: 15px;
-        border-radius: 8px;
-        margin-top: 20px;
-        text-align: center;
-        display: none;
-      }
-
-      .form-message.success {
-        background: #d4edda;
-        color: #155724;
-        border: 1px solid #c3e6cb;
-      }
-
-      .form-message.error {
-        background: #f8d7da;
-        color: #721c24;
-        border: 1px solid #f5c6cb;
-      }
-
-      footer {
-        text-align: center;
-        padding: 40px 20px;
-        color: white;
-        opacity: 0.8;
-        margin-top: 60px;
-      }
-
-      .loading {
-        display: inline-block;
-        width: 20px;
-        height: 20px;
-        border: 3px solid #f3f3f3;
-        border-top: 3px solid #667eea;
-        border-radius: 50%;
-        animation: spin 1s linear infinite;
-        margin-right: 10px;
-      }
-
-      @keyframes spin {
-        0% { transform: rotate(0deg); }
-        100% { transform: rotate(360deg); }
-      }
-
-      @media (max-width: 768px) {
-        header h1 {
-          font-size: 2rem;
+        :root {
+            --background: hsl(232, 12%, 14%);
+            --foreground: hsl(0, 0%, 100%);
+            --card: hsl(228, 6%, 18%);
+            --card-hover: hsl(228, 6%, 20%);
+            --border: hsl(228, 6%, 25%);
+            --primary: hsl(235, 86%, 65%);
+            --primary-dark: hsl(250, 80%, 55%);
+            --secondary: hsl(228, 6%, 22%);
+            --success: hsl(145, 63%, 49%);
+            --warning: hsl(38, 92%, 54%);
+            --destructive: hsl(0, 84%, 60%);
+            --muted: hsl(227, 6%, 73%);
+            --gradient-primary: linear-gradient(135deg, hsl(235, 86%, 65%) 0%, hsl(250, 80%, 55%) 100%);
+            --shadow-card: 0 4px 24px -4px rgba(0, 0, 0, 0.4);
+            --shadow-glow: 0 0 40px -10px rgba(88, 101, 242, 0.3);
         }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         
-        .positions {
-          grid-template-columns: 1fr;
+        body {
+            font-family: 'Inter', system-ui, sans-serif;
+            background: var(--background);
+            color: var(--foreground);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
-        
+
+        h1, h2, h3, h4, h5, h6 { font-family: 'Poppins', sans-serif; }
+
+        a { text-decoration: none; color: inherit; }
+
+        /* Scrollbar */
+        ::-webkit-scrollbar { width: 8px; height: 8px; }
+        ::-webkit-scrollbar-track { background: hsl(228, 6%, 16%); }
+        ::-webkit-scrollbar-thumb { background: hsl(228, 6%, 30%); border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--primary); }
+
+        /* Nav */
+        .nav {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: hsl(232, 12%, 14% / 0.85);
+            backdrop-filter: blur(16px);
+            border-bottom: 1px solid var(--border);
+        }
+        .nav-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 16px 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .nav-logo {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: var(--foreground);
+        }
+        .nav-links { display: flex; align-items: center; gap: 8px; }
+        .nav-link {
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: var(--muted);
+            transition: all 0.2s ease;
+        }
+        .nav-link:hover { color: var(--foreground); background: var(--secondary); }
+        .nav-btn {
+            padding: 8px 20px;
+            border-radius: 8px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            background: var(--primary);
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .nav-btn:hover { opacity: 0.9; box-shadow: var(--shadow-glow); }
+
+        /* Hero */
+        .hero {
+            position: relative;
+            text-align: center;
+            padding: 100px 24px 80px;
+            overflow: hidden;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(ellipse, rgba(88, 101, 242, 0.12) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 16px;
+            border-radius: 20px;
+            background: rgba(88, 101, 242, 0.12);
+            border: 1px solid rgba(88, 101, 242, 0.25);
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: hsl(235, 86%, 75%);
+            margin-bottom: 24px;
+        }
+        .hero h1 {
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            font-weight: 800;
+            line-height: 1.15;
+            margin-bottom: 20px;
+            letter-spacing: -0.5px;
+        }
+        .hero h1 span {
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .hero-sub {
+            font-size: 1.15rem;
+            color: var(--muted);
+            max-width: 600px;
+            margin: 0 auto 36px;
+            line-height: 1.7;
+        }
+
+        /* Sections */
+        .section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 80px 24px;
+        }
+        .section-header {
+            text-align: center;
+            margin-bottom: 48px;
+        }
+        .section-label {
+            display: inline-block;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: hsl(235, 86%, 75%);
+            margin-bottom: 12px;
+        }
+        .section-title {
+            font-size: clamp(1.75rem, 3vw, 2.25rem);
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+        .section-desc {
+            font-size: 1rem;
+            color: var(--muted);
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.65;
+        }
+
+        /* Cards */
+        .card {
+            background: var(--card);
+            border: 1px solid hsl(228, 6%, 25% / 0.5);
+            border-radius: 12px;
+            padding: 24px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: var(--shadow-card);
+        }
+        .card:hover {
+            border-color: rgba(88, 101, 242, 0.3);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-glow);
+        }
+        .card h3 {
+            font-size: 1.05rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+        .card p {
+            font-size: 0.875rem;
+            color: var(--muted);
+            line-height: 1.6;
+        }
+
+        /* Grids */
+        .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+        @media (max-width: 900px) {
+            .grid-3 { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 600px) {
+            .grid-3 { grid-template-columns: 1fr; }
+        }
+
+        /* Position cards */
+        .position-card {
+            background: var(--card);
+            border: 1px solid hsl(228, 6%, 25% / 0.5);
+            border-radius: 12px;
+            padding: 28px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: var(--shadow-card);
+        }
+        .position-card:hover {
+            border-color: rgba(88, 101, 242, 0.3);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-glow);
+        }
+        .position-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 16px;
+        }
+        .position-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--foreground);
+        }
+        .position-type {
+            font-size: 0.75rem;
+            background: rgba(88, 101, 242, 0.15);
+            color: hsl(235, 86%, 75%);
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+        .position-desc {
+            font-size: 0.875rem;
+            color: var(--muted);
+            line-height: 1.6;
+            margin-bottom: 16px;
+        }
+        .task-list {
+            list-style: none;
+            margin-bottom: 20px;
+        }
+        .task-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+            font-size: 0.8rem;
+            color: hsl(0, 0%, 88%);
+            margin-bottom: 8px;
+            line-height: 1.4;
+        }
+        .task-list li::before {
+            content: "✓";
+            color: var(--success);
+            font-weight: 700;
+            flex-shrink: 0;
+            line-height: 1.4;
+        }
+        .apply-btn {
+            background: var(--primary);
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 8px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            width: 100%;
+        }
+        .apply-btn:hover { opacity: 0.9; box-shadow: var(--shadow-glow); }
+
+        /* Form */
+        .form-section {
+            background: var(--card);
+            border: 1px solid hsl(228, 6%, 25% / 0.5);
+            border-radius: 14px;
+            padding: 40px;
+            box-shadow: var(--shadow-card);
+            margin-top: 60px;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--foreground);
+            font-size: 0.875rem;
+        }
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            background: hsl(232, 12%, 14% / 0.6);
+            border: 1px solid hsl(228, 6%, 25% / 0.7);
+            border-radius: 8px;
+            color: var(--foreground);
+            font-size: 0.875rem;
+            transition: all 0.2s ease;
+            font-family: inherit;
+        }
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(88, 101, 242, 0.1);
+        }
+        .form-group textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
         .form-row {
-          grid-template-columns: 1fr;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
         }
-        
-        .application-form {
-          padding: 20px;
+        .submit-btn {
+            background: var(--primary);
+            color: #fff;
+            padding: 12px 32px;
+            border: none;
+            border-radius: 8px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: block;
+            margin: 24px auto 0;
         }
-      }
+        .submit-btn:hover { opacity: 0.9; box-shadow: var(--shadow-glow); }
+        .submit-btn:disabled {
+            background: var(--muted);
+            cursor: not-allowed;
+        }
+
+        .form-message {
+            padding: 16px;
+            border-radius: 8px;
+            margin-top: 20px;
+            text-align: center;
+            display: none;
+            font-size: 0.875rem;
+        }
+        .form-message.success {
+            background: rgba(46, 204, 113, 0.1);
+            border: 1px solid rgba(46, 204, 113, 0.3);
+            color: var(--success);
+        }
+        .form-message.error {
+            background: rgba(231, 76, 60, 0.1);
+            border: 1px solid rgba(231, 76, 60, 0.3);
+            color: var(--destructive);
+        }
+
+        .loading {
+            display: inline-block;
+            width: 16px;
+            height: 16px;
+            border: 2px solid transparent;
+            border-top: 2px solid #fff;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-right: 8px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        @media (max-width: 768px) {
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+            .form-section {
+                padding: 24px;
+            }
+        }
     </style>
-  </head>
+</head>
 
-  <body>
-    <div class="container">
-      <header>
-        <h1>Join ThreadCord</h1>
-        <p>Help us build the future of Discord ticket management. We're looking for talented people to join our growing team.</p>
-      </header>
-
-      <main>
-        <div class="positions">
-          <!-- QA Engineer Position -->
-          <div class="position-card">
-            <h2 class="position-title">QA Engineer</h2>
-            <span class="position-type">Full-time • Remote</span>
-            
-            <div class="tasks">
-              <h3>What you'll do:</h3>
-              <ul class="task-list">
-                <li>Test and validate new features for the ThreadCord Discord bot</li>
-                <li>Create and maintain test cases for ticket management workflows</li>
-                <li>Identify and document bugs in the Discord integration</li>
-                <li>Work with developers to reproduce and resolve issues</li>
-                <li>Perform regression testing before releases</li>
-                <li>Monitor bot performance and reliability</li>
-                <li>Help improve user experience through quality assurance</li>
-              </ul>
+<body>
+    <!-- Nav -->
+    <nav class="nav">
+        <div class="nav-inner">
+            <div class="nav-logo">threadcord</div>
+            <div class="nav-links">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="#" class="nav-link">Careers</a>
+                <a href="https://github.com/dev-be-bot/threadcord-bot" class="nav-btn">GitHub</a>
             </div>
-            
-            <button class="apply-btn" onclick="scrollToForm('QA Engineer')">Apply Now</button>
-          </div>
+        </div>
+    </nav>
 
-          <!-- Software Engineer Position -->
-          <div class="position-card">
-            <h2 class="position-title">Software Engineer</h2>
-            <span class="position-type">Full-time • Remote</span>
-            
-            <div class="tasks">
-              <h3>What you'll do:</h3>
-              <ul class="task-list">
-                <li>Develop new features for the ThreadCord Discord bot</li>
-                <li>Build and maintain the dashboard web application</li>
-                <li>Implement Discord API integrations and workflows</li>
-                <li>Write clean, efficient code in Python and TypeScript</li>
-                <li>Design and optimize database schemas for ticket data</li>
-                <li>Collaborate with the team on architecture decisions</li>
-                <li>Participate in code reviews and technical discussions</li>
-              </ul>
-            </div>
-            
-            <button class="apply-btn" onclick="scrollToForm('Software Engineer')">Apply Now</button>
-          </div>
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero-badge">🚀 Join the team</div>
+        <h1>Help build <span>threadcord</span></h1>
+        <p class="hero-sub">Looking for contributors to help test and improve the Discord ticket management system</p>
+    </section>
 
-          <!-- Community Manager Position -->
-          <div class="position-card">
-            <h2 class="position-title">Community Manager</h2>
-            <span class="position-type">Part-time • Remote</span>
-            
-            <div class="tasks">
-              <h3>What you'll do:</h3>
-              <ul class="task-list">
-                <li>Manage and grow the ThreadCord Discord community</li>
-                <li>Provide support and guidance to ThreadCord users</li>
-                <li>Create engaging content and community events</li>
-                <li>Moderate Discord channels and maintain community guidelines</li>
-                <li>Collect user feedback and report bugs to the development team</li>
-                <li>Help new users get started with ThreadCord</li>
-                <li>Build relationships with community members and server owners</li>
-              </ul>
+    <!-- Positions -->
+    <section class="section">
+        <div class="section-header">
+            <div class="section-label">Open Positions</div>
+            <h2 class="section-title">Help us improve threadcord</h2>
+            <p class="section-desc">We're looking for contributors to help test features and improve the system</p>
+        </div>
+
+        <div class="grid-3">
+            <!-- QA Engineer -->
+            <div class="position-card">
+                <div class="position-header">
+                    <h3 class="position-title">QA Tester</h3>
+                    <span class="position-type">Volunteer</span>
+                </div>
+                <p class="position-desc">Help test new features and find bugs in the threadcord system</p>
+                <ul class="task-list">
+                    <li>Test new Discord bot features</li>
+                    <li>Report bugs and issues</li>
+                    <li>Suggest improvements</li>
+                    <li>Help with user documentation</li>
+                </ul>
+                <button class="apply-btn" onclick="scrollToForm('QA Tester')">Apply</button>
             </div>
-            
-            <button class="apply-btn" onclick="scrollToForm('Community Manager')">Apply Now</button>
-          </div>
+
+            <!-- Software Engineer -->
+            <div class="position-card">
+                <div class="position-header">
+                    <h3 class="position-title">Developer</h3>
+                    <span class="position-type">Volunteer</span>
+                </div>
+                <p class="position-desc">Contribute code to improve the threadcord Discord bot and dashboard</p>
+                <ul class="task-list">
+                    <li>Develop new bot features</li>
+                    <li>Improve dashboard functionality</li>
+                    <li>Fix bugs and optimize performance</li>
+                    <li>Code review and testing</li>
+                </ul>
+                <button class="apply-btn" onclick="scrollToForm('Developer')">Apply</button>
+            </div>
+
+            <!-- Community Manager -->
+            <div class="position-card">
+                <div class="position-header">
+                    <h3 class="position-title">Community Helper</h3>
+                    <span class="position-type">Volunteer</span>
+                </div>
+                <p class="position-desc">Help users get started with threadcord and provide support</p>
+                <ul class="task-list">
+                    <li>Help new users setup threadcord</li>
+                    <li>Answer questions and provide support</li>
+                    <li>Collect user feedback</li>
+                    <li>Improve documentation</li>
+                </ul>
+                <button class="apply-btn" onclick="scrollToForm('Community Helper')">Apply</button>
+            </div>
         </div>
 
         <!-- Application Form -->
-        <div class="application-form" id="application-form">
-          <h2>Apply to Join ThreadCord</h2>
-          
-          <!-- Formspree Form - Replace YOUR_FORM_ID with your actual Formspree form ID -->
-          <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST" id="career-form">
-            <div class="form-row">
-              <div class="form-group">
-                <label for="name">Full Name *</label>
-                <input type="text" id="name" name="name" required>
-              </div>
-              <div class="form-group">
-                <label for="email">Email Address *</label>
-                <input type="email" id="email" name="email" required>
-              </div>
+        <div class="form-section" id="application-form">
+            <div class="section-header">
+                <h2 class="section-title">Apply to contribute</h2>
+                <p class="section-desc">Fill out this form to join the threadcord contributor team</p>
             </div>
-            
-            <div class="form-row">
-              <div class="form-group">
-                <label for="position">Position *</label>
-                <select id="position" name="position" required>
-                  <option value="">Select a position</option>
-                  <option value="QA Engineer">QA Engineer</option>
-                  <option value="Software Engineer">Software Engineer</option>
-                  <option value="Community Manager">Community Manager</option>
-                </select>
-              </div>
-              <div class="form-group">
-                <label for="location">Location</label>
-                <input type="text" id="location" name="location" placeholder="City, Country">
-              </div>
-            </div>
-            
-            <div class="form-group">
-              <label for="experience">Relevant Experience *</label>
-              <textarea id="experience" name="experience" placeholder="Tell us about your relevant experience and why you're interested in this position..." required></textarea>
-            </div>
-            
-            <div class="form-group">
-              <label for="portfolio">Portfolio/GitHub (Optional)</label>
-              <input type="url" id="portfolio" name="portfolio" placeholder="https://github.com/username or portfolio link">
-            </div>
-            
-            <div class="form-group">
-              <label for="availability">Availability *</label>
-              <select id="availability" name="availability" required>
-                <option value="">Select availability</option>
-                <option value="Immediate">Immediate</option>
-                <option value="2 weeks">2 weeks</option>
-                <option value="1 month">1 month</option>
-                <option value="2 months">2 months</option>
-                <option value="3+ months">3+ months</option>
-              </select>
-            </div>
-            
-            <!-- Hidden field for Formspree -->
-            <input type="hidden" name="_subject" value="New ThreadCord Job Application">
-            <input type="hidden" name="_template" value="table">
-            
-            <button type="submit" class="submit-btn" id="submit-btn">
-              <span id="btn-text">Submit Application</span>
-            </button>
-            
-            <div class="form-message" id="form-message"></div>
-          </form>
-        </div>
-      </main>
 
-      <footer>
-        <p>&copy; 2026 ThreadCord. Building better Discord communities, one ticket at a time.</p>
-      </footer>
-    </div>
+            <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST" id="career-form">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="name">Name *</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email *</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="position">Position *</label>
+                        <select id="position" name="position" required>
+                            <option value="">Select a position</option>
+                            <option value="QA Tester">QA Tester</option>
+                            <option value="Developer">Developer</option>
+                            <option value="Community Helper">Community Helper</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="experience">Experience with Discord bots</label>
+                        <input type="text" id="experience" name="experience" placeholder="Beginner, Intermediate, Advanced">
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="interest">Why interested in threadcord? *</label>
+                    <textarea id="interest" name="interest" placeholder="Tell us why you want to contribute to threadcord..." required></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="github">GitHub (Optional)</label>
+                    <input type="url" id="github" name="github" placeholder="https://github.com/username">
+                </div>
+                
+                <input type="hidden" name="_subject" value="New threadcord Contributor Application">
+                
+                <button type="submit" class="submit-btn" id="submit-btn">
+                    <span id="btn-text">Submit Application</span>
+                </button>
+                
+                <div class="form-message" id="form-message"></div>
+            </form>
+        </div>
+    </section>
 
     <script>
-      function scrollToForm(position) {
-        document.getElementById('position').value = position;
-        document.getElementById('application-form').scrollIntoView({ behavior: 'smooth' });
-      }
-
-      // Handle form submission with loading state
-      document.getElementById('career-form').addEventListener('submit', function(e) {
-        const submitBtn = document.getElementById('submit-btn');
-        const btnText = document.getElementById('btn-text');
-        const formMessage = document.getElementById('form-message');
-        
-        // Show loading state
-        submitBtn.disabled = true;
-        btnText.innerHTML = '<span class="loading"></span>Submitting...';
-        formMessage.style.display = 'none';
-        
-        // Formspree will handle the submission, but we'll show a success message after a delay
-        setTimeout(() => {
-          formMessage.className = 'form-message success';
-          formMessage.textContent = 'Thank you for your application! We\'ll review it and get back to you soon.';
-          formMessage.style.display = 'block';
-          
-          // Reset form
-          this.reset();
-          
-          // Reset button
-          submitBtn.disabled = false;
-          btnText.textContent = 'Submit Application';
-          
-          // Scroll to success message
-          formMessage.scrollIntoView({ behavior: 'smooth' });
-        }, 2000);
-      });
-
-      // Handle Formspree redirect (if they enable it)
-      window.addEventListener('load', function() {
-        const urlParams = new URLSearchParams(window.location.search);
-        if (urlParams.get('success') === 'true') {
-          const formMessage = document.getElementById('form-message');
-          formMessage.className = 'form-message success';
-          formMessage.textContent = 'Thank you for your application! We\'ll review it and get back to you soon.';
-          formMessage.style.display = 'block';
+        function scrollToForm(position) {
+            document.getElementById('position').value = position;
+            document.getElementById('application-form').scrollIntoView({ behavior: 'smooth' });
         }
-      });
+
+        document.getElementById('career-form').addEventListener('submit', function(e) {
+            const submitBtn = document.getElementById('submit-btn');
+            const btnText = document.getElementById('btn-text');
+            const formMessage = document.getElementById('form-message');
+            
+            submitBtn.disabled = true;
+            btnText.innerHTML = '<span class="loading"></span>Submitting...';
+            formMessage.style.display = 'none';
+            
+            setTimeout(() => {
+                formMessage.className = 'form-message success';
+                formMessage.textContent = 'Thanks for applying! We\'ll get back to you soon.';
+                formMessage.style.display = 'block';
+                
+                this.reset();
+                submitBtn.disabled = false;
+                btnText.textContent = 'Submit Application';
+                formMessage.scrollIntoView({ behavior: 'smooth' });
+            }, 2000);
+        });
     </script>
-  </body>
+</body>
 </html>
