@@ -1,0 +1,477 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ThreadCord • Careers</title>
+    <meta name="description" content="Join the ThreadCord team - Help us build the future of Discord ticket management" />
+    <meta name="author" content="ThreadCord" />
+
+    <meta property="og:title" content="ThreadCord • Careers" />
+    <meta property="og:description" content="Join the ThreadCord team - Help us build the future of Discord ticket management" />
+    <meta property="og:type" content="website" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        min-height: 100vh;
+        color: #333;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+      }
+
+      header {
+        text-align: center;
+        padding: 60px 20px;
+        color: white;
+      }
+
+      header h1 {
+        font-size: 3rem;
+        margin-bottom: 20px;
+        font-weight: 700;
+      }
+
+      header p {
+        font-size: 1.2rem;
+        opacity: 0.9;
+        max-width: 600px;
+        margin: 0 auto;
+      }
+
+      .positions {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        gap: 30px;
+        margin-top: 40px;
+      }
+
+      .position-card {
+        background: white;
+        border-radius: 16px;
+        padding: 30px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .position-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+      }
+
+      .position-title {
+        font-size: 1.5rem;
+        font-weight: 600;
+        color: #667eea;
+        margin-bottom: 10px;
+      }
+
+      .position-type {
+        display: inline-block;
+        background: #f0f4ff;
+        color: #667eea;
+        padding: 5px 15px;
+        border-radius: 20px;
+        font-size: 0.9rem;
+        margin-bottom: 20px;
+      }
+
+      .tasks {
+        margin-top: 20px;
+      }
+
+      .tasks h3 {
+        font-size: 1.1rem;
+        margin-bottom: 15px;
+        color: #333;
+      }
+
+      .task-list {
+        list-style: none;
+      }
+
+      .task-list li {
+        padding: 8px 0;
+        padding-left: 25px;
+        position: relative;
+        color: #666;
+        line-height: 1.5;
+      }
+
+      .task-list li:before {
+        content: "✓";
+        position: absolute;
+        left: 0;
+        color: #667eea;
+        font-weight: bold;
+      }
+
+      .apply-btn {
+        display: inline-block;
+        background: #667eea;
+        color: white;
+        padding: 12px 30px;
+        border-radius: 8px;
+        text-decoration: none;
+        font-weight: 500;
+        margin-top: 20px;
+        transition: background 0.3s ease;
+        cursor: pointer;
+        border: none;
+      }
+
+      .apply-btn:hover {
+        background: #5a6fd8;
+      }
+
+      .application-form {
+        background: white;
+        border-radius: 16px;
+        padding: 40px;
+        margin-top: 60px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      }
+
+      .application-form h2 {
+        font-size: 2rem;
+        color: #667eea;
+        margin-bottom: 30px;
+        text-align: center;
+      }
+
+      .form-group {
+        margin-bottom: 20px;
+      }
+
+      .form-group label {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: 500;
+        color: #333;
+      }
+
+      .form-group input,
+      .form-group select,
+      .form-group textarea {
+        width: 100%;
+        padding: 12px;
+        border: 2px solid #e1e5e9;
+        border-radius: 8px;
+        font-size: 1rem;
+        transition: border-color 0.3s ease;
+        font-family: inherit;
+      }
+
+      .form-group input:focus,
+      .form-group select:focus,
+      .form-group textarea:focus {
+        outline: none;
+        border-color: #667eea;
+      }
+
+      .form-group textarea {
+        min-height: 120px;
+        resize: vertical;
+      }
+
+      .form-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+      }
+
+      .submit-btn {
+        background: #667eea;
+        color: white;
+        padding: 15px 40px;
+        border: none;
+        border-radius: 8px;
+        font-size: 1.1rem;
+        font-weight: 500;
+        cursor: pointer;
+        transition: background 0.3s ease;
+        display: block;
+        margin: 30px auto 0;
+      }
+
+      .submit-btn:hover {
+        background: #5a6fd8;
+      }
+
+      .submit-btn:disabled {
+        background: #ccc;
+        cursor: not-allowed;
+      }
+
+      .form-message {
+        padding: 15px;
+        border-radius: 8px;
+        margin-top: 20px;
+        text-align: center;
+        display: none;
+      }
+
+      .form-message.success {
+        background: #d4edda;
+        color: #155724;
+        border: 1px solid #c3e6cb;
+      }
+
+      .form-message.error {
+        background: #f8d7da;
+        color: #721c24;
+        border: 1px solid #f5c6cb;
+      }
+
+      footer {
+        text-align: center;
+        padding: 40px 20px;
+        color: white;
+        opacity: 0.8;
+        margin-top: 60px;
+      }
+
+      .loading {
+        display: inline-block;
+        width: 20px;
+        height: 20px;
+        border: 3px solid #f3f3f3;
+        border-top: 3px solid #667eea;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+        margin-right: 10px;
+      }
+
+      @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+      }
+
+      @media (max-width: 768px) {
+        header h1 {
+          font-size: 2rem;
+        }
+        
+        .positions {
+          grid-template-columns: 1fr;
+        }
+        
+        .form-row {
+          grid-template-columns: 1fr;
+        }
+        
+        .application-form {
+          padding: 20px;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <header>
+        <h1>Join ThreadCord</h1>
+        <p>Help us build the future of Discord ticket management. We're looking for talented people to join our growing team.</p>
+      </header>
+
+      <main>
+        <div class="positions">
+          <!-- QA Engineer Position -->
+          <div class="position-card">
+            <h2 class="position-title">QA Engineer</h2>
+            <span class="position-type">Full-time • Remote</span>
+            
+            <div class="tasks">
+              <h3>What you'll do:</h3>
+              <ul class="task-list">
+                <li>Test and validate new features for the ThreadCord Discord bot</li>
+                <li>Create and maintain test cases for ticket management workflows</li>
+                <li>Identify and document bugs in the Discord integration</li>
+                <li>Work with developers to reproduce and resolve issues</li>
+                <li>Perform regression testing before releases</li>
+                <li>Monitor bot performance and reliability</li>
+                <li>Help improve user experience through quality assurance</li>
+              </ul>
+            </div>
+            
+            <button class="apply-btn" onclick="scrollToForm('QA Engineer')">Apply Now</button>
+          </div>
+
+          <!-- Software Engineer Position -->
+          <div class="position-card">
+            <h2 class="position-title">Software Engineer</h2>
+            <span class="position-type">Full-time • Remote</span>
+            
+            <div class="tasks">
+              <h3>What you'll do:</h3>
+              <ul class="task-list">
+                <li>Develop new features for the ThreadCord Discord bot</li>
+                <li>Build and maintain the dashboard web application</li>
+                <li>Implement Discord API integrations and workflows</li>
+                <li>Write clean, efficient code in Python and TypeScript</li>
+                <li>Design and optimize database schemas for ticket data</li>
+                <li>Collaborate with the team on architecture decisions</li>
+                <li>Participate in code reviews and technical discussions</li>
+              </ul>
+            </div>
+            
+            <button class="apply-btn" onclick="scrollToForm('Software Engineer')">Apply Now</button>
+          </div>
+
+          <!-- Community Manager Position -->
+          <div class="position-card">
+            <h2 class="position-title">Community Manager</h2>
+            <span class="position-type">Part-time • Remote</span>
+            
+            <div class="tasks">
+              <h3>What you'll do:</h3>
+              <ul class="task-list">
+                <li>Manage and grow the ThreadCord Discord community</li>
+                <li>Provide support and guidance to ThreadCord users</li>
+                <li>Create engaging content and community events</li>
+                <li>Moderate Discord channels and maintain community guidelines</li>
+                <li>Collect user feedback and report bugs to the development team</li>
+                <li>Help new users get started with ThreadCord</li>
+                <li>Build relationships with community members and server owners</li>
+              </ul>
+            </div>
+            
+            <button class="apply-btn" onclick="scrollToForm('Community Manager')">Apply Now</button>
+          </div>
+        </div>
+
+        <!-- Application Form -->
+        <div class="application-form" id="application-form">
+          <h2>Apply to Join ThreadCord</h2>
+          
+          <!-- Formspree Form - Replace YOUR_FORM_ID with your actual Formspree form ID -->
+          <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST" id="career-form">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="name">Full Name *</label>
+                <input type="text" id="name" name="name" required>
+              </div>
+              <div class="form-group">
+                <label for="email">Email Address *</label>
+                <input type="email" id="email" name="email" required>
+              </div>
+            </div>
+            
+            <div class="form-row">
+              <div class="form-group">
+                <label for="position">Position *</label>
+                <select id="position" name="position" required>
+                  <option value="">Select a position</option>
+                  <option value="QA Engineer">QA Engineer</option>
+                  <option value="Software Engineer">Software Engineer</option>
+                  <option value="Community Manager">Community Manager</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="location">Location</label>
+                <input type="text" id="location" name="location" placeholder="City, Country">
+              </div>
+            </div>
+            
+            <div class="form-group">
+              <label for="experience">Relevant Experience *</label>
+              <textarea id="experience" name="experience" placeholder="Tell us about your relevant experience and why you're interested in this position..." required></textarea>
+            </div>
+            
+            <div class="form-group">
+              <label for="portfolio">Portfolio/GitHub (Optional)</label>
+              <input type="url" id="portfolio" name="portfolio" placeholder="https://github.com/username or portfolio link">
+            </div>
+            
+            <div class="form-group">
+              <label for="availability">Availability *</label>
+              <select id="availability" name="availability" required>
+                <option value="">Select availability</option>
+                <option value="Immediate">Immediate</option>
+                <option value="2 weeks">2 weeks</option>
+                <option value="1 month">1 month</option>
+                <option value="2 months">2 months</option>
+                <option value="3+ months">3+ months</option>
+              </select>
+            </div>
+            
+            <!-- Hidden field for Formspree -->
+            <input type="hidden" name="_subject" value="New ThreadCord Job Application">
+            <input type="hidden" name="_template" value="table">
+            
+            <button type="submit" class="submit-btn" id="submit-btn">
+              <span id="btn-text">Submit Application</span>
+            </button>
+            
+            <div class="form-message" id="form-message"></div>
+          </form>
+        </div>
+      </main>
+
+      <footer>
+        <p>&copy; 2026 ThreadCord. Building better Discord communities, one ticket at a time.</p>
+      </footer>
+    </div>
+
+    <script>
+      function scrollToForm(position) {
+        document.getElementById('position').value = position;
+        document.getElementById('application-form').scrollIntoView({ behavior: 'smooth' });
+      }
+
+      // Handle form submission with loading state
+      document.getElementById('career-form').addEventListener('submit', function(e) {
+        const submitBtn = document.getElementById('submit-btn');
+        const btnText = document.getElementById('btn-text');
+        const formMessage = document.getElementById('form-message');
+        
+        // Show loading state
+        submitBtn.disabled = true;
+        btnText.innerHTML = '<span class="loading"></span>Submitting...';
+        formMessage.style.display = 'none';
+        
+        // Formspree will handle the submission, but we'll show a success message after a delay
+        setTimeout(() => {
+          formMessage.className = 'form-message success';
+          formMessage.textContent = 'Thank you for your application! We\'ll review it and get back to you soon.';
+          formMessage.style.display = 'block';
+          
+          // Reset form
+          this.reset();
+          
+          // Reset button
+          submitBtn.disabled = false;
+          btnText.textContent = 'Submit Application';
+          
+          // Scroll to success message
+          formMessage.scrollIntoView({ behavior: 'smooth' });
+        }, 2000);
+      });
+
+      // Handle Formspree redirect (if they enable it)
+      window.addEventListener('load', function() {
+        const urlParams = new URLSearchParams(window.location.search);
+        if (urlParams.get('success') === 'true') {
+          const formMessage = document.getElementById('form-message');
+          formMessage.className = 'form-message success';
+          formMessage.textContent = 'Thank you for your application! We\'ll review it and get back to you soon.';
+          formMessage.style.display = 'block';
+        }
+      });
+    </script>
+  </body>
+</html>
