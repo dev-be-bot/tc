@@ -468,7 +468,7 @@
                     <li>Suggest improvements</li>
                     <li>Help with user documentation</li>
                 </ul>
-                <button class="apply-btn" onclick="scrollToForm('QA Tester')">Apply</button>
+                <button class="apply-btn" onclick="scrollToForm()">Join Server</button>
             </div>
 
             <!-- Software Engineer -->
@@ -484,7 +484,7 @@
                     <li>Fix bugs and optimize performance</li>
                     <li>Code review and testing</li>
                 </ul>
-                <button class="apply-btn" onclick="scrollToForm('Developer')">Apply</button>
+                <button class="apply-btn" onclick="scrollToForm()">Join Server</button>
             </div>
 
             <!-- Community Manager -->
@@ -500,92 +500,35 @@
                     <li>Collect user feedback</li>
                     <li>Improve documentation</li>
                 </ul>
-                <button class="apply-btn" onclick="scrollToForm('Community Helper')">Apply</button>
+                <button class="apply-btn" onclick="scrollToForm()">Join Server</button>
             </div>
         </div>
 
-        <!-- Application Form -->
+        <!-- Join Support Server -->
         <div class="form-section" id="application-form">
             <div class="section-header">
-                <h2 class="section-title">Apply to contribute</h2>
-                <p class="section-desc">Fill out this form to join the threadcord contributor team</p>
+                <h2 class="section-title">Interested in applying?</h2>
+                <p class="section-desc">Join our support server to connect with the team and learn more about contributing to threadcord</p>
             </div>
 
-            <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST" id="career-form">
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="name">Name *</label>
-                        <input type="text" id="name" name="name" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="email">Email *</label>
-                        <input type="email" id="email" name="email" required>
-                    </div>
-                </div>
-                
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="position">Position *</label>
-                        <select id="position" name="position" required>
-                            <option value="">Select a position</option>
-                            <option value="QA Tester">QA Tester</option>
-                            <option value="Developer">Developer</option>
-                            <option value="Community Helper">Community Helper</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="experience">Experience with Discord bots</label>
-                        <input type="text" id="experience" name="experience" placeholder="Beginner, Intermediate, Advanced">
-                    </div>
-                </div>
-                
-                <div class="form-group">
-                    <label for="interest">Why interested in threadcord? *</label>
-                    <textarea id="interest" name="interest" placeholder="Tell us why you want to contribute to threadcord..." required></textarea>
-                </div>
-                
-                <div class="form-group">
-                    <label for="github">GitHub (Optional)</label>
-                    <input type="url" id="github" name="github" placeholder="https://github.com/username">
-                </div>
-                
-                <input type="hidden" name="_subject" value="New threadcord Contributor Application">
-                
-                <button type="submit" class="submit-btn" id="submit-btn">
-                    <span id="btn-text">Submit Application</span>
-                </button>
-                
-                <div class="form-message" id="form-message"></div>
-            </form>
+            <div style="text-align: center; padding: 40px 0;">
+                <p style="font-size: 1.1rem; margin-bottom: 24px; color: hsl(var(--muted-foreground));">
+                    Come hang out with us, ask questions, and see if threadcord is a good fit for you!
+                </p>
+                <a href="https://discord.com/invite/ZsfW54JK2t" class="btn btn-primary" style="display: inline-block; padding: 12px 32px; background: hsl(var(--primary)); color: hsl(var(--primary-foreground)); text-decoration: none; border-radius: 0.5rem; font-weight: 600; transition: all 0.2s ease;">
+                    Join Support Server
+                </a>
+                <p style="margin-top: 16px; font-size: 0.875rem; color: hsl(var(--muted-foreground));">
+                    No formal application needed - just join and say hi! 👋
+                </p>
+            </div>
         </div>
     </section>
 
     <script>
-        function scrollToForm(position) {
-            document.getElementById('position').value = position;
+        function scrollToForm() {
             document.getElementById('application-form').scrollIntoView({ behavior: 'smooth' });
         }
-
-        document.getElementById('career-form').addEventListener('submit', function(e) {
-            const submitBtn = document.getElementById('submit-btn');
-            const btnText = document.getElementById('btn-text');
-            const formMessage = document.getElementById('form-message');
-            
-            submitBtn.disabled = true;
-            btnText.innerHTML = '<span class="loading"></span>Submitting...';
-            formMessage.style.display = 'none';
-            
-            setTimeout(() => {
-                formMessage.className = 'form-message success';
-                formMessage.textContent = 'Thanks for applying! We\'ll get back to you soon.';
-                formMessage.style.display = 'block';
-                
-                this.reset();
-                submitBtn.disabled = false;
-                btnText.textContent = 'Submit Application';
-                formMessage.scrollIntoView({ behavior: 'smooth' });
-            }, 2000);
-        });
     </script>
 </body>
 </html>
